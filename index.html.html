@@ -1,0 +1,2235 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Collège Jean Burger – Révise ton Brevet !</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;600;700;800;900&family=Nunito:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --coral:#FF4757;--mint:#2ED573;--sky:#1E90FF;--sun:#FFA502;
+  --violet:#7B2FBE;--rose:#FF6B81;--teal:#00C896;--amber:#FFB300;
+  --dark:#12102A;--bg:#F4F0FF;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Nunito',sans-serif;background:var(--bg);min-height:100vh;overflow-x:hidden;}
+
+/* ── HEADER ── */
+header{background:linear-gradient(135deg,#1a1a4e,#7B2FBE);padding:11px 14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 4px 20px rgba(123,47,190,.45);position:sticky;top:0;z-index:100;}
+.logo{font-family:'Baloo 2',cursive;font-size:1.45rem;font-weight:900;color:#fff;letter-spacing:-.5px;display:flex;align-items:center;gap:8px;}
+.logo-badge{background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:10px;padding:3px 8px;font-size:.72rem;font-weight:800;color:rgba(255,255,255,.9);letter-spacing:.5px;}
+.hdr-right{display:flex;gap:8px;align-items:center;}
+.streak-badge{display:flex;align-items:center;gap:5px;background:rgba(255,255,255,.15);border-radius:20px;padding:5px 11px;font-weight:800;color:#fff;font-size:.88rem;}
+.flame-ico{font-size:1.1rem;animation:flicker 1.5s infinite alternate;}
+@keyframes flicker{0%{transform:scale(1) rotate(-3deg)}100%{transform:scale(1.15) rotate(3deg)}}
+.cd-badge{background:var(--amber);color:var(--dark);border-radius:20px;padding:5px 11px;font-weight:800;font-size:.82rem;display:flex;align-items:center;gap:3px;}
+.hdr-av{width:36px;height:36px;border-radius:50%;border:3px solid rgba(255,255,255,.4);display:flex;align-items:center;justify-content:center;font-size:1.2rem;background:rgba(255,255,255,.15);cursor:pointer;transition:.15s;}
+.hdr-av:hover{background:rgba(255,255,255,.3);}
+
+/* ── SCREENS ── */
+.screen{display:none;animation:fadeIn .32s ease;}
+.screen.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+
+/* ══ AUTH ══ */
+.auth-wrap{max-width:430px;margin:0 auto;padding:28px 18px;text-align:center;}
+.auth-hero{margin-bottom:20px;}
+.auth-hero .brand{font-family:'Baloo 2',cursive;font-size:2.2rem;font-weight:900;background:linear-gradient(135deg,#FF4757,#FFA502,#7B2FBE);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+.auth-hero .tagline{font-size:.92rem;color:#888;font-weight:700;margin-top:2px;}
+.steve-devise{font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:900;letter-spacing:6px;color:#7B2FBE;opacity:.7;text-transform:uppercase;margin-bottom:2px;}
+.auth-card{background:#fff;border-radius:22px;padding:22px 20px;box-shadow:0 6px 0 #d9d0f0;border:3px solid #ede8ff;margin-bottom:12px;}
+.auth-card h3{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;color:var(--dark);margin-bottom:16px;}
+.users-list{display:flex;flex-direction:column;gap:8px;margin-bottom:12px;}
+.user-item{display:flex;align-items:center;gap:11px;background:#faf8ff;border:3px solid #E0D9FF;border-radius:14px;padding:10px 13px;cursor:pointer;transition:.15s;box-shadow:0 3px 0 #d9d0f0;}
+.user-item:hover{border-color:#7B2FBE;transform:translateY(-2px);box-shadow:0 5px 0 #c4b8e8;}
+.u-av{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;}
+.u-info{flex:1;text-align:left;}
+.u-name{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;color:var(--dark);}
+.u-stats{font-size:.75rem;color:#999;font-weight:600;}
+.no-users{color:#bbb;font-size:.85rem;font-weight:700;padding:12px;text-align:center;}
+.form-group{margin-bottom:12px;text-align:left;}
+.form-group label{display:block;font-weight:800;font-size:.78rem;color:#666;margin-bottom:5px;text-transform:uppercase;letter-spacing:.5px;}
+.form-group input,.form-group select{width:100%;padding:11px 14px;border-radius:11px;border:3px solid #E0D9FF;font-family:'Nunito',sans-serif;font-size:.95rem;font-weight:600;color:var(--dark);outline:none;transition:.15s;background:#fff;}
+.form-group input:focus,.form-group select:focus{border-color:#7B2FBE;box-shadow:0 0 0 3px rgba(123,47,190,.12);}
+.av-section{margin-bottom:14px;text-align:left;}
+.av-section-title{font-size:.75rem;font-weight:800;color:#aaa;text-transform:uppercase;letter-spacing:.8px;margin-bottom:10px;}
+/* Netflix-style avatar grid */
+.av-netflix-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;}
+.av-card{cursor:pointer;text-align:center;transition:.18s;}
+.av-card:hover{transform:scale(1.06);}
+.av-card.sel .av-card-inner{border:4px solid #7B2FBE;box-shadow:0 0 0 3px rgba(123,47,190,.35),0 6px 18px rgba(0,0,0,.25);transform:scale(1.07);}
+.av-card-inner{width:100%;aspect-ratio:1;border-radius:16px;font-size:2.6rem;display:flex;align-items:center;justify-content:center;border:4px solid transparent;transition:.18s;box-shadow:0 4px 12px rgba(0,0,0,.15);}
+.av-card-label{font-size:.72rem;font-weight:800;color:#555;margin-top:5px;}
+.btn-auth{width:100%;padding:14px;border-radius:13px;border:none;background:linear-gradient(135deg,#1a1a4e,#7B2FBE);color:#fff;font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;cursor:pointer;box-shadow:0 5px 0 rgba(123,47,190,.4);transition:.15s;margin-top:4px;letter-spacing:.3px;}
+.btn-auth:active{transform:translateY(5px);box-shadow:none;}
+.btn-auth.g{background:linear-gradient(135deg,#00C896,#00a07a);box-shadow:0 5px 0 rgba(0,200,150,.4);}
+.auth-link{color:#7B2FBE;font-weight:700;font-size:.9rem;cursor:pointer;text-decoration:underline;}
+.auth-err{color:var(--coral);font-size:.85rem;font-weight:700;margin-top:8px;display:none;padding:9px;background:#fff0f0;border-radius:9px;}
+
+/* ══ HOME ══ */
+.hero{text-align:center;padding:24px 16px 12px;}
+.hero h1{font-family:'Baloo 2',cursive;font-size:1.85rem;font-weight:900;color:var(--dark);line-height:1.2;}
+.hero p{color:#777;font-size:.92rem;margin-top:4px;font-weight:600;}
+.cd-big{margin:16px auto;background:linear-gradient(135deg,#1a1a4e,#7B2FBE);color:#fff;border-radius:20px;padding:15px 24px;display:inline-block;box-shadow:0 7px 0 rgba(123,47,190,.35);text-align:center;}
+.cd-big .dn{font-family:'Baloo 2',cursive;font-size:3.4rem;font-weight:900;line-height:1;}
+.cd-big .dl{font-size:.88rem;font-weight:700;opacity:.9;}
+.prog-sec{margin:0 14px 13px;background:#fff;border-radius:17px;padding:15px 17px;box-shadow:0 4px 0 #d9d0f0;}
+.prog-sec h3{font-size:.88rem;font-weight:800;color:var(--dark);margin-bottom:8px;}
+.pb-wrap{background:#eee;border-radius:20px;height:11px;overflow:hidden;}
+.pb-fill{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--mint),var(--sky));transition:width 1s ease;}
+.pb-lbl{font-size:.78rem;color:#aaa;font-weight:600;margin-top:4px;text-align:right;}
+.mat-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:0 14px 20px;}
+.mat-card{background:#fff;border-radius:17px;padding:15px 11px;text-align:center;cursor:pointer;border:3px solid transparent;box-shadow:0 4px 0 #d0d0d0;transition:.15s;overflow:hidden;}
+.mat-card:active{transform:translateY(4px);box-shadow:none;}
+.mat-card:hover{transform:translateY(-2px);box-shadow:0 6px 0 #c8c8c8;}
+.mat-card .mej{font-size:1.9rem;display:block;margin-bottom:4px;}
+.mat-card .mn{font-family:'Baloo 2',cursive;font-weight:800;font-size:.88rem;color:var(--dark);}
+.mat-card .ml{font-size:.7rem;color:#aaa;font-weight:600;margin-top:2px;}
+.mat-card .mp{font-size:.72rem;font-weight:700;margin-top:5px;}
+/* NEW fresh color palette for cards */
+.mat-card.math{border-color:#1E90FF;background:linear-gradient(135deg,#fff,#EBF5FF);}
+.mat-card.fr{border-color:#FF6B81;background:linear-gradient(135deg,#fff,#FFF0F3);}
+.mat-card.hist{border-color:#FFA502;background:linear-gradient(135deg,#fff,#FFF8EB);}
+.mat-card.svt{border-color:#2ED573;background:linear-gradient(135deg,#fff,#EDFFF5);}
+.mat-card.phys{border-color:#7B2FBE;background:linear-gradient(135deg,#fff,#F5EEFF);}
+.mat-card.geo{border-color:#FF4757;background:linear-gradient(135deg,#fff,#FFF0F1);}
+.mat-card.emc{border-color:#00C896;background:linear-gradient(135deg,#fff,#EDFFF9);}
+.mat-card.techno{border-color:#FFB300;background:linear-gradient(135deg,#fff,#FFFAEB);}
+.sec-title{font-family:'Baloo 2',cursive;font-size:1.15rem;font-weight:800;color:var(--dark);padding:11px 14px 6px;}
+
+/* ══ THEMES ══ */
+.themes-wrap{max-width:560px;margin:0 auto;padding:16px;}
+.themes-header{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+.btn-bk{background:#fff;border:3px solid #eee;border-radius:11px;width:38px;height:38px;font-size:1rem;cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 3px 0 #ddd;transition:.1s;flex-shrink:0;}
+.btn-bk:active{transform:translateY(3px);box-shadow:none;}
+.themes-header h2{font-family:'Baloo 2',cursive;font-size:1.4rem;font-weight:800;color:var(--dark);}
+.themes-grid{display:flex;flex-direction:column;gap:10px;}
+.theme-card{background:#fff;border-radius:16px;padding:16px 18px;cursor:pointer;border:3px solid #eee;box-shadow:0 4px 0 #e0e0e0;transition:.15s;display:flex;align-items:center;gap:14px;}
+.theme-card:hover{transform:translateY(-2px);box-shadow:0 6px 0 #d0d0d0;border-color:#7B2FBE;}
+.theme-card:active{transform:translateY(4px);box-shadow:none;}
+.theme-card .tc-icon{font-size:2rem;flex-shrink:0;}
+.theme-card .tc-info{flex:1;}
+.theme-card .tc-name{font-family:'Baloo 2',cursive;font-weight:800;font-size:1rem;color:var(--dark);}
+.theme-card .tc-desc{font-size:.78rem;color:#999;font-weight:600;margin-top:2px;}
+.theme-card .tc-count{font-size:.75rem;font-weight:800;color:#fff;background:#7B2FBE;border-radius:20px;padding:2px 9px;flex-shrink:0;}
+.theme-card .tc-pct{font-size:.75rem;font-weight:700;margin-top:3px;}
+
+/* ══ QUIZ ══ */
+.quiz-wrap{max-width:580px;margin:0 auto;padding:14px;}
+.quiz-top{display:flex;align-items:center;gap:10px;margin-bottom:16px;}
+.qpb{flex:1;background:#eee;height:10px;border-radius:20px;overflow:hidden;}
+.qpbf{height:100%;border-radius:20px;background:linear-gradient(90deg,var(--mint),var(--sky));transition:width .5s ease;}
+.qlives{font-size:.88rem;white-space:nowrap;}
+.q-card{background:#fff;border-radius:19px;padding:22px 18px;box-shadow:0 6px 0 #d9d0f0;margin-bottom:14px;border:3px solid #ede8ff;}
+.q-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px;}
+.qtag{display:inline-block;border-radius:9px;padding:3px 10px;font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;}
+.qtag.sub{background:linear-gradient(135deg,#1a1a4e,#7B2FBE);color:#fff;}
+.qtag.theme{background:#f0e8ff;color:#7B2FBE;border:2px solid #ddd6ff;}
+.q-text{font-size:1.08rem;font-weight:700;color:var(--dark);line-height:1.5;}
+.ans-grid{display:grid;gap:7px;}
+.ans-btn{background:#fff;border:3px solid #E0D9FF;border-radius:13px;padding:12px 15px;font-family:'Nunito',sans-serif;font-size:.93rem;font-weight:700;color:var(--dark);text-align:left;cursor:pointer;transition:.15s;box-shadow:0 4px 0 #d9d0f0;display:flex;align-items:center;gap:9px;}
+.ans-btn:hover:not(:disabled){background:#f5f0ff;transform:translateY(-2px);}
+.ans-btn:active:not(:disabled){transform:translateY(4px);box-shadow:none;}
+.ans-letter{background:#E0D9FF;color:#7B2FBE;width:27px;height:27px;border-radius:8px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.8rem;flex-shrink:0;transition:.15s;}
+.ans-btn.correct{border-color:var(--mint);background:#EDFFF5;box-shadow:0 4px 0 #b0f0d0;}
+.ans-btn.correct .ans-letter{background:var(--mint);color:#fff;}
+.ans-btn.wrong{border-color:var(--coral);background:#FFF0F0;box-shadow:0 4px 0 #ffb0b0;}
+.ans-btn.wrong .ans-letter{background:var(--coral);color:#fff;}
+.fb-panel{border-radius:15px;padding:15px 18px;margin-top:11px;display:none;animation:suUp .3s ease;}
+@keyframes suUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.fb-panel.ok{background:#EDFFF5;border:3px solid var(--mint);}
+.fb-panel.ko{background:#FFF0F0;border:3px solid var(--coral);}
+.fb-panel h3{font-family:'Baloo 2',cursive;font-size:1.15rem;font-weight:800;margin-bottom:4px;}
+.fb-panel.ok h3{color:#00a07a;}
+.fb-panel.ko h3{color:var(--coral);}
+.fb-panel p{font-size:.88rem;font-weight:600;color:#444;line-height:1.5;}
+.btn-nxt{width:100%;margin-top:11px;padding:14px;border-radius:12px;border:none;font-family:'Baloo 2',cursive;font-size:1.05rem;font-weight:800;cursor:pointer;transition:.15s;box-shadow:0 5px 0;letter-spacing:.3px;}
+.btn-nxt.g{background:var(--mint);color:#fff;box-shadow:0 5px 0 #00a07a;}
+.btn-nxt.g:active{transform:translateY(5px);box-shadow:none;}
+.btn-nxt.r{background:var(--coral);color:#fff;box-shadow:0 5px 0 #c0392b;}
+.btn-nxt.r:active{transform:translateY(5px);box-shadow:none;}
+@keyframes shake{0%,100%{transform:translateX(0)}20%{transform:translateX(-7px)}40%{transform:translateX(7px)}60%{transform:translateX(-4px)}80%{transform:translateX(4px)}}
+.shake{animation:shake .45s ease;}
+
+/* ══ VICTORY ══ */
+#victory-screen{text-align:center;padding:32px 18px;max-width:480px;margin:0 auto;}
+.vic-icon{font-size:5rem;animation:bounce .8s infinite alternate;display:block;margin-bottom:10px;}
+@keyframes bounce{from{transform:scale(1)}to{transform:scale(1.08)}}
+#victory-screen h1{font-family:'Baloo 2',cursive;font-size:2.1rem;font-weight:900;color:var(--dark);margin-bottom:4px;}
+#victory-screen>p{font-size:.95rem;color:#777;font-weight:600;margin-bottom:22px;}
+.xp-box{background:linear-gradient(135deg,var(--amber),var(--coral));border-radius:15px;padding:14px;margin-bottom:16px;box-shadow:0 5px 0 rgba(255,75,87,.3);}
+.xp-num{font-family:'Baloo 2',cursive;font-size:2.5rem;font-weight:900;color:#fff;}
+.xp-lbl{color:rgba(255,255,255,.9);font-weight:700;font-size:.88rem;}
+.flame-box{background:#fff;border-radius:15px;padding:12px 18px;display:inline-flex;align-items:center;gap:10px;box-shadow:0 4px 0 #ddd;margin-bottom:18px;border:3px solid var(--amber);}
+.fbig{font-size:2rem;animation:flicker 1s infinite alternate;}
+.ftxt strong{display:block;font-family:'Baloo 2',cursive;font-size:.98rem;color:var(--amber);}
+.ftxt span{font-size:.78rem;color:#aaa;font-weight:600;}
+.btn-home{width:100%;padding:14px;border-radius:12px;border:none;background:linear-gradient(135deg,#1a1a4e,#7B2FBE);color:#fff;font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;cursor:pointer;box-shadow:0 5px 0 rgba(123,47,190,.4);transition:.15s;}
+.btn-home:active{transform:translateY(5px);box-shadow:none;}
+
+/* ══ PROFILE ══ */
+.prof-wrap{max-width:500px;margin:0 auto;padding:16px;}
+.prof-hdr{background:linear-gradient(135deg,#1a1a4e,#7B2FBE);border-radius:20px;padding:24px 20px;text-align:center;margin-bottom:16px;box-shadow:0 6px 0 rgba(123,47,190,.35);position:relative;}
+.prof-av{font-size:3rem;margin-bottom:7px;}
+.prof-name{font-family:'Baloo 2',cursive;font-size:1.65rem;font-weight:900;color:#fff;}
+.prof-cls{color:rgba(255,255,255,.8);font-weight:600;font-size:.88rem;margin-top:1px;}
+.prof-vibe{background:rgba(255,255,255,.15);border-radius:20px;padding:3px 12px;display:inline-block;margin-top:6px;font-size:.78rem;font-weight:800;color:rgba(255,255,255,.9);}
+.btn-lo{position:absolute;top:12px;right:12px;background:rgba(255,255,255,.15);border:2px solid rgba(255,255,255,.3);border-radius:9px;color:#fff;font-weight:800;font-size:.75rem;padding:5px 10px;cursor:pointer;transition:.15s;}
+.btn-lo:hover{background:rgba(255,255,255,.25);}
+.stats-row{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:14px;}
+.stat-c{background:#fff;border-radius:14px;padding:12px 8px;text-align:center;box-shadow:0 3px 0 #d9d0f0;border:2px solid #ede8ff;}
+.sv{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:800;color:var(--dark);line-height:1;}
+.sl{font-size:.68rem;color:#aaa;font-weight:700;text-transform:uppercase;letter-spacing:.5px;margin-top:3px;}
+.prof-sec{background:#fff;border-radius:17px;padding:16px;margin-bottom:12px;box-shadow:0 4px 0 #e0d0f0;}
+.prof-sec h3{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;color:var(--dark);margin-bottom:11px;}
+.sb-rows{display:flex;flex-direction:column;gap:8px;}
+.sb-row{display:flex;align-items:center;gap:8px;}
+.sbl{font-size:.78rem;font-weight:700;color:var(--dark);width:72px;flex-shrink:0;}
+.sbt{flex:1;background:#eee;border-radius:20px;height:9px;overflow:hidden;}
+.sbf{height:100%;border-radius:20px;transition:width 1s ease;}
+.sbp{font-size:.75rem;font-weight:700;color:#aaa;width:32px;text-align:right;}
+.hist-list{display:flex;flex-direction:column;gap:6px;max-height:200px;overflow-y:auto;}
+.hi{display:flex;align-items:center;gap:9px;padding:8px 11px;background:#faf8ff;border-radius:10px;border:2px solid #ede8ff;}
+.hiico{font-size:1.2rem;}
+.hiinf{flex:1;}
+.hiname{font-size:.85rem;font-weight:700;color:var(--dark);}
+.hitheme{font-size:.72rem;color:#aaa;font-weight:600;}
+.hisc{font-family:'Baloo 2',cursive;font-weight:800;font-size:.9rem;}
+.sg{color:var(--mint);}.so{color:var(--amber);}.sr{color:var(--coral);}
+.empty-h{text-align:center;color:#ccc;font-weight:700;padding:16px;font-size:.85rem;}
+.btn-bkp{width:100%;padding:12px;border-radius:12px;border:none;background:linear-gradient(135deg,#1a1a4e,#7B2FBE);color:#fff;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;cursor:pointer;box-shadow:0 4px 0 rgba(123,47,190,.4);transition:.15s;}
+.btn-bkp:active{transform:translateY(4px);box-shadow:none;}
+
+/* confetti */
+.cfc{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1000;}
+.cfp{position:absolute;border-radius:2px;animation:cfall linear forwards;}
+@keyframes cfall{0%{transform:translateY(-20px) rotate(0);opacity:1}100%{transform:translateY(100vh) rotate(720deg);opacity:0}}
+
+@media(min-width:460px){.mat-grid{grid-template-columns:repeat(3,1fr);}.stats-row{grid-template-columns:repeat(4,1fr);}}
+.hist-list::-webkit-scrollbar{width:4px;}
+.hist-list::-webkit-scrollbar-thumb{background:#ddd;border-radius:10px;}
+
+/* ══ LEADERBOARD ══ */
+.lb-wrap{max-width:480px;margin:0 auto;padding:0 0 30px;}
+.lb-header{background:linear-gradient(135deg,#1a1a4e,#7B2FBE);padding:16px 16px 20px;display:flex;align-items:center;gap:12px;margin-bottom:-10px;}
+.lb-header h2{font-family:'Baloo 2',cursive;font-size:1.4rem;font-weight:800;color:#fff;}
+.lb-header .btn-bk{background:rgba(255,255,255,.2);border-color:rgba(255,255,255,.3);color:#fff;}
+.lb-podium{display:flex;align-items:flex-end;justify-content:center;gap:8px;padding:20px 16px 0;background:linear-gradient(180deg,#7B2FBE 0%,var(--bg) 100%);min-height:180px;}
+.podium-item{display:flex;flex-direction:column;align-items:center;gap:4px;flex:1;max-width:110px;}
+.podium-av{font-size:2rem;width:54px;height:54px;background:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;border:3px solid #fff;box-shadow:0 4px 12px rgba(0,0,0,.2);}
+.podium-name{font-family:'Baloo 2',cursive;font-size:.78rem;font-weight:800;color:#fff;text-align:center;max-width:90px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.podium-xp{font-size:.68rem;font-weight:700;color:rgba(255,255,255,.8);}
+.podium-block{border-radius:12px 12px 0 0;width:100%;display:flex;align-items:center;justify-content:center;font-family:'Baloo 2',cursive;font-size:1.6rem;font-weight:900;color:#fff;}
+.podium-block.p1{height:90px;background:linear-gradient(135deg,#f9ca24,#f0932b);box-shadow:0 -4px 0 rgba(249,202,36,.5);}
+.podium-block.p2{height:65px;background:linear-gradient(135deg,#dfe6e9,#b2bec3);box-shadow:0 -4px 0 rgba(178,190,195,.5);}
+.podium-block.p3{height:50px;background:linear-gradient(135deg,#e17055,#d35400);box-shadow:0 -4px 0 rgba(211,84,0,.5);}
+.lb-list{display:flex;flex-direction:column;gap:6px;padding:14px 16px;}
+.lb-row{display:flex;align-items:center;gap:11px;background:#fff;border-radius:14px;padding:11px 14px;box-shadow:0 3px 0 #e0d0f0;border:2px solid #ede8ff;}
+.lb-row.me{border-color:#7B2FBE;background:#f5eeff;}
+.lb-rank{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:900;color:#aaa;width:24px;text-align:center;}
+.lb-av{font-size:1.5rem;width:38px;height:38px;background:#f0f4ff;border-radius:10px;display:flex;align-items:center;justify-content:center;}
+.lb-info{flex:1;}
+.lb-uname{font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:800;color:var(--dark);}
+.lb-ucls{font-size:.72rem;color:#aaa;font-weight:600;}
+.lb-score{text-align:right;}
+.lb-xp{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;color:#7B2FBE;}
+.lb-streak{font-size:.72rem;color:#aaa;font-weight:600;}
+.lb-empty{text-align:center;padding:30px;color:#bbb;font-weight:700;}
+
+/* ══ EXAMEN BLANC ══ */
+.exam-wrap{max-width:580px;margin:0 auto;padding:14px;}
+.exam-intro{text-align:center;padding:20px 16px;}
+.exam-intro h2{font-family:'Baloo 2',cursive;font-size:1.8rem;font-weight:900;color:var(--dark);margin-bottom:8px;}
+.exam-intro p{color:#777;font-size:.9rem;font-weight:600;margin-bottom:20px;}
+.exam-rules{background:#fff;border-radius:18px;padding:18px;box-shadow:0 4px 0 #e0d0f0;border:3px solid #ede8ff;margin-bottom:20px;text-align:left;}
+.exam-rules h3{font-family:'Baloo 2',cursine;font-size:1rem;font-weight:800;margin-bottom:12px;color:var(--dark);}
+.exam-rule{display:flex;align-items:center;gap:10px;padding:7px 0;border-bottom:1px solid #f0eaff;font-size:.88rem;font-weight:600;color:#555;}
+.exam-rule:last-child{border-bottom:none;}
+.exam-rule .er-ico{font-size:1.2rem;width:28px;text-align:center;}
+.exam-top-bar{display:flex;align-items:center;gap:10px;margin-bottom:16px;background:#fff;border-radius:14px;padding:10px 14px;box-shadow:0 3px 0 #e0d0f0;}
+.exam-timer-big{font-family:'Baloo 2',cursive;font-size:1.4rem;font-weight:900;color:var(--coral);}
+.exam-timer-big.ok{color:var(--mint);}
+.exam-timer-big.warn{color:var(--amber);}
+.exam-q-counter{font-family:'Baloo 2',cursive;font-size:.9rem;font-weight:800;color:#aaa;margin-left:auto;}
+.exam-results{max-width:540px;margin:0 auto;padding:14px;}
+.exam-note{font-family:'Baloo 2',cursive;font-size:5rem;font-weight:900;text-align:center;line-height:1;}
+.exam-note.A{color:var(--mint);}
+.exam-note.B{color:var(--sky);}
+.exam-note.C{color:var(--amber);}
+.exam-note.D{color:var(--coral);}
+
+/* ══ QR CODE ══ */
+.qr-wrap{max-width:420px;margin:0 auto;padding:16px;}
+.qr-card{background:#fff;border-radius:22px;padding:28px 20px;box-shadow:0 6px 0 #d9d0f0;border:3px solid #ede8ff;text-align:center;}
+.qr-title{font-family:'Baloo 2',cursive;font-size:1.4rem;font-weight:900;color:var(--dark);}
+.qr-subtitle{font-size:.85rem;color:#aaa;font-weight:600;margin-bottom:20px;}
+.qr-container{margin:0 auto 16px;display:inline-block;padding:14px;background:#fff;border-radius:16px;border:3px solid #ede8ff;box-shadow:0 4px 12px rgba(0,0,0,.08);}
+.qr-hint{font-size:.82rem;font-weight:700;color:#888;margin-bottom:8px;}
+.qr-url{font-size:.72rem;color:#aaa;font-weight:600;word-break:break-all;padding:6px 10px;background:#f5f0ff;border-radius:8px;}
+
+/* ══ POINTS FAIBLES ══ */
+.weak-wrap{max-width:560px;margin:0 auto;padding:14px;}
+.weak-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;}
+.weak-header h2{font-family:'Baloo 2',cursive;font-size:1.4rem;font-weight:800;color:var(--dark);}
+.weak-card{background:#fff;border-radius:16px;padding:15px 16px;margin-bottom:10px;box-shadow:0 4px 0 #e0d0f0;border:3px solid #ede8ff;}
+.weak-card h4{font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:800;color:var(--dark);margin-bottom:10px;}
+.weak-q{display:flex;align-items:flex-start;gap:9px;padding:8px 0;border-bottom:1px solid #f5f0ff;cursor:pointer;transition:.15s;}
+.weak-q:hover{background:#faf8ff;border-radius:8px;padding-left:6px;}
+.weak-q:last-child{border-bottom:none;}
+.weak-q-ico{font-size:1rem;flex-shrink:0;margin-top:2px;}
+.weak-q-text{font-size:.82rem;font-weight:600;color:var(--dark);flex:1;}
+.weak-q-sub{font-size:.7rem;color:#aaa;font-weight:700;margin-top:2px;}
+.weak-retry-btn{width:100%;padding:13px;border-radius:12px;border:none;background:linear-gradient(135deg,#e84393,#c0392b);color:#fff;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;cursor:pointer;box-shadow:0 4px 0 rgba(192,57,43,.4);margin-top:6px;transition:.15s;}
+.weak-retry-btn:active{transform:translateY(4px);box-shadow:none;}
+.weak-empty{text-align:center;padding:40px 20px;color:#bbb;font-size:.9rem;font-weight:700;}
+
+.parcours-wrap{max-width:420px;margin:0 auto;padding:14px 14px 40px;}
+.parcours-header{display:flex;align-items:center;gap:12px;margin-bottom:10px;}
+.parcours-header h2{font-family:'Baloo 2',cursive;font-size:1.4rem;font-weight:800;color:var(--dark);}
+.parcours-sub-selector{display:flex;gap:8px;overflow-x:auto;padding:2px 14px 10px;scrollbar-width:none;}
+.parcours-sub-selector::-webkit-scrollbar{display:none;}
+.psub-btn{flex-shrink:0;background:#fff;border:3px solid #E0D9FF;border-radius:20px;padding:7px 14px;font-family:'Baloo 2',cursive;font-size:.82rem;font-weight:800;color:#7B2FBE;cursor:pointer;transition:.15s;white-space:nowrap;}
+.psub-btn:hover,.psub-btn.active{background:#7B2FBE;color:#fff;border-color:#7B2FBE;}
+
+/* The path */
+.path-container{position:relative;display:flex;flex-direction:column;align-items:center;gap:0;padding:10px 0;}
+.path-segment{position:relative;width:100%;display:flex;flex-direction:column;align-items:center;margin-bottom:0;}
+
+/* Node */
+.path-node{position:relative;z-index:2;cursor:pointer;display:flex;flex-direction:column;align-items:center;margin:6px 0;}
+.node-btn{width:72px;height:72px;border-radius:50%;border:none;font-size:2rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:.18s;position:relative;box-shadow:0 6px 0;}
+.node-btn.done{background:linear-gradient(135deg,var(--mint),#00a07a);box-shadow:0 6px 0 #008060;border:4px solid #fff;}
+.node-btn.done:hover{transform:scale(1.07);}
+.node-btn.active{background:linear-gradient(135deg,var(--sun),#e08000);box-shadow:0 6px 0 #b06000;border:4px solid #fff;animation:nodePulse 1.8s infinite alternate;}
+.node-btn.active:hover{transform:scale(1.07);}
+.node-btn.locked{background:#ddd;box-shadow:0 6px 0 #bbb;border:4px solid #fff;cursor:default;filter:grayscale(1);opacity:.7;}
+.node-btn.eval{background:linear-gradient(135deg,#FF4757,#c0392b);box-shadow:0 6px 0 #900;border:4px solid #fff;}
+.node-btn.eval.done{background:linear-gradient(135deg,#A855F7,#7B2FBE);box-shadow:0 6px 0 #5b1fae;}
+.node-btn.eval.active{background:linear-gradient(135deg,#FF4757,#c0392b);animation:nodePulse 1.8s infinite alternate;}
+@keyframes nodePulse{0%{transform:scale(1)}100%{transform:scale(1.06) rotate(-2deg)}}
+
+.node-label{margin-top:6px;font-family:'Baloo 2',cursive;font-size:.82rem;font-weight:800;color:var(--dark);text-align:center;max-width:110px;}
+.node-badge{position:absolute;top:-6px;right:-6px;background:var(--amber);color:#fff;border-radius:20px;padding:2px 7px;font-size:.65rem;font-weight:900;border:2px solid #fff;}
+.node-score{position:absolute;bottom:-4px;left:50%;transform:translateX(-50%);background:#fff;border:2px solid #ddd;border-radius:20px;padding:1px 8px;font-size:.68rem;font-weight:800;white-space:nowrap;color:var(--dark);}
+.node-stars{display:flex;gap:1px;justify-content:center;margin-top:2px;}
+.node-star{font-size:.75rem;}
+
+/* Connectors */
+.path-connector{width:6px;height:38px;background:linear-gradient(180deg,#ddd,#ddd);border-radius:3px;margin:0 auto;z-index:1;position:relative;}
+.path-connector.done{background:linear-gradient(180deg,var(--mint),var(--mint));}
+.path-connector.left{margin-left:calc(50% - 55px);}
+.path-connector.right{margin-left:calc(50% + 49px);}
+.path-connector.center{margin-left:auto;}
+
+/* Chapter banner */
+.chapter-banner{background:linear-gradient(135deg,#1a1a4e,#7B2FBE);color:#fff;border-radius:16px;padding:11px 16px;margin:10px 0;display:flex;align-items:center;gap:10px;box-shadow:0 4px 0 rgba(123,47,190,.4);}
+.chapter-banner .cb-icon{font-size:1.6rem;}
+.chapter-banner .cb-name{font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;}
+.chapter-banner .cb-sub{font-size:.75rem;opacity:.85;font-weight:600;}
+.chapter-banner .cb-prog{margin-left:auto;background:rgba(255,255,255,.2);border-radius:20px;padding:3px 10px;font-size:.75rem;font-weight:800;}
+
+/* Zigzag offset for fun */
+.path-node:nth-child(odd){margin-right:60px;}
+.path-node:nth-child(even){margin-left:60px;}
+
+/* ══ MINI-ÉVAL ══ */
+.eval-wrap{max-width:580px;margin:0 auto;padding:14px;}
+.eval-header{background:linear-gradient(135deg,#FF4757,#c0392b);border-radius:18px;padding:18px 20px;margin-bottom:16px;text-align:center;box-shadow:0 5px 0 rgba(192,57,43,.4);}
+.eval-header h2{font-family:'Baloo 2',cursive;font-size:1.5rem;font-weight:900;color:#fff;}
+.eval-header p{color:rgba(255,255,255,.9);font-size:.85rem;font-weight:600;margin-top:4px;}
+.eval-timer{background:rgba(0,0,0,.2);border-radius:10px;padding:4px 12px;display:inline-block;margin-top:8px;font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;color:#fff;}
+.eval-progress{display:flex;gap:6px;flex-wrap:wrap;justify-content:center;margin-bottom:14px;}
+.eval-dot{width:14px;height:14px;border-radius:50%;background:#eee;border:2px solid #ddd;transition:.3s;}
+.eval-dot.ok{background:var(--mint);border-color:#00a07a;}
+.eval-dot.ko{background:var(--coral);border-color:#c0392b;}
+.eval-dot.cur{background:var(--amber);border-color:#e08000;animation:nodePulse .8s infinite alternate;}
+
+/* Results panel */
+.eval-results{background:#fff;border-radius:20px;padding:24px 20px;box-shadow:0 6px 0 #d9d0f0;border:3px solid #ede8ff;max-width:540px;margin:0 auto;text-align:center;}
+.eval-grade{font-family:'Baloo 2',cursive;font-size:4rem;font-weight:900;line-height:1;}
+.eval-grade.A{color:var(--mint);}
+.eval-grade.B{color:var(--sky);}
+.eval-grade.C{color:var(--amber);}
+.eval-grade.D{color:var(--coral);}
+.eval-mention{font-family:'Baloo 2',cursive;font-size:1.3rem;font-weight:800;margin-bottom:6px;}
+.eval-score-big{font-size:1.1rem;font-weight:700;color:#888;margin-bottom:16px;}
+.eval-detail{text-align:left;background:#faf8ff;border-radius:14px;padding:14px;margin-top:14px;}
+.eval-detail h4{font-family:'Baloo 2',cursive;font-size:.95rem;font-weight:800;margin-bottom:8px;color:var(--dark);}
+.eval-row{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:1px solid #f0eaff;}
+.eval-row:last-child{border-bottom:none;}
+.eval-row-ico{font-size:1.1rem;flex-shrink:0;margin-top:1px;}
+.eval-row-q{flex:1;}
+.eval-row-q .qtext{font-size:.8rem;font-weight:700;color:var(--dark);margin-bottom:2px;}
+.eval-row-q .atext{font-size:.75rem;font-weight:600;color:#888;}
+.eval-row-q .atext.ok{color:#00a07a;}
+.eval-row-q .atext.ko{color:var(--coral);}
+.eval-btns{display:flex;gap:8px;margin-top:16px;}
+.eval-btns button{flex:1;padding:13px;border-radius:12px;border:none;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;cursor:pointer;transition:.15s;}
+.eval-btns .btn-retry{background:#f0e8ff;color:#7B2FBE;box-shadow:0 4px 0 #c4b8e8;}
+.eval-btns .btn-cont{background:linear-gradient(135deg,#1a1a4e,#7B2FBE);color:#fff;box-shadow:0 4px 0 rgba(123,47,190,.4);}
+.eval-btns button:active{transform:translateY(4px);box-shadow:none;}
+
+/* node popup */
+.node-popup{position:fixed;bottom:0;left:0;right:0;background:#fff;border-radius:22px 22px 0 0;padding:22px 20px;box-shadow:0 -6px 30px rgba(0,0,0,.15);z-index:200;transform:translateY(100%);transition:transform .3s ease;max-width:480px;margin:0 auto;}
+.node-popup.open{transform:translateY(0);}
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,.3);z-index:199;display:none;}
+.popup-overlay.open{display:block;}
+.popup-title{font-family:'Baloo 2',cursive;font-size:1.25rem;font-weight:800;color:var(--dark);margin-bottom:4px;}
+.popup-desc{font-size:.85rem;color:#888;font-weight:600;margin-bottom:16px;}
+.popup-stats{display:flex;gap:10px;margin-bottom:16px;}
+.popup-stat{flex:1;background:#faf8ff;border-radius:12px;padding:9px;text-align:center;border:2px solid #ede8ff;}
+.popup-stat .ps-val{font-family:'Baloo 2',cursive;font-size:1.2rem;font-weight:800;color:var(--dark);}
+.popup-stat .ps-lbl{font-size:.68rem;color:#aaa;font-weight:700;}
+.popup-btns{display:flex;gap:8px;}
+.popup-btns button{flex:1;padding:13px;border-radius:12px;border:none;font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;cursor:pointer;transition:.15s;}
+.popup-start{background:linear-gradient(135deg,#1a1a4e,#7B2FBE);color:#fff;box-shadow:0 5px 0 rgba(123,47,190,.4);}
+.popup-start:active{transform:translateY(5px);box-shadow:none;}
+.popup-close{background:#f0e8ff;color:#7B2FBE;}
+
+/* Add parcours button on home */
+.parcours-cta{margin:0 14px 10px;background:linear-gradient(135deg,#FF6B35,#FF4757);border-radius:16px;padding:14px 18px;display:flex;align-items:center;gap:12px;cursor:pointer;box-shadow:0 5px 0 rgba(255,71,87,.35);border:none;width:calc(100% - 28px);transition:.15s;}
+.parcours-cta:active{transform:translateY(5px);box-shadow:none;}
+.parcours-cta .pc-ico{font-size:2.2rem;}
+.parcours-cta .pc-text .pc-title{font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:900;color:#fff;}
+.parcours-cta .pc-text .pc-sub{font-size:.78rem;color:rgba(255,255,255,.85);font-weight:600;}
+.parcours-cta .pc-arrow{margin-left:auto;color:#fff;font-size:1.3rem;font-weight:900;}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo">
+    Collège Jean Burger
+    <span class="logo-badge">BREVET 2026</span>
+  </div>
+  <div class="hdr-right">
+    <div class="streak-badge"><span class="flame-ico">🔥</span><span id="hdr-streak">0</span></div>
+    <div class="cd-badge">⏳ <span id="hdr-days">106</span>j</div>
+    <div class="hdr-av" id="hdr-av" onclick="showProfile()">?</div>
+  </div>
+</header>
+
+<!-- ═══ LOGIN ═══ -->
+<div id="login-screen" class="screen active">
+  <div class="auth-wrap">
+    <div class="auth-hero">
+      <div class="steve-devise">S.T.E.V.E</div>
+      <div class="brand">Collège Jean Burger</div>
+      <div class="tagline">Le brevet ? T'as got this. 💪</div>
+    </div>
+    <div class="auth-card">
+      <h3>👋 C'est qui ?</h3>
+      <div id="no-users" class="no-users" style="display:none">Aucun compte encore — crée le tien ! 👇</div>
+      <div class="users-list" id="users-list"></div>
+      <div style="margin:8px 0;color:#ddd;font-weight:800;font-size:.8rem;">── ou ──</div>
+      <button class="btn-auth g" onclick="showRegister()">✨ Nouveau compte</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ REGISTER ═══ -->
+<div id="register-screen" class="screen">
+  <div class="auth-wrap">
+    <div class="auth-hero">
+      <div class="brand" style="font-size:1.9rem;">Crée ton profil</div>
+      <div class="tagline">Choisis ton vibe 🔥</div>
+    </div>
+    <div class="auth-card">
+      <div class="form-group">
+        <label>Ton prénom</label>
+        <input type="text" id="reg-name" placeholder="Ex : Léa, Tom, Karim…" maxlength="20">
+      </div>
+      <div class="form-group">
+        <label>Ta classe</label>
+        <select id="reg-class">
+          <option value="3ème A">3ème A</option>
+          <option value="3ème B">3ème B</option>
+          <option value="3ème C">3ème C</option>
+          <option value="3ème D">3ème D</option>
+          <option value="3ème E">3ème E</option>
+          <option value="3ème F">3ème F</option>
+          <option value="3ème">3ème (autre)</option>
+        </select>
+      </div>
+      <div class="av-section">
+        <div class="av-section-title">🎭 Choisis ton avatar</div>
+        <div class="av-netflix-grid">
+          <div class="av-card" data-av="🦁" data-vibe="Le Lion" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#f39c12,#e67e22)">🦁</div><div class="av-card-label">Lion</div></div>
+          <div class="av-card" data-av="🐺" data-vibe="Le Loup" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#636e72,#2d3436)">🐺</div><div class="av-card-label">Loup</div></div>
+          <div class="av-card" data-av="🦊" data-vibe="Le Renard" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#e17055,#d63031)">🦊</div><div class="av-card-label">Renard</div></div>
+          <div class="av-card" data-av="🐉" data-vibe="Le Dragon" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#00b894,#00cec9)">🐉</div><div class="av-card-label">Dragon</div></div>
+          <div class="av-card" data-av="🦋" data-vibe="Le Papillon" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#a29bfe,#6c5ce7)">🦋</div><div class="av-card-label">Papillon</div></div>
+          <div class="av-card" data-av="🐬" data-vibe="Le Dauphin" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#0984e3,#74b9ff)">🐬</div><div class="av-card-label">Dauphin</div></div>
+          <div class="av-card" data-av="🦅" data-vibe="L'Aigle" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#fdcb6e,#e17055)">🦅</div><div class="av-card-label">Aigle</div></div>
+          <div class="av-card" data-av="🐼" data-vibe="Le Panda" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#dfe6e9,#b2bec3)">🐼</div><div class="av-card-label">Panda</div></div>
+          <div class="av-card" data-av="🦄" data-vibe="La Licorne" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#fd79a8,#e84393)">🦄</div><div class="av-card-label">Licorne</div></div>
+          <div class="av-card" data-av="🐯" data-vibe="Le Tigre" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#f9ca24,#f0932b)">🐯</div><div class="av-card-label">Tigre</div></div>
+          <div class="av-card" data-av="🦈" data-vibe="Le Requin" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#2d3436,#636e72)">🦈</div><div class="av-card-label">Requin</div></div>
+          <div class="av-card" data-av="🦸" data-vibe="Le Super-Héros" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#e84393,#7B2FBE)">🦸</div><div class="av-card-label">Héros</div></div>
+          <div class="av-card" data-av="🧙" data-vibe="Le Sorcier" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#6c5ce7,#2d3436)">🧙</div><div class="av-card-label">Sorcier</div></div>
+          <div class="av-card" data-av="🧛" data-vibe="Le Vampire" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#c0392b,#2d3436)">🧛</div><div class="av-card-label">Vampire</div></div>
+          <div class="av-card" data-av="🤖" data-vibe="Le Robot" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#00cec9,#0984e3)">🤖</div><div class="av-card-label">Robot</div></div>
+          <div class="av-card" data-av="👽" data-vibe="L'Alien" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#55efc4,#00b894)">👽</div><div class="av-card-label">Alien</div></div>
+          <div class="av-card" data-av="🧟" data-vibe="Le Zombie" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#b8e994,#78e08f)">🧟</div><div class="av-card-label">Zombie</div></div>
+          <div class="av-card" data-av="🧜" data-vibe="La Sirène" onclick="pickAv(this)"><div class="av-card-inner" style="background:linear-gradient(135deg,#00cec9,#fd79a8)">🧜</div><div class="av-card-label">Sirène</div></div>
+        </div>
+      </div>
+      <div id="reg-err" class="auth-err"></div>
+      <button class="btn-auth" onclick="doRegister()" style="margin-top:14px;">🚀 Go réviser !</button>
+    </div>
+    <p style="margin-top:10px;font-size:.87rem;color:#aaa;">Déjà un compte ? <span class="auth-link" onclick="showLogin()">Connexion</span></p>
+  </div>
+</div>
+
+<!-- ═══ HOME ═══ -->
+<div id="home-screen" class="screen">
+  <div class="hero">
+    <h1>Yo <span id="home-name">…</span> ! 👋</h1>
+    <p>Le brevet approche — let's go réviser !</p>
+    <div class="cd-big">
+      <div class="dn" id="cd-days">106</div>
+      <div class="dl">⏳ JOURS AVANT LE BREVET</div>
+    </div>
+  </div>
+  <div class="prog-sec">
+    <h3>📊 Ta progression du jour</h3>
+    <div class="pb-wrap"><div class="pb-fill" id="pb-fill" style="width:0%"></div></div>
+    <div class="pb-lbl" id="pb-lbl">0 / 5 exercices</div>
+  </div>
+  <button class="parcours-cta" onclick="showParcours()">
+    <span class="pc-ico">🗺️</span>
+    <div class="pc-text">
+      <div class="pc-title">Parcours guidé</div>
+      <div class="pc-sub">Avance étape par étape • Mini-évals de fin de chapitre</div>
+    </div>
+    <span class="pc-arrow">›</span>
+  </button>
+  <button class="parcours-cta" style="background:linear-gradient(135deg,#f39c12,#e67e22);box-shadow:0 5px 0 rgba(230,126,34,.35);" onclick="showExam()">
+    <span class="pc-ico">📝</span>
+    <div class="pc-text">
+      <div class="pc-title">Examen Blanc</div>
+      <div class="pc-sub">20 questions chrono • Toutes matières • Note sur 20</div>
+    </div>
+    <span class="pc-arrow">›</span>
+  </button>
+  <button class="parcours-cta" style="background:linear-gradient(135deg,#e84393,#c0392b);box-shadow:0 5px 0 rgba(192,57,43,.35);" onclick="showWeakPoints()">
+    <span class="pc-ico">🎯</span>
+    <div class="pc-text">
+      <div class="pc-title">Mes points faibles</div>
+      <div class="pc-sub">Revois tes erreurs • Entraîne-toi là où tu bloques</div>
+    </div>
+    <span class="pc-arrow">›</span>
+  </button>
+  <div style="display:flex;gap:10px;padding:0 14px 10px;">
+    <button class="parcours-cta" style="background:linear-gradient(135deg,#1a1a4e,#7B2FBE);box-shadow:0 5px 0 rgba(123,47,190,.35);flex:1;" onclick="showLeaderboard()">
+      <span class="pc-ico" style="font-size:1.6rem;">🏆</span>
+      <div class="pc-text"><div class="pc-title" style="font-size:.95rem;">Classement</div></div>
+      <span class="pc-arrow">›</span>
+    </button>
+    <button class="parcours-cta" style="background:linear-gradient(135deg,#00b894,#00cec9);box-shadow:0 5px 0 rgba(0,184,148,.35);flex:1;" onclick="showQR()">
+      <span class="pc-ico" style="font-size:1.6rem;">📱</span>
+      <div class="pc-text"><div class="pc-title" style="font-size:.95rem;">QR Code</div></div>
+      <span class="pc-arrow">›</span>
+    </button>
+  </div>
+  <div class="sec-title">🎯 Choisir une matière</div>
+  <div class="mat-grid">
+    <div class="mat-card math" onclick="openSubject('math')"><span class="mej">📐</span><div class="mn">Maths</div><div class="ml">Algèbre · Géométrie · Stats</div><div class="mp" id="mp-math" style="color:#1E90FF"></div></div>
+    <div class="mat-card fr" onclick="openSubject('fr')"><span class="mej">📖</span><div class="mn">Français</div><div class="ml">Grammaire · Textes · Écriture</div><div class="mp" id="mp-fr" style="color:#FF6B81"></div></div>
+    <div class="mat-card hist" onclick="openSubject('hist')"><span class="mej">🏛️</span><div class="mn">Histoire</div><div class="ml">Guerres · Totalitarismes · République</div><div class="mp" id="mp-hist" style="color:#FFA502"></div></div>
+    <div class="mat-card svt" onclick="openSubject('svt')"><span class="mej">🧬</span><div class="mn">SVT</div><div class="ml">Corps · Génétique · Évolution</div><div class="mp" id="mp-svt" style="color:#2ED573"></div></div>
+    <div class="mat-card phys" onclick="openSubject('phys')"><span class="mej">⚗️</span><div class="mn">Physique-Chimie</div><div class="ml">Mécanique · Électricité · Chimie</div><div class="mp" id="mp-phys" style="color:#7B2FBE"></div></div>
+    <div class="mat-card geo" onclick="openSubject('geo')"><span class="mej">🌍</span><div class="mn">Géographie</div><div class="ml">France · Europe · Aménagement</div><div class="mp" id="mp-geo" style="color:#FF4757"></div></div>
+    <div class="mat-card emc" onclick="openSubject('emc')"><span class="mej">⚖️</span><div class="mn">EMC</div><div class="ml">Démocratie · Citoyenneté · Droits</div><div class="mp" id="mp-emc" style="color:#00C896"></div></div>
+    <div class="mat-card techno" onclick="openSubject('techno')"><span class="mej">🔧</span><div class="mn">Technologie</div><div class="ml">Innovation · Programmation · Systèmes</div><div class="mp" id="mp-techno" style="color:#FFB300"></div></div>
+  </div>
+</div>
+
+<!-- ═══ THEMES ═══ -->
+<div id="themes-screen" class="screen">
+  <div class="themes-wrap">
+    <div class="themes-header">
+      <button class="btn-bk" onclick="goHome()">←</button>
+      <div>
+        <h2 id="themes-title">Mathématiques</h2>
+        <div style="font-size:.78rem;color:#aaa;font-weight:600;margin-top:2px;">Choisis un thème à réviser</div>
+      </div>
+    </div>
+    <div class="themes-grid" id="themes-grid"></div>
+  </div>
+</div>
+
+<!-- ═══ QUIZ ═══ -->
+<div id="quiz-screen" class="screen">
+  <div class="quiz-wrap">
+    <div class="quiz-top">
+      <button class="btn-bk" onclick="goHome()">✕</button>
+      <div class="qpb"><div class="qpbf" id="qpbf" style="width:0%"></div></div>
+      <div class="qlives" id="qlives">❤️❤️❤️❤️❤️</div>
+    </div>
+    <div class="q-card">
+      <div class="q-tags"><span class="qtag sub" id="qtag-sub">Maths</span><span class="qtag theme" id="qtag-theme">Thème</span></div>
+      <p class="q-text" id="q-text">Question…</p>
+    </div>
+    <div class="ans-grid" id="ans-grid"></div>
+    <div class="fb-panel" id="fb-panel">
+      <h3 id="fb-title">Bravo !</h3>
+      <p id="fb-text">Explication…</p>
+      <button class="btn-nxt g" id="btn-nxt" onclick="nextQ()">Continuer →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ VICTORY ═══ -->
+<div id="victory-screen" class="screen">
+  <span class="vic-icon" id="vic-icon">🏆</span>
+  <h1 id="vic-title">Bravo !</h1>
+  <p id="vic-sub">Tu as terminé l'exercice !</p>
+  <div class="xp-box">
+    <div class="xp-num" id="xp-num">+50 XP</div>
+    <div class="xp-lbl">Points gagnés 🌟</div>
+  </div>
+  <div class="flame-box">
+    <span class="fbig">🔥</span>
+    <div class="ftxt">
+      <strong id="fc-count">1 flamme !</strong>
+      <span id="fc-msg">Continue comme ça !</span>
+    </div>
+  </div>
+  <button class="btn-home" onclick="goHome()">🏠 Retour à l'accueil</button>
+</div>
+
+<!-- ═══ PROFILE ═══ -->
+<div id="profile-screen" class="screen">
+  <div class="prof-wrap" id="prof-inner"></div>
+</div>
+
+<!-- ═══ LEADERBOARD ═══ -->
+<div id="leaderboard-screen" class="screen">
+  <div class="lb-wrap">
+    <div class="lb-header">
+      <button class="btn-bk" onclick="goHome()">←</button>
+      <div><h2>🏆 Classement</h2><div style="font-size:.78rem;color:rgba(255,255,255,.8);font-weight:600;margin-top:1px;">Qui est le/la meilleur·e ?</div></div>
+    </div>
+    <div id="lb-podium" class="lb-podium"></div>
+    <div id="lb-list" class="lb-list"></div>
+    <div style="height:20px"></div>
+  </div>
+</div>
+
+<!-- ═══ EXAMEN BLANC ═══ -->
+<div id="exam-screen" class="screen">
+  <div class="exam-wrap" id="exam-inner"></div>
+</div>
+
+<!-- ═══ POINTS FAIBLES ═══ -->
+<div id="weak-screen" class="screen">
+  <div id="weak-inner"></div>
+</div>
+
+<!-- ═══ QR CODE ═══ -->
+<div id="qr-screen" class="screen">
+  <div class="qr-wrap">
+    <div class="themes-header">
+      <button class="btn-bk" onclick="goHome()">←</button>
+      <div><h2>📱 QR Code</h2><div style="font-size:.78rem;color:#aaa;font-weight:600;margin-top:1px;">Partage le site !</div></div>
+    </div>
+    <div class="qr-card">
+      <div class="qr-title">Collège Jean Burger</div>
+      <div class="qr-subtitle">Révise ton Brevet 2026 !</div>
+      <div id="qr-container" class="qr-container"></div>
+      <div class="qr-hint">📸 Scanne ce QR code avec ton téléphone</div>
+      <div class="qr-url" id="qr-url"></div>
+      <button class="btn-auth" style="margin-top:16px;" onclick="downloadQR()">⬇️ Télécharger le QR Code</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ PARCOURS ═══ -->
+<div id="parcours-screen" class="screen">
+  <div class="parcours-wrap">
+    <div class="parcours-header">
+      <button class="btn-bk" onclick="goHome()">←</button>
+      <div>
+        <h2>🗺️ Parcours</h2>
+        <div style="font-size:.78rem;color:#aaa;font-weight:600;margin-top:1px;">Avance niveau par niveau !</div>
+      </div>
+    </div>
+    <!-- sub selector -->
+    <div class="parcours-sub-selector" id="parcours-sub-selector"></div>
+    <!-- path -->
+    <div class="path-container" id="path-container"></div>
+  </div>
+</div>
+
+<!-- ═══ MINI-ÉVAL ═══ -->
+<div id="eval-screen" class="screen">
+  <div class="eval-wrap">
+    <div class="eval-header">
+      <h2 id="eval-title">📝 Mini-Éval</h2>
+      <p id="eval-subtitle">Prouve que tu as tout compris !</p>
+      <div class="eval-timer" id="eval-timer" style="display:none">⏱ <span id="eval-time">0:00</span></div>
+    </div>
+    <div class="eval-progress" id="eval-progress"></div>
+    <div id="eval-body">
+      <!-- Quiz or results injected here -->
+    </div>
+  </div>
+</div>
+
+<!-- Node popup overlay -->
+<div class="popup-overlay" id="popup-overlay" onclick="closeNodePopup()"></div>
+<div class="node-popup" id="node-popup">
+  <div class="popup-title" id="popup-title">Thème</div>
+  <div class="popup-desc" id="popup-desc">Description</div>
+  <div class="popup-stats">
+    <div class="popup-stat"><div class="ps-val" id="ps-score">—</div><div class="ps-lbl">Meilleur score</div></div>
+    <div class="popup-stat"><div class="ps-val" id="ps-done">0</div><div class="ps-lbl">Fois joué</div></div>
+    <div class="popup-stat"><div class="ps-val" id="ps-stars">☆☆☆</div><div class="ps-lbl">Étoiles</div></div>
+  </div>
+  <div class="popup-btns">
+    <button class="popup-close" onclick="closeNodePopup()">✕ Fermer</button>
+    <button class="popup-start" id="popup-start-btn">▶ Commencer</button>
+  </div>
+</div>
+
+<div class="cfc" id="cfc"></div>
+
+<script>
+/* ══════════════════════════════════════════
+   QUESTIONS — développées par thème / programme 3ème
+══════════════════════════════════════════ */
+const QDB = {
+
+  /* ─── MATHS ─── */
+  math: [
+    {
+      theme:"📐 Géométrie",
+      themeDesc:"Pythagore, Thalès, trigonométrie, vecteurs",
+      questions:[
+        {q:"Dans un triangle rectangle ABC en A, AB=6 cm et AC=8 cm. Quelle est la longueur BC ?",a:["10 cm","14 cm","7 cm","12 cm"],c:0,e:"Pythagore : BC² = AB² + AC² = 36 + 64 = 100 → BC = 10 cm."},
+        {q:"Quelle est la condition pour appliquer le théorème de Thalès ?",a:["Les droites doivent être perpendiculaires","Deux droites parallèles coupant deux sécantes passant par le même point","Le triangle doit être rectangle","Les angles doivent être égaux"],c:1,e:"Thalès : 2 droites parallèles coupant deux demi-droites de même origine → rapports de longueurs égaux."},
+        {q:"Dans un triangle rectangle, si l'angle est 30° et l'hypoténuse vaut 10 cm, quel est le côté adjacent ?",a:["5 cm","8,66 cm","7,07 cm","6 cm"],c:1,e:"cos(30°) = côté adjacent / hypoténuse → adjacent = 10 × cos(30°) = 10 × 0,866 ≈ 8,66 cm."},
+        {q:"Quelle est la formule de l'aire d'un trapèze de bases b1 et b2 et de hauteur h ?",a:["(b1 + b2) × h","(b1 × b2) / 2","(b1 + b2) × h / 2","b1 × h + b2"],c:2,e:"Aire du trapèze = (grande base + petite base) × hauteur / 2."},
+        {q:"Un vecteur est défini par…",a:["Un point de départ uniquement","Une direction, un sens et une norme (longueur)","Un angle et une longueur","Deux points sans ordre"],c:1,e:"Un vecteur possède 3 caractéristiques : direction, sens et norme. AB⃗ ≠ BA⃗."},
+      ]
+    },
+    {
+      theme:"🔢 Algèbre & Calcul",
+      themeDesc:"Équations, inéquations, factorisation, puissances",
+      questions:[
+        {q:"Développe et réduis : (x + 3)(x − 2)",a:["x² + x − 6","x² − x + 6","x² + 5x − 6","x² − 6"],c:0,e:"(x+3)(x-2) = x²-2x+3x-6 = x² + x − 6. On distribue chaque terme."},
+        {q:"Factorise : x² − 9",a:["(x−3)²","(x+3)(x−3)","(x−9)(x+1)","x(x−9)"],c:1,e:"Identité remarquable : a²−b² = (a+b)(a−b). Ici x²−9 = (x+3)(x−3)."},
+        {q:"Résous l'inéquation : 3x − 7 > 2",a:["x > 3","x > 1/3","x < 3","x > 5"],c:0,e:"3x > 9 → x > 3. L'inégalité ne change pas de sens car on divise par un nombre positif."},
+        {q:"Quelle est la valeur de 2⁻³ ?",a:["−8","1/8","−6","1/6"],c:1,e:"a⁻ⁿ = 1/aⁿ. Donc 2⁻³ = 1/2³ = 1/8."},
+        {q:"Résous : x² = 25",a:["x = 5","x = −5","x = 5 ou x = −5","x = ±√25 ≈ 4,47"],c:2,e:"x² = 25 → x = √25 = 5 ou x = −√25 = −5. Il y a toujours 2 solutions (sauf 0)."},
+      ]
+    },
+    {
+      theme:"📊 Statistiques & Probabilités",
+      themeDesc:"Moyenne, médiane, fréquences, probabilités",
+      questions:[
+        {q:"Quelle est la moyenne de : 4, 8, 6, 2, 10 ?",a:["6","5","7","8"],c:0,e:"Moyenne = somme / effectif = (4+8+6+2+10)/5 = 30/5 = 6."},
+        {q:"On lance un dé équilibré à 6 faces. Quelle est la probabilité d'obtenir un nombre pair ?",a:["1/6","1/3","1/2","2/3"],c:2,e:"Nombres pairs : {2, 4, 6} → 3 cas favorables sur 6. P = 3/6 = 1/2."},
+        {q:"Quelle est la médiane de : 1, 3, 5, 7, 9, 11 ?",a:["5","6","5 et 7","7"],c:1,e:"6 valeurs paires → médiane = moyenne des 2 centrales = (5+7)/2 = 6."},
+        {q:"Dans un sac : 3 billes rouges, 2 bleues, 5 vertes. Quelle est la fréquence des billes rouges ?",a:["30%","3/5","1/3","50%"],c:0,e:"Fréquence = 3/(3+2+5) = 3/10 = 0,30 = 30%."},
+        {q:"Deux événements A et B sont indépendants. P(A)=0,4 et P(B)=0,5. Quelle est P(A∩B) ?",a:["0,9","0,2","0,45","0,1"],c:1,e:"Si A et B sont indépendants : P(A∩B) = P(A) × P(B) = 0,4 × 0,5 = 0,2."},
+      ]
+    },
+    {
+      theme:"📈 Fonctions & Proportionnalité",
+      themeDesc:"Fonctions linéaires, affines, tableaux de valeurs",
+      questions:[
+        {q:"La fonction f(x) = 3x − 2 est de quel type ?",a:["Linéaire","Affine","Quadratique","Constante"],c:1,e:"f(x) = ax + b avec a≠0 et b≠0 → fonction affine. Si b=0, ce serait linéaire."},
+        {q:"Quelle est l'image de 4 par f(x) = 2x + 1 ?",a:["7","9","8","10"],c:1,e:"f(4) = 2×4 + 1 = 8 + 1 = 9."},
+        {q:"Sur un graphique, la pente d'une droite représente…",a:["L'ordonnée à l'origine","Le coefficient directeur (taux d'accroissement)","La valeur de x","L'abscisse à l'origine"],c:1,e:"La pente = coefficient directeur a dans y = ax + b. a = (y2−y1)/(x2−x1)."},
+        {q:"Si y est proportionnel à x et y=15 quand x=3, quelle est la valeur de y quand x=7 ?",a:["21","25","35","28"],c:2,e:"Coefficient de proportionnalité k = 15/3 = 5. Donc y = 5×7 = 35."},
+        {q:"Quel est l'antécédent de 10 par g(x) = 5x ?",a:["50","2","15","0,5"],c:1,e:"On cherche x tel que 5x = 10 → x = 2. C'est l'antécédent de 10."},
+      ]
+    },
+  ],
+
+  /* ─── FRANÇAIS ─── */
+  fr: [
+    {
+      theme:"✍️ Grammaire & Conjugaison",
+      themeDesc:"Temps, modes, accords, syntaxe",
+      questions:[
+        {q:"Quelle est la différence entre le passé simple et l'imparfait dans un récit ?",a:["Pas de différence","Passé simple = actions ponctuelles (1er plan), imparfait = descriptions/habitudes (arrière-plan)","Passé simple = présent narratif","Imparfait = action unique"],c:1,e:"Dans un récit, le passé simple fait avancer l'histoire (actions précises), l'imparfait la décrit (cadre, habitudes)."},
+        {q:"Accord du participe passé : 'Les lettres qu'il a _______ (écrire)'",a:["écrit","écrits","écrites","écrire"],c:2,e:"Avec l'auxiliaire AVOIR, le PP s'accorde avec le COD si celui-ci est AVANT le verbe. 'lettres' (féminin pluriel) est avant → 'écrites'."},
+        {q:"Qu'est-ce que le subjonctif exprime ?",a:["Un fait réel","Le doute, la volonté, le souhait, la crainte","Le passé","Une question"],c:1,e:"Le subjonctif s'emploie pour l'incertain, le possible. Ex : 'Il faut que tu VIENNES.' (vouloir, douter, craindre…)"},
+        {q:"Identifie la proposition subordonnée relative dans : 'Le film que j'ai vu était super.'",a:["Le film","que j'ai vu","était super","j'ai vu"],c:1,e:"La proposition relative 'que j'ai vu' complète le nom 'film' (antécédent). Elle commence par un pronom relatif."},
+        {q:"'Il mange RAPIDEMENT.' Quelle est la fonction de 'rapidement' ?",a:["COD","Complément circonstanciel de manière","Sujet","Attribut du sujet"],c:1,e:"'Rapidement' est un adverbe qui précise comment l'action est faite → CC de manière."},
+      ]
+    },
+    {
+      theme:"📚 Lecture & Textes",
+      themeDesc:"Figures de style, types de textes, analyse",
+      questions:[
+        {q:"Qu'est-ce que l'ironie dans un texte ?",a:["Dire ce qu'on pense directement","Dire le contraire de ce qu'on pense pour critiquer","Répéter plusieurs fois la même idée","Comparer deux choses"],c:1,e:"L'ironie consiste à dire l'opposé de ce qu'on pense. Ex : 'Quelle belle journée !' lors d'une tempête."},
+        {q:"Une hyperbole est une figure qui consiste à…",a:["Atténuer une réalité","Exagérer volontairement pour renforcer l'effet","Comparer avec 'comme'","Répéter des sons"],c:1,e:"Ex : 'Je t'ai dit mille fois de ranger ta chambre !' → exagération volontaire pour insister."},
+        {q:"Dans un texte argumentatif, qu'est-ce qu'un argument ?",a:["Une anecdote sans lien avec la thèse","Une idée qui soutient ou réfute la thèse, développée et illustrée","Une simple opinion","Un résumé de l'introduction"],c:1,e:"Un argument = idée + développement + exemple/illustration. Il sert à défendre ou attaquer une thèse."},
+        {q:"Qu'est-ce qu'un apologue ?",a:["Un texte scientifique","Un court récit fictif (fable, conte) contenant une morale","Un poème en alexandrins","Un article de journal"],c:1,e:"L'apologue est un récit court à visée morale/didactique. Ex : les Fables de La Fontaine, les contes philosophiques."},
+        {q:"L'allitération est la répétition de…",a:["Mots en fin de vers","Sons vocaliques","Sons consonantiques en début de mots","Groupes nominaux"],c:2,e:"Ex : 'Pour qui sont ces serpents qui sifflent sur vos têtes ?' → répétition du son [s]. C'est une allitération en 's'."},
+      ]
+    },
+    {
+      theme:"🖊️ Expression Écrite",
+      themeDesc:"Rédaction, description, argumentation, réécriture",
+      questions:[
+        {q:"Quelle est la structure d'un paragraphe argumentatif ?",a:["Introduction → développement → conclusion","Idée directrice → argument → exemple → lien avec la thèse","Anecdote → opinion → fin","Titre → texte → moral"],c:1,e:"Un bon paragraphe : phrase-clé (idée) → argument → exemple concret → phrase de transition."},
+        {q:"Dans un texte descriptif, quel procédé est essentiel ?",a:["Les connecteurs logiques d'opposition","Les champs lexicaux et les expansions du nom","Les verbes d'action au passé simple","Les formules mathématiques"],c:1,e:"La description s'appuie sur les champs lexicaux (couleurs, formes…) et les expansions du nom (adj, complément du nom, relatives)."},
+        {q:"La réécriture à l'imparfait implique de changer…",a:["Seulement les noms","Les verbes conjugués au présent → imparfait, en maintenant les accords","Les adjectifs uniquement","Le mode des verbes"],c:1,e:"En réécriture, on change la conjugaison mais aussi tous les accords qui en dépendent (participes passés, etc.)."},
+        {q:"Quelle est la différence entre un texte narratif et descriptif ?",a:["Aucune","Narratif = raconte des actions dans le temps ; Descriptif = peint un état, un lieu, un personnage","Narratif = poème, descriptif = roman","Narratif est au présent, descriptif au passé"],c:1,e:"Narratif : chronologie, actions, verbes d'action. Descriptif : état, aspect, être/avoir/verbes d'état."},
+        {q:"Qu'est-ce qu'un connecteur logique de concession ?",a:["Donc, ainsi, par conséquent","Certes, bien que, même si, or","D'abord, ensuite, enfin","Car, parce que, puisque"],c:1,e:"La concession introduit une nuance ou une objection : 'Certes il pleut, mais nous partirons quand même.'"},
+      ]
+    },
+    {
+      theme:"🎭 Littérature & Mouvements",
+      themeDesc:"Genres, auteurs, époques, mouvements littéraires",
+      questions:[
+        {q:"Qu'est-ce que le réalisme littéraire (XIXe siècle) ?",a:["Écrire sur le monde idéal","Représenter la réalité sociale fidèlement, y compris ses aspects sombres","Décrire uniquement la nature","S'inspirer de l'Antiquité"],c:1,e:"Balzac, Flaubert, Zola : ils décrivent la société avec précision, les milieux sociaux, la misère, sans idéaliser."},
+        {q:"Qu'est-ce qu'une tragédie classique (XVIIe siècle) ?",a:["Une comédie qui se termine mal","Une pièce respectant la règle des 3 unités (lieu, temps, action), à fin funeste, avec des héros nobles","Un roman d'aventures","Un poème épique"],c:1,e:"Corneille, Racine : règle des 3 unités + bienséance + vraisemblance. Les héros sont déchirés entre devoir et passion."},
+        {q:"La Fontaine appartient à quel courant / siècle ?",a:["Romantisme, XIXe siècle","Classicisme, XVIIe siècle","Humanisme, XVIe siècle","Surréalisme, XXe siècle"],c:1,e:"La Fontaine (1621-1695) : Fables inspirées d'Ésope et Phèdre → classicisme, règne de Louis XIV."},
+        {q:"Qu'est-ce que le romantisme littéraire ?",a:["Un mouvement centré sur la raison","Un mouvement du XIXe siècle valorisant les émotions, la nature, l'individu, la mélancolie","Un retour à l'Antiquité","Un mouvement contemporain"],c:1,e:"Hugo, Lamartine, Musset : primauté des sentiments, du moi, de la nature sauvage, révolte contre les règles classiques."},
+        {q:"Qu'est-ce qu'un roman épistolaire ?",a:["Un roman d'aventures","Un roman raconté à travers des lettres échangées entre personnages","Un roman policier","Un roman sans narrateur"],c:1,e:"Ex : 'Les Liaisons dangereuses' de Laclos. La narration se fait par échanges de lettres, ce qui multiplie les points de vue."},
+      ]
+    },
+  ],
+
+  /* ─── HISTOIRE ─── */
+  hist: [
+    {
+      theme:"🌍 La Première Guerre Mondiale",
+      themeDesc:"Causes, front, tranchées, bilan, mémoire",
+      questions:[
+        {q:"Quel événement déclenche directement la Première Guerre mondiale ?",a:["L'invasion de la Pologne","L'assassinat de l'archiduc François-Ferdinand à Sarajevo (juin 1914)","La révolution russe","L'entrée en guerre des États-Unis"],c:1,e:"Le 28 juin 1914, l'assassinat de François-Ferdinand par Gavrilo Princip à Sarajevo déclenche une série d'ultimatums → guerre mondiale."},
+        {q:"Qu'appelle-t-on la 'guerre de position' ?",a:["Les batailles navales","La guerre dans les airs","Le conflit figé dans les tranchées (1914-1918)","Les combats dans les colonies"],c:2,e:"Après la 'guerre de mouvement', le front se stabilise → tranchées sur 700 km. Les soldats vivent dans des conditions terribles."},
+        {q:"Quel est le bilan humain approximatif de la Première Guerre mondiale ?",a:["500 000 morts","2 millions de morts","10 millions de morts militaires + 7 millions civils","50 millions de morts"],c:2,e:"≈ 10 millions de soldats morts, 20 millions de blessés, 7 millions de civils. Un massacre sans précédent."},
+        {q:"Que signifie le traité de Versailles (1919) pour l'Allemagne ?",a:["Elle gagne des territoires","Elle est reconnue victorieuse","Elle est considérée seule responsable, perd des territoires et doit payer des réparations","Elle devient une démocratie immédiatement"],c:2,e:"Article 231 : 'clause de culpabilité'. L'Allemagne cède l'Alsace-Lorraine, perd ses colonies et doit payer des réparations énormes."},
+        {q:"Quel front est le plus meurtrier pendant la Première Guerre mondiale ?",a:["Le front de l'Est","Le front de l'Ouest (France-Belgique)","Le front d'Orient","Le front naval"],c:1,e:"Le front Ouest (Verdun, Somme…) est le plus meurtrier. Verdun (1916) : ≈ 700 000 morts en 10 mois pour quelques km²."},
+      ]
+    },
+    {
+      theme:"☠️ Régimes totalitaires & WWII",
+      themeDesc:"Nazisme, stalinisme, fascisme, Seconde Guerre mondiale",
+      questions:[
+        {q:"Quels sont les 3 grands régimes totalitaires des années 1930 ?",a:["Démocratie, monarchie, oligarchie","Nazisme (Allemagne), Fascisme (Italie), Stalinisme (URSS)","Communisme, libéralisme, anarchisme","Nazisme, colonialisme, féodalisme"],c:1,e:"Ces 3 régimes : parti unique, culte du chef, terreur, propagande, suppression des libertés. Différents dans leurs idéologies mais similaires dans leurs méthodes."},
+        {q:"Qu'est-ce que la Shoah ?",a:["La destruction de Dresde","L'extermination systématique des Juifs d'Europe par les nazis (6 millions de victimes)","La résistance française","La capitulation allemande"],c:1,e:"La Shoah = génocide des Juifs. Camps d'extermination (Auschwitz…), Einsatzgruppen. 6 millions de Juifs assassinés + Tsiganes, handicapés, etc."},
+        {q:"Que se passe-t-il le 6 juin 1944 ?",a:["La capitulation de l'Allemagne","Le débarquement allié en Normandie (D-Day)","La libération de Paris","L'entrée en guerre de l'URSS"],c:1,e:"D-Day : 156 000 soldats alliés débarquent sur 5 plages normandes. Début de la libération de l'Europe occidentale."},
+        {q:"Pourquoi Hitler arrive-t-il au pouvoir légalement en 1933 ?",a:["Il organise un coup d'État","Il est nommé chancelier par le président Hindenburg après la victoire électorale du NSDAP","Il remporte un référendum","Il est désigné par l'armée"],c:1,e:"Contexte : crise de 1929, chômage, humiliation de Versailles. Hitler exploite la démocratie pour la détruire : lois d'exception en 1933."},
+        {q:"Qu'est-ce que la collaboration sous l'occupation nazie en France ?",a:["Résister contre les Allemands","Coopérer avec l'occupant nazi, comme le fait le régime de Vichy","Fuir en Angleterre","Rejoindre les maquis"],c:1,e:"Le régime de Vichy (Pétain) collabore : déportations de Juifs, STO, répression de la Résistance. La France n'est pas unanimement résistante."},
+      ]
+    },
+    {
+      theme:"⚖️ Démocratie & Droits de l'Homme",
+      themeDesc:"Révolution française, droits fondamentaux, démocratie",
+      questions:[
+        {q:"Quand et pourquoi la Déclaration des Droits de l'Homme (1789) est-elle rédigée ?",a:["En 1848, suite à la révolution industrielle","En 1789, lors de la Révolution française pour abolir l'Ancien Régime","En 1945, après la 2e GM","En 1958, à la création de la Ve République"],c:1,e:"La DDHC (26 août 1789) affirme les droits naturels (liberté, égalité, propriété…) contre l'arbitraire de la monarchie absolue."},
+        {q:"Quels sont les 3 principes fondamentaux de la République française ?",a:["Roi, peuple, armée","Liberté, Égalité, Fraternité","Justice, Sécurité, Prospérité","Travail, Famille, Patrie"],c:1,e:"La devise républicaine depuis 1789. Ces 3 valeurs guident les lois et la Constitution de la Ve République (1958)."},
+        {q:"Qu'est-ce que la Déclaration universelle des droits de l'Homme (1948) ?",a:["Un traité entre pays voisins","Un texte adopté par l'ONU proclamant les droits fondamentaux de tout être humain","Une loi française","Un discours du général de Gaulle"],c:1,e:"Adoptée par l'ONU le 10 décembre 1948, après la 2e GM. 30 articles sur la dignité, la liberté, l'égalité. Base du droit international."},
+        {q:"Qu'est-ce que la laïcité en France ?",a:["La religion officielle est le catholicisme","La séparation de l'Église et de l'État, liberté de conscience pour tous","L'interdiction de toute religion","La fusion de la religion et du droit"],c:1,e:"Loi de 1905 : séparation Église/État. Liberté de croyance, neutralité de l'État. Aucune religion n'a de statut officiel."},
+        {q:"Quelle est la différence entre suffrage universel et censitaire ?",a:["Aucune","Universel = tout adulte vote ; censitaire = seuls les plus riches payant un impôt votent","Universel = hommes seulement","Censitaire = vote obligatoire"],c:1,e:"Suffrage censitaire (avant 1848) : réservé aux hommes payant un cens (impôt). Suffrage universel masculin en 1848, féminin en 1944."},
+      ]
+    },
+    {
+      theme:"🌐 Guerre Froide & Monde Contemporain",
+      themeDesc:"Blocs, décolonisation, chute du mur, monde actuel",
+      questions:[
+        {q:"Qu'est-ce que la Guerre Froide (1947-1991) ?",a:["Un conflit armé direct entre USA et URSS","Une confrontation idéologique, économique et stratégique entre les blocs américain et soviétique, sans affrontement direct","Une guerre dans les pays du tiers-monde uniquement","Un conflit commercial"],c:1,e:"USA (capitalisme, OTAN) vs URSS (communisme, Pacte de Varsovie). Courses aux armements, nucléaire, conflits par procuration."},
+        {q:"Quand et pourquoi le mur de Berlin est-il construit ?",a:["1939, pour se protéger des nazis","1961, pour empêcher la fuite des Allemands de l'Est vers l'Ouest","1949, à la création de la RDA","1953, après la mort de Staline"],c:1,e:"13 août 1961 : l'URSS construit le mur pour stopper l'hémorragie (3 millions de personnes avaient déjà fui vers l'Ouest)."},
+        {q:"Qu'est-ce que la décolonisation ?",a:["La colonisation de nouveaux territoires","Le processus par lequel les pays colonisés obtiennent leur indépendance (surtout 1945-1975)","La politique de l'apartheid","La création d'un empire colonial"],c:1,e:"Après 1945, les peuples colonisés revendiquent l'indépendance (Inde 1947, Maroc/Tunisie 1956, Algérie 1962…). Processus parfois violent."},
+        {q:"Que symbolise la chute du mur de Berlin (9 novembre 1989) ?",a:["La réunification immédiate de l'Allemagne","La fin de la Guerre Froide et du bloc soviétique, la victoire du modèle libéral","Le début de la 3e Guerre Mondiale","L'entrée de l'Allemagne dans l'OTAN"],c:1,e:"La chute du mur est le symbole de l'effondrement du communisme soviétique. L'URSS se dissout en 1991."},
+        {q:"Qu'est-ce que l'ONU et quand a-t-elle été créée ?",a:["Une alliance militaire, 1949","Une organisation internationale pour la paix et la coopération, créée en 1945","Un marché commun, 1957","Un tribunal international, 1998"],c:1,e:"L'ONU (Organisation des Nations Unies) est fondée en 1945 (après la 2e GM) pour maintenir la paix, promouvoir les droits humains et le développement."},
+      ]
+    },
+  ],
+
+  /* ─── SVT ─── */
+  svt: [
+    {
+      theme:"🧬 Génétique & Hérédité",
+      themeDesc:"ADN, chromosomes, mutations, lois de Mendel",
+      questions:[
+        {q:"Qu'est-ce qu'un chromosome ?",a:["Une molécule de glucose","Une structure dans le noyau cellulaire composée d'ADN enroulé autour de protéines","Un organite produisant l'énergie","Un type de cellule sanguine"],c:1,e:"Les chromosomes sont dans le noyau. L'être humain possède 23 paires = 46 chromosomes. Ils portent les gènes."},
+        {q:"Qu'est-ce qu'un allèle ?",a:["Un chromosome entier","Une forme particulière d'un gène pouvant s'exprimer différemment","Un acide aminé","Un type de mutation"],c:1,e:"Ex : le gène de la couleur des yeux a un allèle 'yeux bruns' et 'yeux bleus'. On hérite d'un allèle de chaque parent."},
+        {q:"Qu'est-ce qu'une mutation génétique ?",a:["Une division cellulaire normale","Une modification de la séquence d'ADN, qui peut être spontanée ou provoquée","Un virus qui attaque l'ADN","Un type de reproduction"],c:1,e:"Les mutations peuvent être sans effet, bénéfiques (évolution) ou nocives (maladies génétiques, cancers). Certains facteurs les provoquent (UV, tabac)."},
+        {q:"Comment l'information génétique est-elle transmise lors de la reproduction sexuée ?",a:["Uniquement par la mère","Par les gamètes (spermatozoïdes et ovules) qui fusionnent lors de la fécondation","Par les mitochondries","Par le sang"],c:1,e:"Chaque gamète contient 23 chromosomes (haploïde). La fécondation forme une cellule-œuf à 46 chromosomes (diploïde)."},
+        {q:"Quelle est la différence entre génotype et phénotype ?",a:["Ce sont des synonymes","Génotype = constitution génétique ; Phénotype = caractères observables (résultat de gènes + environnement)","Phénotype = gènes, génotype = apparence","Génotype = maladie, phénotype = soin"],c:1,e:"Génotype : ensemble des allèles portés. Phénotype : ce qu'on observe (couleur yeux, taille…). L'environnement peut modifier le phénotype."},
+      ]
+    },
+    {
+      theme:"🫁 Le Corps Humain",
+      themeDesc:"Systèmes nerveux, immunitaire, digestif, reproducteur",
+      questions:[
+        {q:"Comment le système immunitaire réagit-il lors d'une infection ?",a:["Il ferme les capillaires sanguins","Les lymphocytes reconnaissent l'antigène et produisent des anticorps spécifiques","Il augmente la température uniquement","Il détruit toutes les cellules"],c:1,e:"Réaction immunitaire : phagocytose (1ère ligne) → lymphocytes B (anticorps) + lymphocytes T (destruction cellules infectées). Mémoire immunitaire après."},
+        {q:"Comment fonctionne la digestion des glucides ?",a:["Ils ne sont pas digérés","Les enzymes (amylases, etc.) les découpent en molécules simples (glucose) absorbables par l'intestin","Ils sont digérés directement dans l'estomac par les acides","Ils passent directement dans le sang sans transformation"],c:1,e:"Amidon → maltose (amylase salivaire) → glucose (intestin). Le glucose passe dans le sang via les villosités intestinales."},
+        {q:"Quel est le rôle du système nerveux central ?",a:["Pomper le sang","Recevoir les informations sensorielles, les intégrer et envoyer des réponses motrices","Filtrer le sang","Produire les hormones"],c:1,e:"Cerveau + moelle épinière = SNC. Il reçoit les infos des organes sensoriels, les traite, et commande les muscles et organes."},
+        {q:"Qu'est-ce qu'un vaccin et comment protège-t-il ?",a:["Un médicament qui tue les bactéries directement","Il introduit un antigène inoffensif pour que le système immunitaire développe une mémoire sans tomber malade","Un antibiotique","Un anti-inflammatoire"],c:1,e:"Le vaccin entraîne le système immunitaire à reconnaître un pathogène. En cas de vraie infection, la réponse est rapide et efficace."},
+        {q:"Quelle est la différence entre mitose et méiose ?",a:["Ce sont les mêmes processus","Mitose = division produisant 2 cellules identiques (46 chr) ; Méiose = division produisant 4 gamètes (23 chr)","Mitose produit des gamètes","Méiose est la division des cellules somatiques"],c:1,e:"Mitose : reproduction cellulaire (croissance, réparation). Méiose : production des gamètes avec réduction du nombre de chromosomes (2n → n)."},
+      ]
+    },
+    {
+      theme:"🌱 Écologie & Environnement",
+      themeDesc:"Écosystèmes, biodiversité, changement climatique, énergie",
+      questions:[
+        {q:"Qu'est-ce qu'un écosystème ?",a:["Un ensemble d'animaux uniquement","L'ensemble des êtres vivants d'un milieu ET leur environnement physique, en interaction","Un biome tropical","Une chaîne alimentaire"],c:1,e:"Écosystème = biocénose (êtres vivants) + biotope (milieu physique). Ex : un étang, une forêt, un récif corallien."},
+        {q:"Pourquoi la déforestation est-elle un problème pour le climat ?",a:["Elle n'a aucun impact","Les forêts absorbent le CO₂ ; les détruire libère ce carbone et réduit la photosynthèse","Elle augmente la biodiversité","Elle refroidit la planète"],c:1,e:"Les arbres stockent du carbone. La déforestation libère du CO₂ et réduit la capacité de la Terre à absorber ce gaz à effet de serre."},
+        {q:"Qu'est-ce que l'effet de serre naturel ?",a:["Un phénomène entièrement néfaste","Un mécanisme naturel où des gaz (CO₂, vapeur d'eau) retiennent la chaleur solaire, rendant la Terre habitable (15°C en moyenne)","La couche d'ozone","La pollution atmosphérique"],c:1,e:"Sans effet de serre naturel, la Terre serait à −18°C. Le problème est son amplification par les émissions humaines de CO₂, méthane, etc."},
+        {q:"Qu'est-ce que la biodiversité ?",a:["Le nombre d'espèces animales uniquement","La diversité du vivant à tous les niveaux : espèces, gènes, écosystèmes","La biomasse totale d'un milieu","La diversité climatique"],c:1,e:"3 niveaux de biodiversité : diversité génétique (au sein d'une espèce), diversité spécifique (entre espèces), diversité des écosystèmes."},
+        {q:"Qu'est-ce qu'une chaîne alimentaire et quelle est sa base ?",a:["Un réseau commercial de nourriture","Une suite d'organismes où chacun mange le précédent ; elle commence toujours par un producteur (végétal)","Un classement des espèces selon leur taille","Un graphique des régimes alimentaires"],c:1,e:"Ex : herbe → lapin → renard → décomposeurs. La base = producteurs (plantes) qui convertissent l'énergie solaire (photosynthèse)."},
+      ]
+    },
+    {
+      theme:"🌍 Géologie & Structure de la Terre",
+      themeDesc:"Tectonique des plaques, séismes, volcans, roches",
+      questions:[
+        {q:"Quelles sont les 3 couches principales de la Terre, de l'extérieur vers l'intérieur ?",a:["Croûte, manteau, noyau","Atmosphère, lithosphère, asthénosphère","Croûte, océan, magma","Lithosphère, biosphère, hydrosphère"],c:0,e:"Croûte terrestre (0-70 km) → manteau (jusqu'à 2900 km) → noyau (2900-6371 km). Le noyau externe est liquide, l'interne solide."},
+        {q:"Que provoque la collision entre deux plaques tectoniques ?",a:["Un effondrement de la croûte","La formation de chaînes de montagnes (ex: Himalaya) et des séismes","Des éruptions volcaniques uniquement","Une expansion des fonds océaniques"],c:1,e:"Quand deux plaques continentales entrent en collision (convergence), la croûte se comprime et forme des montagnes (orogenèse)."},
+        {q:"Comment se forment les séismes ?",a:["Par la rotation de la Terre","Par le déplacement brusque de blocs rocheux le long d'une faille, libérant de l'énergie","Par les éruptions volcaniques","Par la fonte des glaces"],c:1,e:"L'énergie accumulée par les contraintes tectoniques se libère brutalement. Le foyer (hypocentre) est le point de départ ; l'épicentre est en surface."},
+        {q:"Qu'est-ce qu'une roche sédimentaire ?",a:["Une roche issue du refroidissement du magma","Une roche formée par accumulation et compaction de sédiments (débris, organismes)","Une roche transformée par chaleur et pression","Une roche extraterrestre"],c:1,e:"Ex : calcaire, grès, argile. Les sédiments s'accumulent (souvent en milieu aquatique), se compactent et se cimentent. Elles contiennent des fossiles."},
+        {q:"Pourquoi certaines régions du monde sont-elles plus exposées aux volcans ?",a:["Au hasard","Elles se trouvent sur des marges de plaques tectoniques ou des points chauds","Parce qu'elles sont tropicales","En raison de leur altitude"],c:1,e:"Le volcanisme est lié aux marges de plaques (subduction → volcanisme andésitique, divergence → rift). 'Ceinture de feu' du Pacifique."},
+      ]
+    },
+  ],
+
+  /* ─── PHYSIQUE-CHIMIE ─── */
+  phys: [
+    {
+      theme:"⚡ Électricité",
+      themeDesc:"Circuits, lois de l'électricité, énergie électrique",
+      questions:[
+        {q:"Quelle est la loi d'Ohm ?",a:["P = U × I","U = R × I","I = U + R","R = U + I"],c:1,e:"U (tension en Volts) = R (résistance en Ohms) × I (intensité en Ampères). Indispensable pour tout circuit électrique."},
+        {q:"Dans un circuit en série, comment se répartit l'intensité ?",a:["Elle est différente dans chaque branche","Elle est identique en tout point du circuit","Elle est nulle dans les résistances","Elle dépend de la tension"],c:1,e:"Série : I est la même partout. Les tensions s'additionnent : U_total = U₁ + U₂ + …"},
+        {q:"Dans un circuit en dérivation (parallèle), comment se répartit la tension ?",a:["Elle s'additionne dans chaque branche","Elle est identique aux bornes de chaque dérivation","Elle est nulle","Elle varie selon la résistance"],c:1,e:"Dérivation : tension identique aux bornes de chaque branche. Les intensités s'additionnent : I_total = I₁ + I₂ + …"},
+        {q:"Quelle est l'unité de la puissance électrique ?",a:["Volt (V)","Joule (J)","Watt (W)","Ampère (A)"],c:2,e:"P (Watt) = U × I. L'énergie E = P × t (en Joules ou kWh). 1 kWh = 3 600 000 J."},
+        {q:"Qu'est-ce que l'effet Joule ?",a:["La production de lumière dans un conducteur","L'échauffement d'un conducteur traversé par un courant électrique","La production de champ magnétique","La résistance d'un conducteur"],c:1,e:"Energie dissipée sous forme de chaleur : P = R × I². Utilisé dans les grille-pain, radiateurs électriques. Perte dans les câbles."},
+      ]
+    },
+    {
+      theme:"🔭 Mécanique & Mouvements",
+      themeDesc:"Vitesse, forces, Newton, énergie mécanique",
+      questions:[
+        {q:"Quelle est la différence entre masse et poids ?",a:["Ce sont des synonymes","Masse = quantité de matière (kg, constante) ; Poids = force gravitationnelle (N = m × g, variable)","Masse se mesure en Newton","Poids est constant partout"],c:1,e:"Masse : invariante (même sur la Lune). Poids : force, dépend de g. Sur Terre g=10 N/kg, sur la Lune g≈1,6 N/kg."},
+        {q:"Quelle est la 1ère loi de Newton (principe d'inertie) ?",a:["F = m × a","Un objet reste en mouvement rectiligne uniforme si les forces qui s'exercent sur lui se compensent (ou sont nulles)","Action = réaction","Énergie = masse × vitesse²"],c:1,e:"Si ΣF = 0 : l'objet est en équilibre (immobile ou en MRU). C'est le principe d'inertie. Pour le faire accélérer, il faut une force résultante."},
+        {q:"Comment calcule-t-on l'énergie cinétique d'un objet ?",a:["Ec = m × g × h","Ec = ½ × m × v²","Ec = F × d","Ec = P × t"],c:1,e:"Ec = ½mv² (en Joules). Plus l'objet est lourd et rapide, plus son énergie cinétique est grande (d'où la dangerosité à haute vitesse)."},
+        {q:"Qu'est-ce que la relation fondamentale de la dynamique (2e loi de Newton) ?",a:["F = m/a","a = F/m (ou F = m × a)","F = m × v","a = m × v²"],c:1,e:"F (Newton) = m (kg) × a (m/s²). Plus la masse est grande, plus la force nécessaire pour accélérer est grande."},
+        {q:"Un objet tombe en chute libre. Sa vitesse…",a:["Reste constante","Diminue","Augmente progressivement sous l'action du poids","Est immédiatement nulle"],c:2,e:"En chute libre (sans frottements), seul le poids agit → accélération g = 10 m/s². La vitesse augmente de 10 m/s chaque seconde."},
+      ]
+    },
+    {
+      theme:"⚗️ Chimie",
+      themeDesc:"Atomes, molécules, réactions chimiques, acides/bases",
+      questions:[
+        {q:"Qu'est-ce qu'un atome ?",a:["La plus petite particule d'un composé","La plus petite particule d'un élément chimique, constituée d'un noyau (protons+neutrons) et d'électrons","Une molécule simple","Un ion positif"],c:1,e:"L'atome : noyau (protons +, neutrons neutres) + nuage d'électrons (−). Le numéro atomique Z = nombre de protons = nombre d'électrons."},
+        {q:"Qu'est-ce que la loi de conservation de la masse (Lavoisier) ?",a:["La masse augmente lors d'une réaction","La masse des réactifs = masse des produits (rien ne se crée, rien ne se perd)","La masse dépend de la température","La masse se divise lors d'une combustion"],c:1,e:"'Rien ne se perd, rien ne se crée, tout se transforme.' Les atomes se réarrangent mais leur nombre total reste identique."},
+        {q:"Comment identifier une solution acide avec du papier pH ?",a:["Le papier devient bleu ou violet","Le papier vire vers les couleurs rouges/orangées (pH < 7)","Le papier reste inchangé","Le papier devient vert"],c:1,e:"pH < 7 = acide (rouge/orange). pH = 7 = neutre. pH > 7 = basique (bleu/violet). Le jus de citron ≈ pH 2, le savon ≈ pH 9."},
+        {q:"Qu'est-ce qu'une réaction de combustion ?",a:["Une réaction entre un acide et une base","Une réaction entre un combustible et un comburant (O₂), libérant de la chaleur et de la lumière","Une réaction de précipitation","Une dissolution"],c:1,e:"Ex : C + O₂ → CO₂. La combustion du méthane (gaz) : CH₄ + 2O₂ → CO₂ + 2H₂O. Base des moteurs et du chauffage."},
+        {q:"Qu'est-ce qu'un ion ?",a:["Un atome avec trop de neutrons","Un atome ou groupe d'atomes ayant perdu ou gagné des électrons, donc chargé","Une molécule sans électrons","Un atome radioactif"],c:1,e:"Cation : ion positif (perd des électrons, ex: Na⁺). Anion : ion négatif (gagne des électrons, ex: Cl⁻). Les ions forment les solutions conductrices."},
+      ]
+    },
+    {
+      theme:"💡 Optique & Ondes",
+      themeDesc:"Lumière, couleurs, ondes sonores, spectre",
+      questions:[
+        {q:"Quelle est la vitesse de la lumière dans le vide ?",a:["300 km/s","300 000 km/s (≈ 3×10⁸ m/s)","1 500 km/s","150 000 km/s"],c:1,e:"c = 299 792 458 m/s ≈ 3×10⁸ m/s. La lumière met 8 minutes pour aller du Soleil à la Terre (150 millions de km)."},
+        {q:"Qu'est-ce que la décomposition de la lumière blanche par un prisme ?",a:["La lumière devient plus brillante","La lumière blanche se décompose en spectre continu de couleurs (rouge → violet)","Elle devient invisible","Elle change de vitesse uniquement"],c:1,e:"Le prisme réfracte chaque longueur d'onde différemment → spectre visible (ROUGE Orange Jaune Vert Bleu Indigo VIOLET). Arc-en-ciel = même phénomène."},
+        {q:"Qu'est-ce que la réfraction ?",a:["La réflexion de la lumière","Le changement de direction de la lumière lors du passage d'un milieu à un autre (eau → air par ex)","L'absorption de la lumière","La diffusion de la lumière"],c:1,e:"La lumière change de vitesse en changeant de milieu → déviation. C'est pourquoi un crayon semble cassé dans un verre d'eau."},
+        {q:"Qu'est-ce qu'une onde sonore ?",a:["Une onde électromagnétique","Une vibration mécanique qui se propage dans un milieu matériel (air, eau, solide)","Un type de radiation","Une onde lumineuse"],c:1,e:"Le son ne se propage pas dans le vide (contrairement à la lumière). Il est 3× plus rapide dans l'eau que dans l'air (340 m/s dans l'air)."},
+        {q:"Quelle est la différence entre une source lumineuse primaire et secondaire ?",a:["La luminosité","Primaire = émet sa propre lumière (Soleil, lampe) ; Secondaire = reflète la lumière reçue (Lune, miroir)","La couleur","La distance"],c:1,e:"La Lune est une source secondaire : elle réfléchit la lumière solaire. Les étoiles sont des sources primaires (comme le Soleil)."},
+      ]
+    },
+  ],
+
+  /* ─── GÉOGRAPHIE ─── */
+  geo: [
+    {
+      theme:"🌐 Mondialisation",
+      themeDesc:"Échanges, FMN, inégalités, flux mondiaux",
+      questions:[
+        {q:"Qu'est-ce qu'une firme multinationale (FMN) ?",a:["Une entreprise locale","Une entreprise dont les activités s'étendent dans plusieurs pays, avec une maison-mère et des filiales","Une organisation internationale gouvernementale","Un commerce en ligne"],c:1,e:"Ex : Apple, Toyota, Total. Les FMN délocalisent leur production pour réduire les coûts. Elles concentrent l'essentiel de la richesse mondiale."},
+        {q:"Quels sont les principaux pôles de la triade économique mondiale ?",a:["Chine, Inde, Brésil","États-Unis, Europe de l'Ouest, Japon/Asie du Sud-Est","Russie, Australie, Afrique du Sud","Mexique, Nigeria, Arabie Saoudite"],c:1,e:"La 'triade' domine les échanges mondiaux : Amérique du Nord, Europe, Asie Pacifique. Ils concentrent la majorité du PIB et des échanges."},
+        {q:"Qu'est-ce que le commerce maritime mondial représente en termes de flux ?",a:["10% des échanges","Environ 90% des échanges mondiaux de marchandises passent par la mer","50% des échanges","30% des échanges"],c:1,e:"La mer est la voie principale du commerce. Les détroits et canaux (Suez, Panama, Malacca) sont des points stratégiques vitaux."},
+        {q:"Qu'est-ce que l'IDE (Investissement Direct à l'Étranger) ?",a:["Un indice de développement économique","Un investissement qu'une entreprise réalise dans un pays étranger (filiale, rachat)","Un indicateur de bonheur","Un traité commercial"],c:1,e:"Les IDE permettent aux FMN de s'implanter dans d'autres pays. Les pays développés envoient et reçoivent la majorité des IDE."},
+        {q:"Quels sont les pays émergents les plus importants ?",a:["France, Allemagne, Japon","Les BRICS : Brésil, Russie, Inde, Chine, Afrique du Sud","Canada, Australie, Suède","Mexique, Turquie, Malaisie"],c:1,e:"Les BRICS ont connu une forte croissance économique depuis les années 2000. La Chine est devenue la 2ème économie mondiale."},
+      ]
+    },
+    {
+      theme:"🌆 Urbanisation & Métropolisation",
+      themeDesc:"Villes mondiales, bidonvilles, aménagement urbain",
+      questions:[
+        {q:"Qu'est-ce qu'une mégapole ou mégalopole ?",a:["Une ville de 500 000 habitants","Une ville ou agglomération de plus de 10 millions d'habitants","Un quartier d'affaires","Une zone rurale densément peuplée"],c:1,e:"Aujourd'hui, +30 mégapoles dans le monde (Tokyo : 37M, Delhi, Shanghai…). La plupart se trouvent dans les pays du Sud (Asie, Afrique)."},
+        {q:"Qu'est-ce qu'une ville mondiale (world city) ?",a:["La capitale d'un grand pays","Une ville qui concentre les fonctions de commandement économique, financier, culturel mondiales","Une ville touristique","Une ville de + 5 millions d'habitants"],c:1,e:"New York, Londres, Tokyo : elles abritent les sièges des FMN, bourses mondiales, aéroports hub, universités d'élite. Elles gouvernent la mondialisation."},
+        {q:"Qu'est-ce qu'un bidonville ?",a:["Un quartier résidentiel de luxe","Un quartier d'habitat précaire et informel, souvent sans eau ni électricité","Une zone industrielle désaffectée","Un quartier historique"],c:1,e:"1 milliard de personnes vivent dans des bidonvilles (favelas, slums, gecekondu…). Surtout dans les mégapoles du Sud. Manque de services de base."},
+        {q:"Qu'est-ce que l'étalement urbain (urban sprawl) ?",a:["La densification du centre-ville","L'expansion des villes vers la périphérie, consommant des terres agricoles et naturelles","La création de nouvelles villes","La désindustrialisation"],c:1,e:"Les villes s'étalent : pavillons, zones commerciales, zones industrielles en périphérie. Problème : transports, pollution, perte de terres agricoles."},
+        {q:"Pourquoi les villes du Sud connaissent-elles une croissance urbaine rapide ?",a:["Exode rural + croissance démographique + espoir d'emploi","Uniquement grâce aux migrations internationales","À cause du tourisme","En raison de la décolonisation uniquement"],c:0,e:"L'exode rural (départ des campagnes vers les villes) + forte natalité = croissance explosive. Les villes n'ont pas les infrastructures pour absorber."},
+      ]
+    },
+    {
+      theme:"🌿 Environnement & Développement Durable",
+      themeDesc:"Changement climatique, ressources, transition énergétique",
+      questions:[
+        {q:"Qu'est-ce que l'accord de Paris (2015) ?",a:["Un accord sur le commerce","Un accord international visant à limiter le réchauffement climatique à +1,5°C/2°C par rapport à l'ère préindustrielle","Un traité militaire","Un accord sur la déforestation uniquement"],c:1,e:"196 pays ont signé. Objectif : réduire les émissions de CO₂. Mais les engagements actuels ne suffisent pas à atteindre l'objectif."},
+        {q:"Qu'est-ce que la transition énergétique ?",a:["Passer du nucléaire au gaz","Passer des énergies fossiles (charbon, pétrole, gaz) aux énergies renouvelables (solaire, éolien, hydraulique)","Augmenter la production de pétrole","Remplacer le diesel par l'essence"],c:1,e:"Face au réchauffement et à l'épuisement des ressources fossiles, les pays doivent transformer leur mix énergétique vers les ENR."},
+        {q:"Qu'est-ce que le développement durable ? (définition Brundtland)",a:["Un développement qui maximise la croissance économique","Un développement qui répond aux besoins du présent sans compromettre la capacité des générations futures à satisfaire les leurs","La protection de la nature sans développement","L'industrialisation des pays pauvres"],c:1,e:"1987, rapport Brundtland. 3 piliers : économique + social + environnemental. Les 17 ODD de l'ONU (2015) en découlent."},
+        {q:"Quelles sont les principales conséquences du réchauffement climatique ?",a:["Refroidissement des océans","Hausse du niveau des mers, événements extrêmes plus fréquents, fonte des glaces, perturbation des écosystèmes","Augmentation de la biodiversité","Stabilisation du climat"],c:1,e:"+1,1°C depuis 1850. Fonte des glaces → montée des eaux (+30cm déjà). Cyclones plus intenses, sécheresses, submersion de territoires."},
+        {q:"Qu'est-ce que l'empreinte carbone d'un pays ou d'une personne ?",a:["La surface forestière","La quantité totale de gaz à effet de serre émis directement et indirectement","La consommation d'eau","La superficie cultivée"],c:1,e:"Elle mesure l'impact climatique. Un Français émet ≈ 10 tonnes de CO₂ eq/an. L'objectif pour le respect du climat : descendre à 2 tonnes."},
+      ]
+    },
+    {
+      theme:"🗺️ France & Europe",
+      themeDesc:"Aménagement du territoire, Union Européenne, régions",
+      questions:[
+        {q:"Qu'est-ce que l'aménagement du territoire ?",a:["La création d'autoroutes","L'ensemble des politiques visant à organiser et développer l'espace national de façon équilibrée","La gestion des ressources naturelles","La politique de logement uniquement"],c:1,e:"L'État et les collectivités cherchent à réduire les inégalités spatiales : développer les régions défavorisées, répartir les activités économiques."},
+        {q:"Quels sont les principaux enjeux de l'Union Européenne ?",a:["La domination militaire","La coopération économique (marché unique, euro), politique et la paix entre États membres","La colonisation de nouveaux territoires","La gestion des ressources africaines"],c:1,e:"L'UE = marché unique, monnaie commune (euro pour 20 pays), libre circulation, politiques communes (agriculture, environnement). Fondée après WWII pour la paix."},
+        {q:"Pourquoi Paris est-elle qualifiée de métropole dominante en France ?",a:["C'est la ville la plus ancienne","Elle concentre les fonctions de commandement économique, politique, culturel : 20% de la pop. française et 30% du PIB","C'est la plus grande en superficie","Elle est la plus touristique"],c:1,e:"La macrocéphalie parisienne : Paris écrase les autres villes. Débat sur la métropolisation et les 'déserts français' (zones délaissées)."},
+        {q:"Qu'est-ce que la politique de cohésion de l'Union Européenne ?",a:["Une politique militaire","Une politique de fonds structurels pour réduire les inégalités entre régions riches et pauvres de l'UE","Une politique d'immigration","Une politique agricole"],c:1,e:"Les fonds structurels (FEDER, FSE…) financent le développement des régions en retard. Objectif : réduire les écarts entre États et régions."},
+        {q:"Qu'est-ce qu'un espace transfrontalier ?",a:["Une zone militaire","Un espace de coopération entre régions de pays frontaliers (ex: Franco-allemand, Euroméditerranée)","Un territoire en dispute","Une zone franche économique"],c:1,e:"Ex : Strasbourg/Baden-Baden, espace Schengen. La suppression des frontières internes à l'UE crée des espaces de vie transfrontaliers."},
+      ]
+    },
+  ],
+
+  /* ─── EMC ─── */
+  emc: [
+    {
+      theme:"🗳️ Démocratie & Institutions",
+      themeDesc:"Ve République, élections, séparation des pouvoirs",
+      questions:[
+        {q:"Quelles sont les caractéristiques d'un régime démocratique ?",a:["Un chef unique inamovible","Suffrage universel, séparation des pouvoirs, État de droit, libertés fondamentales","Un parti unique","Décisions par une élite sans vote"],c:1,e:"Démocratie = pouvoir du peuple. Élections libres, pluralisme politique, contre-pouvoirs (justice, presse), droits fondamentaux garantis."},
+        {q:"Qu'est-ce que la séparation des pouvoirs selon Montesquieu ?",a:["Tout le pouvoir au président","Répartition entre législatif (Parlement), exécutif (gouvernement) et judiciaire (tribunaux)","Partage entre riches et pauvres","Alternance entre partis"],c:1,e:"Montesquieu (1748) : pour éviter la tyrannie, les 3 pouvoirs se séparent et se contrôlent mutuellement. Base de toutes les démocraties modernes."},
+        {q:"Qu'est-ce que le suffrage universel direct ?",a:["Seuls les plus riches votent","Tous les citoyens majeurs élisent directement leurs représentants","Les représentants sont nommés","Seuls les hommes votent"],c:1,e:"En France : tout citoyen de 18 ans peut voter. Suffrage universel masculin en 1848, féminin en 1944."},
+        {q:"Quel est le rôle du Conseil constitutionnel ?",a:["Gouverner le pays","Vérifier que les lois respectent la Constitution et protéger les droits fondamentaux","Juger les crimes","Élire le président"],c:1,e:"Créé en 1958. Depuis 2010, tout citoyen peut soulever une Question Prioritaire de Constitutionnalité (QPC) pour contester une loi."},
+        {q:"Qu'est-ce que l'État de droit ?",a:["Un État très puissant","Un État où citoyens ET gouvernants sont soumis aux mêmes lois, personne n'est au-dessus","Un État sans loi","Un État géré par des juristes"],c:1,e:"La Constitution est la loi suprême. Même le président doit la respecter. Les tribunaux sont indépendants du pouvoir politique."},
+      ]
+    },
+    {
+      theme:"🤝 Citoyenneté & Engagement",
+      themeDesc:"Droits et devoirs, engagement civique, vivre ensemble",
+      questions:[
+        {q:"Quels sont les devoirs d'un citoyen français ?",a:["Aucun devoir","Respecter les lois, payer ses impôts, voter, service national (JDC)","Uniquement voter","Travailler seulement"],c:1,e:"La citoyenneté implique des droits (vote, liberté) ET des devoirs (respect des lois, impôts, JDC). Sans devoirs, pas de droits collectifs."},
+        {q:"Qu'est-ce que la Journée Défense et Citoyenneté (JDC) ?",a:["Un jour de vacances","Une journée obligatoire pour les jeunes de 17-18 ans : défense nationale et valeurs républicaines","Un entraînement militaire","Un concours civique"],c:1,e:"La JDC remplace le service militaire (suspendu en 1997). Elle informe sur la défense, détecte les difficultés de lecture, rappelle les valeurs républicaines."},
+        {q:"Qu'est-ce que la discrimination ?",a:["Un traitement différent toujours justifié","Un traitement inégal injustifié fondé sur l'origine, le sexe, la religion, le handicap… illégal en France","Une opinion personnelle","Un débat philosophique"],c:1,e:"La discrimination est punie par la loi (jusqu'à 3 ans de prison). Le Défenseur des droits protège les victimes."},
+        {q:"Qu'est-ce que la liberté d'expression et ses limites ?",a:["Un droit absolu sans limite","Le droit de s'exprimer librement, limité par la loi : interdiction d'incitation à la haine, diffamation, négationnisme","Un droit uniquement journalistique","Une liberté réservée aux adultes"],c:1,e:"Art. 11 DDHC. Limites légales : propos haineux (loi Pleven 1972), négationnisme (loi Gayssot 1990), diffamation."},
+        {q:"Qu'est-ce que l'engagement associatif ?",a:["Une activité professionnelle uniquement","Participer librement et gratuitement à la vie collective via des associations","Une obligation légale","Un travail non déclaré"],c:1,e:"France : 22 millions de bénévoles, 1,3 million d'associations. L'engagement associatif renforce le lien social et la démocratie participative."},
+      ]
+    },
+    {
+      theme:"🌐 Défense & Sécurité nationale",
+      themeDesc:"Armée française, OTAN, menaces, renseignement",
+      questions:[
+        {q:"Quel est le rôle de l'armée française ?",a:["Uniquement faire la guerre","Défendre le territoire, protéger les citoyens, opérations de maintien de la paix","Gérer les élections","Surveiller les frontières uniquement"],c:1,e:"200 000 militaires. Missions : défense du territoire (Sentinelle), opérations extérieures (OPEX), aide humanitaire, dissuasion nucléaire."},
+        {q:"Qu'est-ce que la dissuasion nucléaire française ?",a:["Une arme offensive","La capacité de menacer de représailles nucléaires pour décourager toute attaque","Un programme civil","Un accord de désarmement"],c:1,e:"La France possède environ 290 ogives nucléaires. Doctrine depuis de Gaulle : nul ne peut attaquer la France sans risquer une réponse nucléaire."},
+        {q:"Qu'est-ce que l'OTAN ?",a:["Une organisation économique","Alliance militaire de 32 pays : attaque d'un membre = attaque de tous (art. 5)","Une organisation humanitaire","Un traité commercial"],c:1,e:"Fondée en 1949 face à la menace soviétique. La France en est membre fondateur. Actuellement 32 membres après l'adhésion de la Finlande et la Suède."},
+        {q:"Quelles sont les nouvelles menaces à la sécurité ?",a:["Uniquement les guerres conventionnelles","Terrorisme, cyberattaques, désinformation, espionnage, menaces climatiques","La menace nucléaire uniquement","Les crises économiques"],c:1,e:"Attentats (Paris 2015, Nice 2016), cyberattaques sur les hôpitaux, ingérence étrangère sur les réseaux sociaux, radicalisation. Nouvelles formes de guerre au XXIe siècle."},
+        {q:"Qu'est-ce que le Service National Universel (SNU) ?",a:["L'armée obligatoire","Un dispositif volontaire pour les 15-17 ans : cohésion nationale, engagement civique","Une classe de 3ème spéciale","Un remplacement du bac"],c:1,e:"Lancé en 2019 : séjour de cohésion (15 jours) + mission d'intérêt général (84h). Vise à renforcer le sentiment d'appartenance nationale et l'engagement citoyen."},
+      ]
+    },
+    {
+      theme:"⚖️ Justice & Droits fondamentaux",
+      themeDesc:"Système judiciaire, droits de l'Homme, égalité",
+      questions:[
+        {q:"Quelle est la différence entre droit civil et droit pénal ?",a:["Ce sont des synonymes","Droit civil : litiges entre particuliers ; Droit pénal : infractions contre la société punies par l'État","Civil pour adultes, pénal pour mineurs","Civil = lois, pénal = Constitution"],c:1,e:"Civil : tribunal judiciaire, indemnisation. Pénal : tribunal correctionnel/cour d'assises, peines (prison, amende)."},
+        {q:"Qu'est-ce que la présomption d'innocence ?",a:["Toute personne accusée est coupable","Toute personne est innocente jusqu'à ce que sa culpabilité soit prouvée par un tribunal","Le droit de se défendre uniquement","L'interdiction d'arrêter quelqu'un"],c:1,e:"Art. 9 DDHC. C'est à l'accusation de prouver la culpabilité, pas à l'accusé de prouver son innocence. Pilier de l'État de droit."},
+        {q:"Quand les femmes ont-elles obtenu le droit de vote en France ?",a:["1789","1871","1944","1968"],c:2,e:"Droit de vote des femmes accordé par ordonnance de de Gaulle le 21 avril 1944. Les femmes votent pour la 1ère fois aux municipales d'avril 1945."},
+        {q:"Qu'est-ce que la Convention internationale des droits de l'enfant (CIDE, 1989) ?",a:["Un texte non contraignant","Le traité le plus ratifié au monde protégeant les droits de tout enfant : éducation, santé, protection contre la violence","Un texte européen uniquement","Une loi française"],c:1,e:"Adoptée par l'ONU le 20 novembre 1989. 196 États signataires. 4 principes : non-discrimination, intérêt supérieur de l'enfant, vie/développement, participation."},
+        {q:"Qu'est-ce que la laïcité (loi 1905) ?",a:["La religion officielle est le catholicisme","Séparation de l'Église et de l'État, liberté de conscience, neutralité de l'État","Interdiction de toute religion","Fusion du droit et de la religion"],c:1,e:"Loi du 9 décembre 1905 : l'État ne reconnaît ni ne salarie aucun culte. Liberté de croyance garantie. Principe fondateur de la République française."},
+      ]
+    },
+  ],
+
+  /* ─── TECHNOLOGIE ─── */
+  techno: [
+    {
+      theme:"💡 Innovation & Design",
+      themeDesc:"Démarche de design, besoins, contraintes, prototypage",
+      questions:[
+        {q:"Qu'est-ce que la démarche de design en technologie ?",a:["Uniquement dessiner un objet","Une démarche créative pour concevoir un objet répondant à un besoin tout en respectant des contraintes","Un calcul mathématique","Fabriquer sans réfléchir"],c:1,e:"Le design intègre : analyse du besoin, créativité, prototypage, tests et amélioration. C'est une approche centrée sur l'utilisateur et ses besoins réels."},
+        {q:"Quelle est la différence entre invention et innovation ?",a:["Ce sont des synonymes","Invention = créer quelque chose de nouveau ; Innovation = transformer une invention en produit qui répond à un besoin sur le marché","Innovation = copier","Invention = améliorer l'existant"],c:1,e:"Ex : le téléphone (Bell, 1876) = invention. Le smartphone (2007) = innovation majeure car il transforme les usages sociaux. L'innovation crée de la valeur économique."},
+        {q:"Qu'est-ce qu'un cahier des charges (CDC) ?",a:["Un carnet de notes","Un document définissant les fonctions, performances et contraintes d'un objet à concevoir","Un plan de fabrication","Un contrat de vente"],c:1,e:"Le CDC liste : les fonctions de service (ce que doit faire l'objet), les contraintes (coût, matériaux, normes…) et les niveaux de performance attendus."},
+        {q:"Qu'est-ce qu'un prototype ?",a:["Le produit final","Un modèle préliminaire pour tester et valider les choix avant la fabrication en série","Un dessin technique","Une maquette décorative"],c:1,e:"Le prototype permet de tester les fonctionnalités, détecter les problèmes et recueillir des retours utilisateurs avant la production. Peut être physique ou numérique."},
+        {q:"Qu'est-ce que l'écoconception ?",a:["Concevoir uniquement des objets verts","Intégrer les critères environnementaux dès la conception : matériaux, durabilité, recyclabilité, énergie","Un label commercial","Concevoir des objets chers"],c:1,e:"L'écoconception analyse le cycle de vie complet : extraction → fabrication → usage → fin de vie. Objectif : réduire l'impact environnemental global du produit."},
+      ]
+    },
+    {
+      theme:"🤖 Systèmes & Objets techniques",
+      themeDesc:"Analyse fonctionnelle, chaînes d'énergie et d'information",
+      questions:[
+        {q:"Qu'est-ce qu'une chaîne d'énergie ?",a:["Le câble électrique d'un appareil","La succession : Alimenter → Distribuer → Convertir → Transmettre l'énergie pour produire un effet","Le moteur uniquement","La source d'énergie seule"],c:1,e:"Ex voiture électrique : batterie (alimenter) → variateur (distribuer) → moteur (convertir) → roues (transmettre). Chaque maillon transforme l'énergie."},
+        {q:"Qu'est-ce qu'une chaîne d'information ?",a:["Un réseau entre personnes","La succession : Acquérir (capteur) → Traiter (processeur) → Communiquer/Agir (actionneur)","Un câble réseau","Un programme seul"],c:1,e:"Ex thermostat : capteur température (acquérir) → microcontrôleur (traiter) → signal chaudière (agir). La chaîne d'information pilote la chaîne d'énergie."},
+        {q:"Qu'est-ce qu'un actionneur ?",a:["Un capteur","Un composant qui convertit un signal de commande en action physique (mouvement, lumière, son)","Un processeur","Une interface utilisateur"],c:1,e:"Exemples : moteur (mouvement), LED (lumière), résistance chauffante (chaleur), haut-parleur (son). Il est en bout de chaîne d'information."},
+        {q:"Qu'est-ce qu'un système automatisé ?",a:["Un objet manuel uniquement","Un système qui effectue des tâches sans intervention humaine continue grâce à capteurs, programme et actionneurs","Un robot humanoïde","Un logiciel"],c:1,e:"Ex : lave-linge, feux de circulation, portail automatique. L'automatisation libère l'humain des tâches répétitives et améliore la précision."},
+        {q:"Qu'est-ce que la notion de développement durable appliquée aux objets ?",a:["Fabriquer des objets qui durent longtemps uniquement","Concevoir en limitant l'impact : matériaux recyclés, énergie renouvelable, démontabilité, durée de vie allongée","Utiliser des matériaux verts sans autre critère","Réduire uniquement le coût"],c:1,e:"Triple contrainte : performance technique + viabilité économique + respect de l'environnement. Ex : Fairphone (smartphone réparable, matériaux éthiques)."},
+      ]
+    },
+    {
+      theme:"💻 Programmation & Numérique",
+      themeDesc:"Algorithmique, Python, réseaux, données, IA",
+      questions:[
+        {q:"Qu'est-ce qu'un algorithme ?",a:["Un logiciel","Une suite d'instructions précises et ordonnées pour résoudre un problème","Un ordinateur","Un langage de programmation"],c:1,e:"Un algorithme est indépendant du langage de programmation. Il décrit la logique : si/alors, tant que, pour chaque… Les GPS et moteurs de recherche en utilisent."},
+        {q:"En Python, qu'est-ce qu'une boucle 'for' ?",a:["Une condition","Une structure qui répète un bloc d'instructions pour chaque élément d'une liste ou un nombre de fois défini","Une fonction","Un commentaire"],c:1,e:"Ex : 'for i in range(5): print(i)' affiche 0,1,2,3,4. Essentiel pour éviter de répéter du code manuellement."},
+        {q:"Qu'est-ce qu'une variable en programmation ?",a:["Un bug","Un espace mémoire nommé stockant une valeur pouvant changer pendant l'exécution","Un fichier","Un programme entier"],c:1,e:"Ex Python : age = 15 (entier), nom = 'Emma' (chaîne), actif = True (booléen). Les variables permettent de stocker et manipuler des données dynamiquement."},
+        {q:"Qu'est-ce que l'intelligence artificielle (IA) ?",a:["Un robot humanoïde","Des algorithmes capables d'apprendre à partir de données pour effectuer des tâches nécessitant l'intelligence humaine","Un traitement de texte","Internet"],c:1,e:"L'IA par apprentissage automatique : l'algorithme s'améliore avec les données. Ex : ChatGPT, reconnaissance vocale, détection de maladies sur radios médicales."},
+        {q:"Qu'est-ce que le protocole HTTPS ?",a:["Un langage de programmation","Le protocole sécurisé d'échange de données entre navigateur et serveur web (chiffrement SSL/TLS)","Un câble internet","Un système d'exploitation"],c:1,e:"HTTP = base du Web. HTTPS = version chiffrée : protège mots de passe et paiements. Le cadenas dans la barre d'adresse indique une connexion HTTPS."},
+      ]
+    },
+    {
+      theme:"🌱 Technologie & Société",
+      themeDesc:"Impact social, éthique du numérique, environnement",
+      questions:[
+        {q:"Qu'est-ce que la fracture numérique ?",a:["Une panne informatique","L'inégalité d'accès et d'usage des technologies selon l'âge, la région ou les revenus","Un virus","La séparation entre réseaux publics et privés"],c:1,e:"Environ 13 millions de Français en situation d'illectronisme. Enjeu d'égalité sociale et territoriale. Dispositifs : Maisons France Services, Aidants Connect."},
+        {q:"Qu'est-ce que le RGPD (2018) ?",a:["Un antivirus","La loi européenne protégeant les données personnelles : droit d'accès, rectification, effacement (droit à l'oubli)","Un réseau social","Un protocole de sécurité"],c:1,e:"Le RGPD oblige les entreprises à demander le consentement et protéger les données. Sanctions jusqu'à 4% du chiffre d'affaires mondial. En France : la CNIL contrôle."},
+        {q:"Quels sont les impacts environnementaux du numérique ?",a:["Le numérique est totalement écologique","4% des émissions mondiales de CO₂ : fabrication des appareils, data centers, réseau","Seule la fabrication pose problème","Le numérique réduit toujours les émissions"],c:1,e:"Un smartphone nécessite 60 métaux différents. Les data centers consomment autant que certains pays. La sobriété numérique : allonger la durée de vie des appareils."},
+        {q:"Qu'est-ce que le cyberharcèlement ?",a:["Une blague entre amis","Des actes hostiles et répétés via les outils numériques (réseaux sociaux, SMS) pour nuire à une personne","Un jeu vidéo violent","De la publicité"],c:1,e:"C'est un délit (jusqu'à 2 ans de prison). Si victime : garder les preuves, ne pas répondre, en parler à un adulte, signaler, porter plainte. Numéro national : 3018."},
+        {q:"Qu'est-ce que l'impression 3D ?",a:["Une imprimante très rapide","Une technique de fabrication additive créant des objets couche par couche à partir d'un fichier numérique","Un scanner","Un logiciel de dessin"],c:1,e:"Applications : prothèses médicales sur mesure, pièces aéronautiques, prototypes industriels, construction de maisons. Elle révolutionne la fabrication à la demande."},
+      ]
+    },
+  ],
+
+};
+
+/* ════════════════════════
+   COLORS / META
+════════════════════════ */
+const SMETA = {
+  math:{name:"Mathématiques",icon:"📐",color:"#4C9BE8"},
+  fr:{name:"Français",icon:"📖",color:"#F472B6"},
+  hist:{name:"Histoire",icon:"🏛️",color:"#FF6B35"},
+  svt:{name:"SVT",icon:"🧬",color:"#3DD68C"},
+  phys:{name:"Physique-Chimie",icon:"⚗️",color:"#A855F7"},
+  geo:{name:"Géographie",icon:"🌍",color:"#FFD23F"},
+  emc:{name:"EMC",icon:"⚖️",color:"#06B6D4"},
+  techno:{name:"Technologie",icon:"🔧",color:"#10B981"},
+};
+const BCOLORS={math:"#1E90FF",fr:"#FF6B81",hist:"#FFA502",svt:"#2ED573",phys:"#7B2FBE",geo:"#FF4757",emc:"#00C896",techno:"#FFB300"};
+
+/* ════════════════════════
+   DB (localStorage)
+════════════════════════ */
+function loadDB(){try{return JSON.parse(localStorage.getItem('bv3')||'{"users":{}}')}catch{return{users:{}}}}
+function saveDB(d){localStorage.setItem('bv3',JSON.stringify(d))}
+function mkId(){return Date.now().toString(36)+Math.random().toString(36).slice(2,4)}
+
+/* ════════════════════════
+   STATE
+════════════════════════ */
+let CU=null,CID=null,SEL_AV='🦁',SEL_VIBE='Le Lion';
+let QS={sub:null,theme:null,questions:[],qi:0,lives:5,score:0,answered:false};
+
+/* ════════════════════════
+   COUNTDOWN
+════════════════════════ */
+const BDATE=new Date('2026-06-26');
+function dLeft(){const d=Math.ceil((BDATE-new Date())/864e5);return d>0?d:0;}
+function refreshCD(){const d=dLeft();document.getElementById('cd-days').textContent=d;document.getElementById('hdr-days').textContent=d;}
+
+/* ════════════════════════
+   SCREENS
+════════════════════════ */
+function show(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById(id).classList.add('active');}
+
+/* ════════════════════════
+   LOGIN
+════════════════════════ */
+function showLogin(){renderUsers();show('login-screen');}
+function renderUsers(){
+  const db=loadDB(),entries=Object.entries(db.users);
+  const ul=document.getElementById('users-list');ul.innerHTML='';
+  document.getElementById('no-users').style.display=entries.length?'none':'block';
+  entries.forEach(([id,u])=>{
+    const d=document.createElement('div');d.className='user-item';
+    d.innerHTML=`<div class="u-av" style="background:#f0f4ff">${u.av}</div><div class="u-info"><div class="u-name">${u.name}</div><div class="u-stats">${u.cls} · 🔥${u.streak} · ⭐${u.xp}XP · ${u.vibe}</div></div>`;
+    d.onclick=()=>login(id);ul.appendChild(d);
+  });
+}
+function login(id){
+  const db=loadDB();if(!db.users[id])return;
+  CID=id;CU=db.users[id];
+  const t=new Date().toDateString();
+  if(CU.dailyDate!==t){CU.dailyDone=0;CU.dailyDate=t;db.users[id]=CU;saveDB(db);}
+  refreshHdr();goHome();
+}
+
+/* ════════════════════════
+   REGISTER
+════════════════════════ */
+function showRegister(){
+  document.getElementById('reg-name').value='';
+  document.getElementById('reg-err').style.display='none';
+  SEL_AV='🦁';SEL_VIBE='Le Lion';
+  document.querySelectorAll('.av-card').forEach(b=>b.classList.remove('sel'));
+  show('register-screen');
+}
+function pickAv(el){
+  document.querySelectorAll('.av-card').forEach(b=>b.classList.remove('sel'));
+  el.classList.add('sel');SEL_AV=el.dataset.av;SEL_VIBE=el.dataset.vibe||'';
+}
+function doRegister(){
+  const name=document.getElementById('reg-name').value.trim();
+  const cls=document.getElementById('reg-class').value;
+  const err=document.getElementById('reg-err');
+  if(!name){err.textContent='⚠️ Entre ton prénom !';err.style.display='block';return;}
+  const db=loadDB();
+  if(Object.values(db.users).some(u=>u.name.toLowerCase()===name.toLowerCase())){err.textContent='⚠️ Ce prénom est déjà pris !';err.style.display='block';return;}
+  const id=mkId(),t=new Date().toDateString();
+  const emptyStats={};Object.keys(SMETA).forEach(k=>{emptyStats[k]={done:0,correct:0};});
+  db.users[id]={name,av:SEL_AV,vibe:SEL_VIBE,cls,streak:0,xp:0,dailyDone:0,dailyDate:t,history:[],subStats:emptyStats};
+  saveDB(db);CID=id;CU=db.users[id];refreshHdr();goHome();
+}
+
+/* ════════════════════════
+   HEADER
+════════════════════════ */
+function refreshHdr(){
+  document.getElementById('hdr-streak').textContent=CU.streak;
+  document.getElementById('hdr-av').textContent=CU.av;
+  refreshCD();
+}
+
+/* ════════════════════════
+   HOME
+════════════════════════ */
+function goHome(){
+  if(!CU){showLogin();return;}
+  document.getElementById('home-name').textContent=CU.name;
+  refreshCD();
+  const done=CU.dailyDone||0;
+  document.getElementById('pb-fill').style.width=Math.min(done/5*100,100)+'%';
+  document.getElementById('pb-lbl').textContent=`${done} / 5 exercices`;
+  Object.keys(SMETA).forEach(k=>{
+    const el=document.getElementById('mp-'+k);if(!el)return;
+    const s=(CU.subStats||{})[k];
+    el.textContent=s&&s.done>0?`✅ ${Math.round(s.correct/s.done*100)}%`:'➕ À commencer';
+  });
+  refreshHdr();show('home-screen');
+}
+
+/* ════════════════════════
+   SUBJECT → THEMES
+════════════════════════ */
+function openSubject(sub){
+  const s=SMETA[sub];
+  document.getElementById('themes-title').textContent=s.icon+' '+s.name;
+  const grid=document.getElementById('themes-grid');grid.innerHTML='';
+  QDB[sub].forEach((th,i)=>{
+    const ss=(CU.subStats||{})[sub]||{};
+    const pct=ss.done>0?Math.round(ss.correct/ss.done*100):null;
+    const card=document.createElement('div');card.className='theme-card';
+    card.innerHTML=`
+      <div class="tc-icon">${th.theme.split(' ')[0]}</div>
+      <div class="tc-info">
+        <div class="tc-name">${th.theme.replace(/^\S+\s/,'')}</div>
+        <div class="tc-desc">${th.themeDesc}</div>
+        ${pct!==null?`<div class="tc-pct" style="color:${BCOLORS[sub]}">✅ ${pct}%</div>`:''}
+      </div>
+      <div class="tc-count">${th.questions.length} Q</div>`;
+    card.onclick=()=>launchTheme(sub,i);
+    grid.appendChild(card);
+  });
+  show('themes-screen');
+}
+
+/* ════════════════════════
+   QUIZ
+════════════════════════ */
+function shuffleAnswers(questions){
+  return questions.map(q=>{
+    const correctText=q.a[q.c];
+    const answers=[...q.a];
+    for(let i=answers.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[answers[i],answers[j]]=[answers[j],answers[i]];}
+    return Object.assign({},q,{a:answers,c:answers.indexOf(correctText)});
+  });
+}
+function launchTheme(sub,themeIdx){
+  const th=QDB[sub][themeIdx];
+  let arr=[...th.questions];
+  for(let i=arr.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[arr[i],arr[j]]=[arr[j],arr[i]];}
+  arr=shuffleAnswers(arr);
+  QS={sub,theme:th.theme,questions:arr,qi:0,lives:5,score:0,answered:false};
+  show('quiz-screen');renderQ();
+}
+function renderQ(){
+  const q=QS.questions[QS.qi],total=QS.questions.length;
+  document.getElementById('qpbf').style.width=(QS.qi/total*100)+'%';
+  document.getElementById('qlives').textContent='❤️'.repeat(QS.lives)+'🖤'.repeat(5-QS.lives);
+  document.getElementById('qtag-sub').textContent=SMETA[QS.sub].name;
+  document.getElementById('qtag-theme').textContent=QS.theme;
+  document.getElementById('q-text').textContent=q.q;
+  const grid=document.getElementById('ans-grid');grid.innerHTML='';
+  ['A','B','C','D'].forEach((l,i)=>{
+    const b=document.createElement('button');b.className='ans-btn';
+    b.innerHTML=`<span class="ans-letter">${l}</span>${q.a[i]}`;
+    b.onclick=()=>pick(i,b);grid.appendChild(b);
+  });
+  const fb=document.getElementById('fb-panel');fb.style.display='none';fb.className='fb-panel';QS.answered=false;
+}
+function pick(idx,btn){
+  if(QS.answered)return;QS.answered=true;
+  const q=QS.questions[QS.qi];
+  document.querySelectorAll('.ans-btn').forEach(b=>b.disabled=true);
+  const fb=document.getElementById('fb-panel');fb.style.display='block';
+  const last=QS.qi>=QS.questions.length-1;
+  if(idx===q.c){
+    btn.classList.add('correct');QS.score++;
+    fb.className='fb-panel ok';
+    document.getElementById('fb-title').textContent=['Super ! 🎉','Bravo ! ✅','Parfait ! 🌟','Excellent ! 💪','C\'est ça ! 👏'][Math.floor(Math.random()*5)];
+    document.getElementById('fb-text').textContent=q.e;
+    document.getElementById('btn-nxt').className='btn-nxt g';
+    document.getElementById('btn-nxt').textContent=last?'Voir mes résultats 🏆':'Continuer →';
+  } else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.ans-btn')[q.c].classList.add('correct');
+    QS.lives--;
+    document.getElementById('qlives').textContent='❤️'.repeat(QS.lives)+'🖤'.repeat(5-QS.lives);
+    fb.className='fb-panel ko';
+    document.getElementById('fb-title').textContent=['Pas tout à fait 😅','Presque ! 🤔','Oops ! 😬'][Math.floor(Math.random()*3)];
+    document.getElementById('fb-text').textContent=q.e;
+    document.getElementById('btn-nxt').className='btn-nxt r';
+    document.getElementById('btn-nxt').textContent=QS.lives===0?'Fin 😢':last?'Résultats':'Continuer →';
+    document.querySelector('.q-card').classList.add('shake');
+    setTimeout(()=>document.querySelector('.q-card').classList.remove('shake'),450);
+  }
+}
+function nextQ(){
+  QS.qi++;
+  if(QS.qi>=QS.questions.length||QS.lives===0)victory();else renderQ();
+}
+
+/* ════════════════════════
+   VICTORY
+════════════════════════ */
+function victory(){
+  const total=QS.questions.length,pct=QS.score/total;
+  let ico,ttl,sub;
+  if(pct===1){ico='🏆';ttl='PARFAIT !';sub='Score parfait, no cap ! 🔥';}
+  else if(pct>=.8){ico='🌟';ttl='Trop bien !';sub=`${QS.score}/${total} — t'assures ! 💪`;}
+  else if(pct>=.6){ico='😊';ttl='Bien joué !';sub=`${QS.score}/${total} — continue like that !`;}
+  else{ico='📚';ttl='Courage !';sub=`${QS.score}/${total} — révise encore, you got this !`;}
+  document.getElementById('vic-icon').textContent=ico;
+  document.getElementById('vic-title').textContent=ttl;
+  document.getElementById('vic-sub').textContent=sub;
+  const xp=QS.score*10+(pct===1?20:0);
+  document.getElementById('xp-num').textContent=`+${xp} XP`;
+  // save
+  const db=loadDB(),u=db.users[CID];
+  u.streak++;u.xp+=xp;
+  u.dailyDone=Math.min((u.dailyDone||0)+1,5);u.dailyDate=new Date().toDateString();
+  if(!u.subStats[QS.sub])u.subStats[QS.sub]={done:0,correct:0};
+  u.subStats[QS.sub].done+=QS.questions.length;u.subStats[QS.sub].correct+=QS.score;
+  if(!u.history)u.history=[];
+  const now=new Date();
+  u.history.push({sub:QS.sub,theme:QS.theme,score:QS.score,total,date:now.toLocaleDateString('fr-FR',{day:'2-digit',month:'2-digit',year:'numeric',hour:'2-digit',minute:'2-digit'})});
+  db.users[CID]=u;saveDB(db);CU=u;
+  const msgs=['Continue comme ça !','T\'es en feu ! 🔥','Inarrêtable·e !','Trop fort·e ! 🏅','Le brevet ? No problem !'];
+  document.getElementById('fc-count').textContent=`${u.streak} flamme${u.streak>1?'s':''} !`;
+  document.getElementById('fc-msg').textContent=msgs[Math.min(u.streak-1,4)];
+  refreshHdr();show('victory-screen');
+  if(pct>=.6)confetti();
+}
+
+/* ════════════════════════
+   PROFILE
+════════════════════════ */
+function showProfile(){if(!CU){showLogin();return;}renderProf();show('profile-screen');}
+function renderProf(){
+  const u=CU,st=u.subStats||{};
+  const td=Object.values(st).reduce((a,s)=>a+(s.done||0),0);
+  const tc=Object.values(st).reduce((a,s)=>a+(s.correct||0),0);
+  const gp=td>0?Math.round(tc/td*100):0;
+  let bars='';
+  Object.entries(SMETA).forEach(([k,m])=>{
+    const s=st[k]||{done:0,correct:0};
+    const p=s.done>0?Math.round(s.correct/s.done*100):0;
+    bars+=`<div class="sb-row"><div class="sbl">${m.icon} ${m.name.split(' ')[0]}</div><div class="sbt"><div class="sbf" style="width:${p}%;background:${BCOLORS[k]}"></div></div><div class="sbp">${s.done>0?p+'%':'—'}</div></div>`;
+  });
+  const hist=(u.history||[]).slice().reverse().slice(0,25);
+  let hh=hist.length?'':'<div class="empty-h">Aucun exercice encore 😴 — let\'s go !</div>';
+  hist.forEach(h=>{
+    const p=Math.round(h.score/h.total*100);
+    const cls=p>=80?'sg':p>=50?'so':'sr';
+    hh+=`<div class="hi"><div class="hiico">${SMETA[h.sub].icon}</div><div class="hiinf"><div class="hiname">${SMETA[h.sub].name}</div><div class="hitheme">${h.theme} · ${h.date}</div></div><div class="hisc ${cls}">${h.score}/${h.total}</div></div>`;
+  });
+  document.getElementById('prof-inner').innerHTML=`
+    <div class="prof-hdr">
+      <button class="btn-lo" onclick="logout()">Déco</button>
+      <div class="prof-av">${u.av}</div>
+      <div class="prof-name">${u.name}</div>
+      <div class="prof-cls">${u.cls}</div>
+      <div class="prof-vibe">${u.vibe}</div>
+    </div>
+    <div class="stats-row">
+      <div class="stat-c"><div class="sv">🔥${u.streak}</div><div class="sl">Flammes</div></div>
+      <div class="stat-c"><div class="sv">⭐${u.xp}</div><div class="sl">XP</div></div>
+      <div class="stat-c"><div class="sv">${td}</div><div class="sl">Questions</div></div>
+    </div>
+    <div class="prof-sec"><h3>📊 Par matière</h3><div class="sb-rows">${bars}</div></div>
+    <div class="prof-sec"><h3>📋 Historique</h3><div class="hist-list">${hh}</div></div>
+    <button class="btn-bkp" onclick="goHome()">🏠 Retour à l'accueil</button>
+    <div style="height:20px"></div>`;
+  if(window.innerWidth>=460)document.getElementById('sc4').style.display='block';
+}
+function logout(){CU=null;CID=null;document.getElementById('hdr-av').textContent='?';document.getElementById('hdr-streak').textContent='0';showLogin();}
+
+/* ════════════════════════
+   CONFETTI
+════════════════════════ */
+function confetti(){
+  const c=document.getElementById('cfc');c.innerHTML='';
+  const cols=['#FF6B35','#FFD23F','#3DD68C','#4C9BE8','#A855F7','#F472B6'];
+  for(let i=0;i<80;i++){
+    const p=document.createElement('div');p.className='cfp';
+    p.style.cssText=`left:${Math.random()*100}vw;top:-20px;background:${cols[~~(Math.random()*cols.length)]};width:${Math.random()*10+5}px;height:${Math.random()*10+5}px;border-radius:${Math.random()>.5?'50%':'2px'};animation-name:cfall;animation-duration:${Math.random()*2+1.5}s;animation-delay:${Math.random()*.8}s;`;
+    c.appendChild(p);
+  }
+  setTimeout(()=>c.innerHTML='',5000);
+}
+
+/* ════════════════════════
+   PARCOURS — configuration
+════════════════════════ */
+// Each subject has chapters; each chapter has steps (themes) + a final eval
+const PARCOURS = {
+  math:[
+    {chap:"Chapitre 1 : Algèbre & Calcul",icon:"🔢",color:"#1E90FF",steps:[
+      {type:"theme",sub:"math",themeIdx:1,label:"Algèbre & Calcul",icon:"🔢"},
+      {type:"theme",sub:"math",themeIdx:3,label:"Fonctions",icon:"📈"},
+      {type:"eval",label:"Mini-Éval Algèbre",icon:"📝",
+       questions:[
+        {q:"Factorise : x² − 16",a:["(x−4)²","(x+4)(x−4)","(x−8)(x+2)","x(x−16)"],c:1,e:"Identité a²−b² = (a+b)(a−b). Ici x²−16 = (x+4)(x−4)."},
+        {q:"Résous : 2x + 5 = 13",a:["x = 4","x = 9","x = 3","x = 5"],c:0,e:"2x = 13 − 5 = 8, donc x = 4."},
+        {q:"Image de 3 par f(x) = 4x − 1 ?",a:["11","12","10","9"],c:0,e:"f(3) = 4×3 − 1 = 12 − 1 = 11."},
+        {q:"Quelle est la valeur de 3⁻² ?",a:["−9","1/9","9","1/6"],c:1,e:"3⁻² = 1/3² = 1/9."},
+        {q:"Développe : (2x − 3)²",a:["4x²−9","4x²−12x+9","4x²+12x+9","2x²−6x+9"],c:1,e:"(a−b)² = a²−2ab+b². (2x−3)² = 4x²−12x+9."},
+        {q:"Coefficient directeur de y = −2x + 7 ?",a:["7","−2","2","−7"],c:1,e:"Dans y = ax+b, a est le coefficient directeur. Ici a = −2."},
+       ]},
+    ]},
+    {chap:"Chapitre 2 : Géométrie",icon:"📐",color:"#1E90FF",steps:[
+      {type:"theme",sub:"math",themeIdx:0,label:"Géométrie",icon:"📐"},
+      {type:"eval",label:"Mini-Éval Géométrie",icon:"📝",
+       questions:[
+        {q:"Dans un triangle rectangle en C, BC=5, AC=12. AB = ?",a:["13","17","7","11"],c:0,e:"Pythagore : AB² = BC² + AC² = 25 + 144 = 169 → AB = 13."},
+        {q:"Aire d'un trapèze de bases 6 et 10, hauteur 4 ?",a:["32","24","64","16"],c:0,e:"(6+10)×4/2 = 16×4/2 = 32."},
+        {q:"sin(30°) = ?",a:["0,5","0,866","0,707","1"],c:0,e:"sin(30°) = 1/2 = 0,5. À retenir avec le tableau de valeurs."},
+        {q:"Un vecteur est défini par quels éléments ?",a:["Un point seulement","Direction, sens et norme","Un angle seul","Deux coordonnées uniquement"],c:1,e:"Un vecteur = direction + sens + norme (longueur). Ces 3 éléments le caractérisent entièrement."},
+        {q:"Thalès s'applique quand…",a:["Le triangle est rectangle","Deux droites parallèles coupent deux sécantes de même origine","Les angles sont égaux","Les côtés sont proportionnels"],c:1,e:"Condition de Thalès : deux droites parallèles coupant deux demi-droites de même origine."},
+       ]},
+    ]},
+    {chap:"Chapitre 3 : Stats & Probas",icon:"📊",color:"#1E90FF",steps:[
+      {type:"theme",sub:"math",themeIdx:2,label:"Stats & Probas",icon:"📊"},
+      {type:"eval",label:"Mini-Éval Stats",icon:"📝",
+       questions:[
+        {q:"Médiane de : 2, 4, 7, 9, 11",a:["7","6","8","9"],c:0,e:"5 valeurs, la médiane est la 3ème valeur = 7."},
+        {q:"P(A) = 0,3 et P(B) = 0,6, A et B indépendants. P(A∩B) = ?",a:["0,9","0,18","0,3","0,6"],c:1,e:"Indépendants : P(A∩B) = P(A)×P(B) = 0,3×0,6 = 0,18."},
+        {q:"Fréquence de 8 billes rouges sur 20 billes ?",a:["8%","40%","80%","20%"],c:1,e:"f = 8/20 = 0,4 = 40%."},
+        {q:"Moyenne de 5, 10, 15, 20 ?",a:["12","12,5","10","15"],c:1,e:"(5+10+15+20)/4 = 50/4 = 12,5."},
+        {q:"Dé à 6 faces : probabilité d'un nombre > 4 ?",a:["1/3","1/2","1/6","2/3"],c:0,e:"Nombres > 4 : {5, 6} → 2 cas / 6 = 1/3."},
+       ]},
+    ]},
+  ],
+  fr:[
+    {chap:"Chapitre 1 : Grammaire",icon:"✍️",color:"#FF6B81",steps:[
+      {type:"theme",sub:"fr",themeIdx:0,label:"Grammaire & Conjugaison",icon:"✍️"},
+      {type:"eval",label:"Mini-Éval Grammaire",icon:"📝",
+       questions:[
+        {q:"'Il mange rapidement.' Fonction de 'rapidement' ?",a:["COD","CC de manière","Sujet","Attribut"],c:1,e:"'Rapidement' est un adverbe précisant comment → CC de manière."},
+        {q:"Accord correct : 'Les fleurs qu'il a _____ (cueillir)'",a:["cueilli","cueillis","cueillies","cueillir"],c:2,e:"COD 'fleurs' (fém. plur.) est avant le verbe → accord : cueillies."},
+        {q:"Le subjonctif exprime…",a:["Un fait réel","Le doute, souhait, volonté","Le passé","Une question"],c:1,e:"Subjonctif = incertitude, souhait. Ex : 'Il faut que tu viennes.'"},
+        {q:"Passé simple vs imparfait dans un récit ?",a:["Pas de différence","PS = actions ponctuelles, imparfait = descriptions","PS = durée, imparfait = ponctuel","Ils ne s'utilisent pas ensemble"],c:1,e:"PS fait avancer le récit (actions précises), imparfait plante le décor (cadre, habitudes)."},
+        {q:"Proposition relative dans 'Le livre que je lis est super' ?",a:["Le livre","que je lis","est super","je lis"],c:1,e:"'que je lis' complète le nom 'livre'. C'est une prop. subordonnée relative."},
+        {q:"'Bien que' est un connecteur de…",a:["Cause","Conséquence","Concession","Addition"],c:2,e:"'Bien que' + subjonctif = concession (opposé à la thèse, mais…)."},
+       ]},
+    ]},
+    {chap:"Chapitre 2 : Lecture & Littérature",icon:"📚",color:"#FF6B81",steps:[
+      {type:"theme",sub:"fr",themeIdx:1,label:"Lecture & Textes",icon:"📚"},
+      {type:"theme",sub:"fr",themeIdx:2,label:"Littérature & Mouvements",icon:"🎭"},
+      {type:"eval",label:"Mini-Éval Littérature",icon:"📝",
+       questions:[
+        {q:"L'ironie consiste à…",a:["Exagérer","Dire le contraire de ce qu'on pense","Répéter des mots","Comparer deux choses"],c:1,e:"L'ironie dit l'opposé de ce qu'on pense pour critiquer ou se moquer."},
+        {q:"Qu'est-ce qu'un apologue ?",a:["Un poème","Un court récit fictif avec une morale","Un article","Un discours"],c:1,e:"Apologue = récit court à visée morale. Ex : Fables de La Fontaine."},
+        {q:"L'allitération est…",a:["Répétition de voyelles","Répétition de sons consonantiques","Rime en fin de vers","Comparaison"],c:1,e:"Ex : 'Pour qui sont ces serpents qui sifflent...' → allitération en [s]."},
+        {q:"Courant littéraire du XIXe siècle valorisant les émotions ?",a:["Classicisme","Humanisme","Romantisme","Surréalisme"],c:2,e:"Romantisme (XIXe) : Hugo, Lamartine → émotions, nature, mélancolie."},
+        {q:"Une hyperbole est…",a:["Une atténuation","Une exagération volontaire","Une comparaison","Une métaphore filée"],c:1,e:"Hyperbole = exagérer pour insister. Ex : 'Je t'ai dit mille fois de ranger !'"},
+       ]},
+    ]},
+    {chap:"Chapitre 3 : Expression écrite",icon:"🖊️",color:"#FF6B81",steps:[
+      {type:"theme",sub:"fr",themeIdx:3,label:"Expression Écrite",icon:"🖊️"},
+      {type:"eval",label:"Mini-Éval Rédaction",icon:"📝",
+       questions:[
+        {q:"Structure d'un paragraphe argumentatif ?",a:["Intro → conc.","Idée directrice → argument → exemple → lien","Anecdote → opinion","Titre → texte"],c:1,e:"Paragraphe type : idée clé + argument + exemple + transition."},
+        {q:"Dans un texte descriptif, l'outil essentiel est…",a:["Les connecteurs d'opposition","Les champs lexicaux et expansions du nom","Les verbes d'action","Les formules"],c:1,e:"Description : champs lexicaux (couleurs, formes…) + GN expansés."},
+        {q:"Réécriture à l'imparfait : on change…",a:["Seulement les noms","Les verbes + tous les accords en dépendant","Les adjectifs uniquement","Le mode"],c:1,e:"On change les temps verbaux et on ajuste tous les accords (participes, etc.)."},
+        {q:"Connecteur logique de cause parmi…",a:["Certes, or","Car, parce que, puisque","D'abord, ensuite","Cependant, mais"],c:1,e:"Cause : car, parce que, puisque, vu que… → introduit la raison."},
+       ]},
+    ]},
+  ],
+  hist:[
+    {chap:"Chapitre 1 : XXe siècle",icon:"🌍",color:"#FFA502",steps:[
+      {type:"theme",sub:"hist",themeIdx:0,label:"1ère Guerre Mondiale",icon:"🌍"},
+      {type:"theme",sub:"hist",themeIdx:1,label:"Totalitarismes & WWII",icon:"☠️"},
+      {type:"eval",label:"Mini-Éval XXe siècle",icon:"📝",
+       questions:[
+        {q:"Quel événement déclenche la WWI ?",a:["Invasion Pologne","Assassinat François-Ferdinand","Révolution russe","Entrée USA"],c:1,e:"28 juin 1914 : assassinat de l'archiduc à Sarajevo → déclenchement de la WWI."},
+        {q:"Bilan humain approximatif de la WWI ?",a:["500 000 morts","2 millions","10M militaires + 7M civils","50 millions"],c:2,e:"≈ 10 millions de soldats, 7 millions de civils. Un massacre sans précédent."},
+        {q:"La Shoah = ?",a:["Destruction de Dresde","Génocide des Juifs (6 millions de victimes)","Résistance française","Capitulation allemande"],c:1,e:"Génocide systématique des Juifs par les nazis. 6 millions de victimes."},
+        {q:"Le 6 juin 1944 c'est…",a:["Capitulation allemande","Débarquement allié en Normandie","Libération de Paris","Entrée URSS"],c:1,e:"D-Day : 156 000 soldats alliés débarquent en Normandie → début de la libération."},
+        {q:"Hitler accède au pouvoir en 1933 comment ?",a:["Coup d'État","Nommé chancelier légalement après victoire électorale","Référendum","Par l'armée"],c:1,e:"Hitler exploite la démocratie : NSDAP majoritaire → chancelier → lois d'exception."},
+        {q:"Régimes totalitaires des années 1930 ?",a:["Démocratie, monarchie","Nazisme, Fascisme, Stalinisme","Communisme, libéralisme","Colonialisme"],c:1,e:"3 totalitarismes : nazisme (ALL), fascisme (ITA), stalinisme (URSS)."},
+       ]},
+    ]},
+    {chap:"Chapitre 2 : Démocratie & Droits",icon:"⚖️",color:"#FFA502",steps:[
+      {type:"theme",sub:"hist",themeIdx:2,label:"Démocratie & Droits",icon:"⚖️"},
+      {type:"theme",sub:"hist",themeIdx:3,label:"Guerre Froide",icon:"🌐"},
+      {type:"eval",label:"Mini-Éval Démocratie",icon:"📝",
+       questions:[
+        {q:"La DDHC est rédigée quand ?",a:["1848","1789","1945","1958"],c:1,e:"Déclaration des Droits de l'Homme et du Citoyen : 26 août 1789, Révolution française."},
+        {q:"Devise de la République française ?",a:["Roi, peuple, armée","Liberté, Égalité, Fraternité","Justice, Sécurité, Paix","Travail, Famille, Patrie"],c:1,e:"Liberté, Égalité, Fraternité depuis 1789. Base des valeurs républicaines."},
+        {q:"La DUDH (1948) est adoptée par…",a:["La France seule","L'ONU","L'Europe","Le G7"],c:1,e:"Adoptée par l'ONU le 10 décembre 1948. 30 articles sur les droits fondamentaux."},
+        {q:"La Guerre Froide oppose…",a:["France et Allemagne","USA (capitalisme) et URSS (communisme)","Chine et Japon","ONU et OTAN"],c:1,e:"1947–1991 : confrontation idéologique sans affrontement direct entre blocs."},
+        {q:"Le mur de Berlin tombe le…",a:["13 août 1961","9 novembre 1989","3 octobre 1990","25 décembre 1991"],c:1,e:"9 novembre 1989 : chute du mur, symbole de la fin du communisme soviétique."},
+       ]},
+    ]},
+  ],
+
+  /* ── SVT ── */
+  svt:[
+    {chap:"Chapitre 1 : Génétique & Hérédité",icon:"🧬",color:"#2ED573",steps:[
+      {type:"theme",sub:"svt",themeIdx:0,label:"Génétique & Hérédité",icon:"🧬"},
+      {type:"eval",label:"Mini-Éval Génétique",icon:"📝",
+       questions:[
+        {q:"Un chromosome est composé de…",a:["Glucose","ADN enroulé autour de protéines","Lipides","Acides aminés"],c:1,e:"Les chromosomes = ADN + protéines (histones). L'humain a 46 chromosomes (23 paires)."},
+        {q:"Un allèle est…",a:["Un chromosome entier","Une forme particulière d'un gène","Un acide aminé","Un organite"],c:1,e:"Chaque gène peut avoir plusieurs formes (allèles). Ex : allèle 'yeux bruns' ou 'yeux bleus'."},
+        {q:"Génotype vs phénotype ?",a:["Synonymes","Génotype = gènes ; Phénotype = caractères observables","Phénotype = gènes","Génotype = maladie"],c:1,e:"Génotype : constitution génétique. Phénotype : ce qu'on observe (résultat gènes + environnement)."},
+        {q:"Mitose vs méiose ?",a:["Identiques","Mitose = 2 cellules identiques (46chr) ; Méiose = 4 gamètes (23chr)","Mitose produit des gamètes","Méiose = division somatique"],c:1,e:"Mitose : croissance/réparation (2n→2n). Méiose : gamètes (2n→n)."},
+        {q:"Une mutation génétique est…",a:["Une division normale","Une modification de la séquence d'ADN","Un virus","Un type de reproduction"],c:1,e:"Les mutations peuvent être neutres, bénéfiques (évolution) ou nocives (maladies génétiques)."},
+        {q:"Lors de la reproduction sexuée, l'info génétique est transmise par…",a:["Le sang","Les gamètes (spermatozoïde + ovule)","Les mitochondries","La peau"],c:1,e:"Gamète = 23 chr (haploïde). Fécondation → cellule-œuf à 46 chr (diploïde)."},
+       ]},
+    ]},
+    {chap:"Chapitre 2 : Corps Humain & Écologie",icon:"🫁",color:"#2ED573",steps:[
+      {type:"theme",sub:"svt",themeIdx:1,label:"Le Corps Humain",icon:"🫁"},
+      {type:"theme",sub:"svt",themeIdx:2,label:"Écologie & Environnement",icon:"🌱"},
+      {type:"eval",label:"Mini-Éval Corps & Éco",icon:"📝",
+       questions:[
+        {q:"Le système immunitaire réagit en produisant…",a:["De l'adrénaline","Des anticorps via les lymphocytes B","Du glucose","De l'insuline"],c:1,e:"Lymphocytes B → anticorps spécifiques à l'antigène. Lymphocytes T détruisent les cellules infectées."},
+        {q:"Un vaccin fonctionne en…",a:["Tuant directement les bactéries","Entraînant le système immunitaire sans rendre malade","Détruisant les virus","Augmentant la température"],c:1,e:"Il introduit un antigène inoffensif → mémoire immunitaire → réponse rapide si vraie infection."},
+        {q:"Un écosystème = ?",a:["Animaux uniquement","Êtres vivants + milieu physique en interaction","Une chaîne alimentaire","Un biome tropical"],c:1,e:"Écosystème = biocénose (vivants) + biotope (milieu). Ex : forêt, étang, récif corallien."},
+        {q:"La déforestation aggrave le climat car…",a:["Elle refroidit la planète","Les forêts absorbent le CO₂ ; les détruire libère ce carbone","Elle augmente la biodiversité","Elle n'a aucun impact"],c:1,e:"Les arbres stockent du carbone. Déforestation = rejet de CO₂ + réduction de la photosynthèse."},
+        {q:"La base d'une chaîne alimentaire est toujours…",a:["Un prédateur","Un producteur (végétal photosynthétique)","Un décomposeur","Un herbivore"],c:1,e:"Les plantes convertissent l'énergie solaire (photosynthèse) → base de toute chaîne alimentaire."},
+       ]},
+    ]},
+    {chap:"Chapitre 3 : Géologie",icon:"🌍",color:"#2ED573",steps:[
+      {type:"theme",sub:"svt",themeIdx:3,label:"Géologie & Terre",icon:"🌍"},
+      {type:"eval",label:"Mini-Éval Géologie",icon:"📝",
+       questions:[
+        {q:"Les 3 couches de la Terre de l'extérieur vers l'intérieur ?",a:["Croûte, manteau, noyau","Atmosphère, lithosphère, asthénosphère","Croûte, océan, magma","Biosphère, lithosphère, noyau"],c:0,e:"Croûte (0-70 km) → manteau (jusqu'à 2900 km) → noyau (2900-6371 km)."},
+        {q:"Les séismes sont causés par…",a:["La rotation de la Terre","Le déplacement brusque de blocs rocheux le long d'une faille","Les éruptions volcaniques","La fonte des glaces"],c:1,e:"L'énergie accumulée se libère brutalement au niveau du foyer → ondes sismiques."},
+        {q:"La collision de deux plaques continentales crée…",a:["Un effondrement","Des chaînes de montagnes","Uniquement des séismes","Des volcans sous-marins"],c:1,e:"Convergence de plaques → orogenèse. Ex : Himalaya (Inde + Eurasie), Alpes."},
+        {q:"Une roche sédimentaire se forme par…",a:["Refroidissement du magma","Accumulation et compaction de sédiments","Chaleur et pression extrêmes","Fusion partielle du manteau"],c:1,e:"Ex : calcaire, grès. Sédiments → compaction → cimentation. Contiennent souvent des fossiles."},
+        {q:"Le volcanisme est principalement localisé…",a:["Au hasard","Sur les marges des plaques tectoniques et les points chauds","En zone polaire","En zone tropicale uniquement"],c:1,e:"'Ceinture de feu' du Pacifique = marges de plaques. Points chauds : Hawaï, Islande."},
+       ]},
+    ]},
+  ],
+
+  /* ── PHYSIQUE-CHIMIE ── */
+  phys:[
+    {chap:"Chapitre 1 : Électricité",icon:"⚡",color:"#7B2FBE",steps:[
+      {type:"theme",sub:"phys",themeIdx:0,label:"Électricité",icon:"⚡"},
+      {type:"eval",label:"Mini-Éval Électricité",icon:"📝",
+       questions:[
+        {q:"Loi d'Ohm ?",a:["P = U × I","U = R × I","I = U + R","R = U + I"],c:1,e:"U (Volts) = R (Ohms) × I (Ampères). Base de tout calcul de circuit électrique."},
+        {q:"Circuit en série : l'intensité est…",a:["Différente dans chaque branche","Identique en tout point","Nulle dans les résistances","Variable"],c:1,e:"Série : I constante partout. Les tensions s'additionnent : U_total = U₁ + U₂."},
+        {q:"Circuit en dérivation : la tension est…",a:["Additive dans chaque branche","Identique aux bornes de chaque dérivation","Nulle","Variable"],c:1,e:"Dérivation : même tension partout. Les intensités s'additionnent : I_total = I₁ + I₂."},
+        {q:"Unité de la puissance électrique ?",a:["Volt","Joule","Watt","Ampère"],c:2,e:"P (Watt) = U × I. L'énergie E = P × t. 1 kWh = 3 600 000 J."},
+        {q:"L'effet Joule, c'est…",a:["Production de lumière","Échauffement d'un conducteur traversé par un courant","Champ magnétique","Résistance d'un isolant"],c:1,e:"P_joule = R × I². Utilisé dans grille-pain, radiateurs. Perte d'énergie dans les câbles."},
+        {q:"Formule de l'énergie électrique consommée ?",a:["E = P / t","E = P × t","E = U × R","E = I² × t"],c:1,e:"E = P × t (en Joules si P en W et t en s). Sur la facture : kWh = kW × h."},
+       ]},
+    ]},
+    {chap:"Chapitre 2 : Mécanique",icon:"🔭",color:"#7B2FBE",steps:[
+      {type:"theme",sub:"phys",themeIdx:1,label:"Mécanique & Mouvements",icon:"🔭"},
+      {type:"eval",label:"Mini-Éval Mécanique",icon:"📝",
+       questions:[
+        {q:"Masse vs poids ?",a:["Synonymes","Masse (kg, constante) ; Poids = force (N = m × g, variable)","Masse en Newton","Poids constant partout"],c:1,e:"Masse invariante (même sur la Lune). Poids dépend de g : 10 N/kg sur Terre, 1,6 N/kg sur la Lune."},
+        {q:"1ère loi de Newton (inertie) ?",a:["F = ma","Si ΣF = 0 → mouvement rectiligne uniforme ou repos","Action = réaction","E = mc²"],c:1,e:"Si la résultante des forces est nulle → l'objet est en équilibre (immobile ou MRU)."},
+        {q:"Énergie cinétique ?",a:["Ec = mgh","Ec = ½mv²","Ec = Fd","Ec = Pt"],c:1,e:"Ec = ½ × m × v² (Joules). Vitesse doublée → énergie quadruplée ! D'où la dangerosité à haute vitesse."},
+        {q:"2ème loi de Newton ?",a:["F = m/a","F = m × a","F = mv","F = ma²"],c:1,e:"F (N) = m (kg) × a (m/s²). Plus la masse est grande, plus la force nécessaire est importante."},
+        {q:"En chute libre, la vitesse…",a:["Est constante","Diminue","Augmente sous l'action du poids","Est immédiatement maximale"],c:2,e:"Chute libre : seul le poids agit → accélération g = 10 m/s². +10 m/s chaque seconde."},
+       ]},
+    ]},
+    {chap:"Chapitre 3 : Chimie & Optique",icon:"⚗️",color:"#7B2FBE",steps:[
+      {type:"theme",sub:"phys",themeIdx:2,label:"Chimie",icon:"⚗️"},
+      {type:"theme",sub:"phys",themeIdx:3,label:"Optique & Ondes",icon:"💡"},
+      {type:"eval",label:"Mini-Éval Chimie & Optique",icon:"📝",
+       questions:[
+        {q:"Loi de conservation de la masse (Lavoisier) ?",a:["La masse augmente","Masse réactifs = masse produits","La masse diminue","Rien ne se transforme"],c:1,e:"'Rien ne se perd, rien ne se crée, tout se transforme.' Les atomes se réarrangent."},
+        {q:"pH < 7 → la solution est…",a:["Basique","Neutre","Acide","Saline"],c:2,e:"pH < 7 = acide (papier pH rouge/orange). pH = 7 = neutre. pH > 7 = basique."},
+        {q:"Un ion est…",a:["Un atome neutre","Un atome ayant gagné ou perdu des électrons (chargé)","Une molécule sans noyau","Un isotope"],c:1,e:"Cation (+) : perd des électrons (Na⁺). Anion (−) : gagne des électrons (Cl⁻)."},
+        {q:"Vitesse de la lumière dans le vide ?",a:["300 km/s","300 000 km/s","150 000 km/s","1 500 km/s"],c:1,e:"c ≈ 3×10⁸ m/s. La lumière met 8 minutes pour aller du Soleil à la Terre."},
+        {q:"La réfraction c'est…",a:["La réflexion de la lumière","Le changement de direction de la lumière en changeant de milieu","L'absorption de la lumière","La diffusion"],c:1,e:"Lumière change de vitesse en changeant de milieu → déviation. Ex : crayon 'cassé' dans l'eau."},
+        {q:"Le son se propage…",a:["Dans le vide","Dans un milieu matériel uniquement (air, eau, solide)","Uniquement dans l'air","Plus vite que la lumière"],c:1,e:"Le son est une vibration mécanique → ne se propage pas dans le vide. ≈ 340 m/s dans l'air."},
+       ]},
+    ]},
+  ],
+
+  /* ── GÉOGRAPHIE ── */
+  geo:[
+    {chap:"Chapitre 1 : Mondialisation & Villes",icon:"🌐",color:"#FF4757",steps:[
+      {type:"theme",sub:"geo",themeIdx:0,label:"Mondialisation",icon:"🌐"},
+      {type:"theme",sub:"geo",themeIdx:1,label:"Urbanisation",icon:"🌆"},
+      {type:"eval",label:"Mini-Éval Mondialisation",icon:"📝",
+       questions:[
+        {q:"Une firme multinationale (FMN) est…",a:["Une entreprise locale","Une entreprise présente dans plusieurs pays avec filiales","Une ONG","Un traité commercial"],c:1,e:"Ex : Apple, Toyota. Elles délocalisent pour réduire les coûts et concentrent la richesse mondiale."},
+        {q:"La triade économique mondiale regroupe…",a:["Chine, Inde, Brésil","USA, Europe Ouest, Japon/Asie-Pacifique","Russie, Australie, Afrique du Sud","G7 uniquement"],c:1,e:"La triade domine les échanges et concentre l'essentiel du PIB et des IDE mondiaux."},
+        {q:"Le commerce maritime représente environ…",a:["10% des échanges","90% des échanges mondiaux de marchandises","50%","30%"],c:1,e:"La mer est la voie principale. Les détroits (Suez, Panama, Malacca) sont stratégiques."},
+        {q:"Une mégapole = ville de plus de…",a:["1 million d'habitants","5 millions","10 millions d'habitants","50 millions"],c:2,e:"Tokyo (37M), Delhi, Shanghai… La plupart sont dans les pays du Sud (Asie, Afrique)."},
+        {q:"Une ville mondiale se définit par…",a:["Sa superficie","Sa concentration de fonctions de commandement mondiales (finance, culture)","Son nombre d'habitants","Son patrimoine historique"],c:1,e:"New York, Londres, Tokyo gouvernent la mondialisation : sièges FMN, bourses, aéroports hub."},
+        {q:"Les BRICS regroupent…",a:["France, Allemagne, Japon","Brésil, Russie, Inde, Chine, Afrique du Sud","USA, Canada, Mexique","G20 uniquement"],c:1,e:"Les BRICS = pays émergents majeurs. La Chine est devenue la 2ème économie mondiale."},
+       ]},
+    ]},
+    {chap:"Chapitre 2 : Environnement & France",icon:"🌿",color:"#FF4757",steps:[
+      {type:"theme",sub:"geo",themeIdx:2,label:"Environnement & DD",icon:"🌿"},
+      {type:"theme",sub:"geo",themeIdx:3,label:"France & Europe",icon:"🗺️"},
+      {type:"eval",label:"Mini-Éval Env. & France",icon:"📝",
+       questions:[
+        {q:"L'accord de Paris (2015) vise à…",a:["Réguler le commerce","Limiter le réchauffement climatique à +1,5°C/2°C","Protéger la biodiversité uniquement","Réduire la dette mondiale"],c:1,e:"196 pays signataires. Objectif : réduire les émissions de CO₂ pour limiter le réchauffement."},
+        {q:"La définition du développement durable (Brundtland) ?",a:["Maximiser la croissance","Répondre aux besoins du présent sans compromettre ceux des générations futures","Protéger la nature sans développement","Industrialiser les pays pauvres"],c:1,e:"1987 : 3 piliers (économique + social + environnemental). Base des 17 ODD de l'ONU (2015)."},
+        {q:"La transition énergétique, c'est…",a:["Passer du nucléaire au gaz","Passer des énergies fossiles aux renouvelables (solaire, éolien…)","Augmenter la production pétrolière","Remplacer le diesel par l'essence"],c:1,e:"Face au réchauffement et à l'épuisement des ressources fossiles → développer les ENR."},
+        {q:"Paris est qualifiée de métropole dominante car…",a:["Elle est la plus ancienne","Elle concentre 20% de la pop. et 30% du PIB français","Elle est la plus grande","Elle est la plus touristique"],c:1,e:"Macrocéphalie parisienne : Paris écrase les autres villes françaises. Débat sur les 'déserts français'."},
+        {q:"La politique de cohésion de l'UE vise à…",a:["Créer une armée commune","Réduire les inégalités entre régions via des fonds structurels","Harmoniser les salaires","Contrôler les frontières"],c:1,e:"Fonds FEDER, FSE… financent le développement des régions en retard pour réduire les écarts."},
+       ]},
+    ]},
+  ],
+
+  /* ── EMC ── */
+  emc:[
+    {chap:"Chapitre 1 : Démocratie & Institutions",icon:"🗳️",color:"#00C896",steps:[
+      {type:"theme",sub:"emc",themeIdx:0,label:"Démocratie & Institutions",icon:"🗳️"},
+      {type:"theme",sub:"emc",themeIdx:1,label:"Citoyenneté & Engagement",icon:"🤝"},
+      {type:"eval",label:"Mini-Éval Démocratie",icon:"📝",
+       questions:[
+        {q:"Caractéristiques d'un régime démocratique ?",a:["Un chef unique inamovible","Suffrage universel, séparation des pouvoirs, libertés fondamentales","Un parti unique","Décisions par une élite"],c:1,e:"Démocratie = pouvoir du peuple : élections libres, pluralisme, contre-pouvoirs, droits garantis."},
+        {q:"Séparation des pouvoirs selon Montesquieu ?",a:["Tout le pouvoir au président","Législatif + Exécutif + Judiciaire","Partage entre riches et pauvres","Alternance entre partis"],c:1,e:"1748 : 3 pouvoirs séparés qui se contrôlent mutuellement → évite la tyrannie."},
+        {q:"La laïcité (loi 1905) signifie…",a:["Religion officielle catholique","Séparation Église/État, liberté de conscience","Interdiction de toute religion","Fusion droit et religion"],c:1,e:"L'État ne reconnaît ni ne salarie aucun culte. Liberté de croyance garantie pour tous."},
+        {q:"Les devoirs d'un citoyen français ?",a:["Aucun devoir","Respecter les lois, payer impôts, voter, JDC","Uniquement voter","Travailler"],c:1,e:"Citoyenneté = droits ET devoirs. Sans devoirs collectifs, pas de droits garantis."},
+        {q:"La discrimination est…",a:["Toujours justifiée","Un traitement inégal injustifié (origine, sexe, religion…), illégal en France","Une opinion","Un débat philosophique"],c:1,e:"Délit en France (jusqu'à 3 ans de prison). Le Défenseur des droits protège les victimes."},
+        {q:"La liberté d'expression est limitée par…",a:["Aucune limite","L'interdiction d'inciter à la haine, diffamer, nier des génocides","Le gouvernement","La police"],c:1,e:"Art. 11 DDHC. Limites : propos haineux (loi Pleven 1972), négationnisme (loi Gayssot 1990)."},
+       ]},
+    ]},
+    {chap:"Chapitre 2 : Justice & Défense",icon:"⚖️",color:"#00C896",steps:[
+      {type:"theme",sub:"emc",themeIdx:2,label:"Défense & Sécurité",icon:"🛡️"},
+      {type:"theme",sub:"emc",themeIdx:3,label:"Justice & Droits fondamentaux",icon:"⚖️"},
+      {type:"eval",label:"Mini-Éval Justice & Défense",icon:"📝",
+       questions:[
+        {q:"Rôle de l'armée française ?",a:["Uniquement la guerre","Défendre le territoire, protéger les citoyens, maintien de la paix","Gérer les élections","Surveiller les frontières seulement"],c:1,e:"200 000 militaires. Missions : défense, OPEX, aide humanitaire, dissuasion nucléaire."},
+        {q:"L'OTAN est…",a:["Une org. économique","Alliance militaire de 32 pays : attaque d'un = attaque de tous (art. 5)","Une org. humanitaire","Un traité commercial"],c:1,e:"Fondée en 1949. 32 membres. Article 5 = clause de défense collective."},
+        {q:"La présomption d'innocence signifie…",a:["Toute personne accusée est coupable","Toute personne est innocente jusqu'à preuve du contraire par un tribunal","Droit de se défendre uniquement","Interdiction d'arrêter"],c:1,e:"Art. 9 DDHC. C'est à l'accusation de prouver la culpabilité. Pilier de l'État de droit."},
+        {q:"Droit civil vs droit pénal ?",a:["Synonymes","Civil = litiges entre particuliers ; Pénal = infractions contre la société","Civil = adultes, pénal = mineurs","Civil = lois, pénal = Constitution"],c:1,e:"Civil : indemnisation (tribunal judiciaire). Pénal : punition (tribunal correctionnel, cour d'assises)."},
+        {q:"Les femmes obtiennent le droit de vote en France en…",a:["1789","1871","1944","1968"],c:2,e:"Ordonnance de Gaulle du 21 avril 1944. Premier vote aux municipales d'avril 1945."},
+       ]},
+    ]},
+  ],
+
+  /* ── TECHNOLOGIE ── */
+  techno:[
+    {chap:"Chapitre 1 : Innovation & Conception",icon:"💡",color:"#FFB300",steps:[
+      {type:"theme",sub:"techno",themeIdx:0,label:"Innovation & Design",icon:"💡"},
+      {type:"theme",sub:"techno",themeIdx:1,label:"Systèmes & Objets techniques",icon:"🤖"},
+      {type:"eval",label:"Mini-Éval Conception",icon:"📝",
+       questions:[
+        {q:"La démarche de design intègre…",a:["Dessiner uniquement","Analyser le besoin, créer, prototyper, tester","Fabriquer sans réfléchir","Un calcul mathématique"],c:1,e:"Design = centré utilisateur : besoin → créativité → prototype → tests → amélioration."},
+        {q:"Invention vs innovation ?",a:["Synonymes","Invention = créer du nouveau ; Innovation = transformer une invention en produit du marché","Innovation = copier","Invention = améliorer l'existant"],c:1,e:"Ex : téléphone (invention) → smartphone (innovation qui transforme les usages)."},
+        {q:"Un cahier des charges liste…",a:["Les notes de l'élève","Les fonctions, performances et contraintes d'un objet à concevoir","Un plan de fabrication","Un contrat de vente"],c:1,e:"CDC : fonctions de service (ce que doit faire l'objet) + contraintes (coût, normes, matériaux)."},
+        {q:"Une chaîne d'énergie suit l'ordre…",a:["Convertir → Alimenter → Transmettre","Alimenter → Distribuer → Convertir → Transmettre","Transmettre → Convertir → Alimenter","Distribuer → Alimenter → Convertir"],c:1,e:"Ex : batterie (alimenter) → variateur (distribuer) → moteur (convertir) → roues (transmettre)."},
+        {q:"Un actionneur est…",a:["Un capteur","Un composant convertissant un signal en action physique","Un processeur","Une interface utilisateur"],c:1,e:"Exemples : moteur (mouvement), LED (lumière), haut-parleur (son). En bout de chaîne d'info."},
+        {q:"Un prototype sert à…",a:["Être le produit final","Tester et valider les choix avant la fabrication en série","Décorer","Calculer le coût"],c:1,e:"Le prototype détecte les problèmes et recueille des retours avant la production. Peut être numérique."},
+       ]},
+    ]},
+    {chap:"Chapitre 2 : Numérique & Société",icon:"💻",color:"#FFB300",steps:[
+      {type:"theme",sub:"techno",themeIdx:2,label:"Programmation & Numérique",icon:"💻"},
+      {type:"theme",sub:"techno",themeIdx:3,label:"Technologie & Société",icon:"🌱"},
+      {type:"eval",label:"Mini-Éval Numérique",icon:"📝",
+       questions:[
+        {q:"Un algorithme est…",a:["Un logiciel","Une suite d'instructions précises pour résoudre un problème","Un ordinateur","Un langage"],c:1,e:"Indépendant du langage de programmation. Il décrit la logique : si/alors, boucles, fonctions…"},
+        {q:"En Python, une boucle 'for' sert à…",a:["Une condition","Répéter un bloc pour chaque élément d'une liste ou n fois","Une fonction","Un commentaire"],c:1,e:"Ex : for i in range(5): print(i) → affiche 0,1,2,3,4. Évite de répéter du code."},
+        {q:"Le RGPD (2018) protège…",a:["Les logiciels","Les données personnelles des citoyens européens","Le droit d'auteur","Les marques commerciales"],c:1,e:"Droit d'accès, rectification, effacement (droit à l'oubli). La CNIL contrôle en France."},
+        {q:"La fracture numérique désigne…",a:["Une panne informatique","L'inégalité d'accès et d'usage des technologies","Un virus","La séparation réseaux public/privé"],c:1,e:"≈13 millions de Français en situation d'illectronisme. Enjeu social et territorial majeur."},
+        {q:"Le cyberharcèlement est…",a:["Une blague entre amis","Des actes hostiles répétés via outils numériques pour nuire à quelqu'un","Un jeu vidéo violent","De la publicité"],c:1,e:"C'est un délit (jusqu'à 2 ans de prison). Si victime : garder preuves, signaler, porter plainte, appeler le 3018."},
+        {q:"HTTPS vs HTTP ?",a:["Même chose","HTTPS = version sécurisée et chiffrée de HTTP (SSL/TLS)","HTTP est plus rapide","HTTPS est uniquement pour les emails"],c:1,e:"Le cadenas = HTTPS. Protège mots de passe et paiements. Indispensable pour tout site sécurisé."},
+       ]},
+    ]},
+  ],
+};
+
+/* ════════════════════════
+   PARCOURS STATE
+════════════════════════ */
+let PARC_SUB = 'math';
+let PARC_NODE = null; // currently selected node info
+let EVAL_STATE = {questions:[],qi:0,score:0,answers:[],answered:false,sub:null,nodeKey:null,chapIdx:0};
+
+/* ════════════════════════
+   SHOW PARCOURS
+════════════════════════ */
+function showParcours(){
+  if(!CU){showLogin();return;}
+  renderParcoursSubSelector();
+  renderPath();
+  show('parcours-screen');
+}
+
+function renderParcoursSubSelector(){
+  const sel = document.getElementById('parcours-sub-selector');
+  sel.innerHTML = '';
+  Object.entries(PARCOURS).forEach(([sub])=>{
+    const m = SMETA[sub];
+    const btn = document.createElement('button');
+    btn.className = 'psub-btn' + (sub===PARC_SUB?' active':'');
+    btn.textContent = m.icon + ' ' + m.name.split(' ')[0];
+    btn.onclick = ()=>{PARC_SUB=sub;renderParcoursSubSelector();renderPath();};
+    sel.appendChild(btn);
+  });
+}
+
+function getNodeKey(sub, chapIdx, stepIdx){ return `parc_${sub}_${chapIdx}_${stepIdx}`; }
+
+function getNodeProgress(key){
+  const db = loadDB(), u = db.users[CID];
+  return (u.parcours||{})[key] || {done:false,score:0,total:0,stars:0};
+}
+
+function isNodeUnlocked(sub, chapIdx, stepIdx){
+  if(chapIdx===0 && stepIdx===0) return true;
+  // previous step in same chap
+  if(stepIdx>0){
+    const prev = getNodeProgress(getNodeKey(sub,chapIdx,stepIdx-1));
+    return prev.done;
+  }
+  // first step of a chapter: last step of previous chap must be done
+  const prevChap = PARCOURS[sub][chapIdx-1];
+  if(!prevChap) return true;
+  const lastStepIdx = prevChap.steps.length-1;
+  const prev = getNodeProgress(getNodeKey(sub,chapIdx-1,lastStepIdx));
+  return prev.done;
+}
+
+function renderPath(){
+  const container = document.getElementById('path-container');
+  container.innerHTML = '';
+  const chaps = PARCOURS[PARC_SUB];
+  if(!chaps){container.innerHTML='<p style="text-align:center;color:#aaa;padding:20px;">Bientôt disponible 🚀</p>';return;}
+
+  // zigzag directions: alternate left / center / right
+  const offsets = ['right','center','left','center'];
+
+  chaps.forEach((chap, ci)=>{
+    // Chapter banner
+    const banner = document.createElement('div');
+    banner.className = 'chapter-banner';
+    const doneSt = chap.steps.filter((_,si)=>getNodeProgress(getNodeKey(PARC_SUB,ci,si)).done).length;
+    banner.innerHTML = `<span class="cb-icon">${chap.icon}</span><div><div class="cb-name">${chap.chap}</div><div class="cb-sub">${chap.steps.length} étapes</div></div><div class="cb-prog">${doneSt}/${chap.steps.length}</div>`;
+    container.appendChild(banner);
+
+    chap.steps.forEach((step, si)=>{
+      const key = getNodeKey(PARC_SUB, ci, si);
+      const prog = getNodeProgress(key);
+      const unlocked = isNodeUnlocked(PARC_SUB, ci, si);
+      const isActive = unlocked && !prog.done;
+      const isEval = step.type==='eval';
+
+      // connector before (not first)
+      if(si>0 || ci>0){
+        const conn = document.createElement('div');
+        const prevProg = si>0 ? getNodeProgress(getNodeKey(PARC_SUB,ci,si-1)) : getNodeProgress(getNodeKey(PARC_SUB,ci-1,PARCOURS[PARC_SUB][ci-1].steps.length-1));
+        conn.className = 'path-connector' + (prevProg.done?' done':'');
+        container.appendChild(conn);
+      }
+
+      const nodeWrap = document.createElement('div');
+      nodeWrap.className = 'path-node';
+
+      let btnClass = 'node-btn';
+      if(isEval) btnClass += ' eval';
+      if(prog.done) btnClass += ' done';
+      else if(isActive) btnClass += ' active';
+      else btnClass += ' locked';
+
+      const stars = prog.stars||0;
+      const starStr = ['☆','☆','☆'].map((_,i)=>i<stars?'⭐':'☆').join('');
+
+      nodeWrap.innerHTML = `
+        <button class="${btnClass}" onclick="${unlocked?`openNodePopup('${PARC_SUB}',${ci},${si})`:'null'}">
+          ${prog.done && isEval ? '🏅' : isEval ? '📝' : prog.done ? '✅' : isActive ? step.icon : '🔒'}
+          ${isActive?'<div class="node-badge">GO</div>':''}
+          ${prog.done && prog.score>0?`<div class="node-score">${prog.score}/${prog.total}</div>`:''}
+        </button>
+        <div class="node-label">${step.label}</div>
+        ${prog.done?`<div class="node-stars">${starStr}</div>`:''}
+      `;
+
+      // alternate offset
+      const off = offsets[(ci*10+si)%offsets.length];
+      if(off==='left') nodeWrap.style.alignSelf='flex-start';
+      else if(off==='right') nodeWrap.style.alignSelf='flex-end';
+      else nodeWrap.style.alignSelf='center';
+
+      container.appendChild(nodeWrap);
+    });
+  });
+}
+
+/* ════════════════════════
+   NODE POPUP
+════════════════════════ */
+function openNodePopup(sub, ci, si){
+  const step = PARCOURS[sub][ci].steps[si];
+  const key = getNodeKey(sub,ci,si);
+  const prog = getNodeProgress(key);
+  PARC_NODE = {sub,ci,si,step,key};
+
+  document.getElementById('popup-title').textContent = step.icon + ' ' + step.label;
+  document.getElementById('popup-desc').textContent = step.type==='eval'
+    ? `Mini-évaluation de ${step.questions.length} questions — teste tes connaissances !`
+    : `Révise ce thème avec des QCMs interactifs`;
+  document.getElementById('ps-score').textContent = prog.done ? `${prog.score}/${prog.total}` : '—';
+  document.getElementById('ps-done').textContent = prog.done ? '✅' : '0';
+  const stars = prog.stars||0;
+  document.getElementById('ps-stars').textContent = ['★','★','★'].map((_,i)=>i<stars?'⭐':'☆').join('');
+
+  const startBtn = document.getElementById('popup-start-btn');
+  startBtn.textContent = prog.done ? '🔁 Rejouer' : '▶ Commencer';
+  startBtn.onclick = ()=>{ closeNodePopup(); launchNode(); };
+
+  document.getElementById('popup-overlay').classList.add('open');
+  document.getElementById('node-popup').classList.add('open');
+}
+
+function closeNodePopup(){
+  document.getElementById('popup-overlay').classList.remove('open');
+  document.getElementById('node-popup').classList.remove('open');
+}
+
+function launchNode(){
+  const {sub,ci,si,step} = PARC_NODE;
+  if(step.type==='theme'){
+    // find the theme index in QDB
+    launchTheme(sub, step.themeIdx);
+    // mark as done when victory (handled in victory())
+    PARC_PENDING = {sub,ci,si,type:'theme'};
+  } else {
+    // mini-eval
+    launchEval(step, sub, ci, si);
+  }
+}
+
+// Store pending parcours info for after quiz/eval
+let PARC_PENDING = null;
+
+/* ════════════════════════
+   MINI-ÉVAL
+════════════════════════ */
+function launchEval(step, sub, ci, si){
+  let qs = [...step.questions];
+  // shuffle order
+  for(let i=qs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[qs[i],qs[j]]=[qs[j],qs[i]];}
+  // shuffle answers within each question
+  qs=shuffleAnswers(qs);
+  EVAL_STATE = {questions:qs, qi:0, score:0, answers:[], answered:false, sub, chapIdx:ci, stepIdx:si, nodeKey:getNodeKey(sub,ci,si), total:qs.length};
+  PARC_PENDING = null;
+
+  document.getElementById('eval-title').textContent = '📝 ' + step.label;
+  document.getElementById('eval-subtitle').textContent = `${qs.length} questions — Montre ce que tu sais !`;
+
+  renderEvalProgress();
+  renderEvalQ();
+  show('eval-screen');
+}
+
+function renderEvalProgress(){
+  const prog = document.getElementById('eval-progress');
+  prog.innerHTML = '';
+  EVAL_STATE.questions.forEach((_,i)=>{
+    const d = document.createElement('div');
+    d.className = 'eval-dot' + (i<EVAL_STATE.qi ? (EVAL_STATE.answers[i]?'.ok':'.ko').replace('.','' ) : i===EVAL_STATE.qi ? ' cur' : '');
+    // fix class
+    if(i<EVAL_STATE.qi) d.className = 'eval-dot ' + (EVAL_STATE.answers[i]===true?'ok':'ko');
+    else if(i===EVAL_STATE.qi) d.className = 'eval-dot cur';
+    else d.className = 'eval-dot';
+    prog.appendChild(d);
+  });
+}
+
+function renderEvalQ(){
+  const {questions, qi} = EVAL_STATE;
+  const q = questions[qi];
+  EVAL_STATE.answered = false;
+
+  document.getElementById('eval-body').innerHTML = `
+    <div class="q-card" id="eval-qcard">
+      <div class="q-tags">
+        <span class="qtag sub">${SMETA[EVAL_STATE.sub].icon} Évaluation</span>
+        <span class="qtag theme">Q${qi+1}/${questions.length}</span>
+      </div>
+      <p class="q-text">${q.q}</p>
+    </div>
+    <div class="ans-grid" id="eval-ans-grid"></div>
+    <div class="fb-panel" id="eval-fb" style="display:none"></div>
+  `;
+
+  const grid = document.getElementById('eval-ans-grid');
+  ['A','B','C','D'].forEach((l,i)=>{
+    if(i>=q.a.length) return;
+    const b = document.createElement('button');
+    b.className = 'ans-btn';
+    b.innerHTML = `<span class="ans-letter">${l}</span>${q.a[i]}`;
+    b.onclick = ()=>pickEval(i,b);
+    grid.appendChild(b);
+  });
+}
+
+function pickEval(idx, btn){
+  if(EVAL_STATE.answered) return;
+  EVAL_STATE.answered = true;
+  const q = EVAL_STATE.questions[EVAL_STATE.qi];
+  document.querySelectorAll('#eval-ans-grid .ans-btn').forEach(b=>b.disabled=true);
+  const correct = idx===q.c;
+  if(correct){ EVAL_STATE.score++; btn.classList.add('correct'); }
+  else { btn.classList.add('wrong'); document.querySelectorAll('#eval-ans-grid .ans-btn')[q.c].classList.add('correct'); }
+  EVAL_STATE.answers.push(correct);
+
+  const fb = document.getElementById('eval-fb');
+  fb.className = 'fb-panel ' + (correct?'ok':'ko');
+  fb.style.display = 'block';
+  fb.innerHTML = `
+    <h3>${correct ? ['Super ! 🎉','Bravo ! ✅','Parfait ! 🌟'][Math.floor(Math.random()*3)] : ['Presque ! 🤔','Oops ! 😬','Pas tout à fait 😅'][Math.floor(Math.random()*3)]}</h3>
+    <p>${q.e}</p>
+    <button class="btn-nxt ${correct?'g':'r'}" onclick="nextEvalQ()">${EVAL_STATE.qi>=EVAL_STATE.questions.length-1?'Voir mes résultats 🏆':'Continuer →'}</button>
+  `;
+  renderEvalProgress();
+}
+
+function nextEvalQ(){
+  EVAL_STATE.qi++;
+  if(EVAL_STATE.qi >= EVAL_STATE.questions.length) showEvalResults();
+  else { renderEvalQ(); renderEvalProgress(); }
+}
+
+function showEvalResults(){
+  const {score, total, answers, questions, sub, nodeKey} = EVAL_STATE;
+  const pct = score/total;
+  const stars = pct>=1?3:pct>=.7?2:pct>=.5?1:0;
+
+  // grade
+  let grade, mention, gradeClass;
+  if(pct>=.9){grade='A';mention='Excellent ! Tu maîtrises ! 🏆';gradeClass='A';}
+  else if(pct>=.7){grade='B';mention='Très bien ! 💪';gradeClass='B';}
+  else if(pct>=.5){grade='C';mention='Pas mal, continue ! 😊';gradeClass='C';}
+  else{grade='D';mention='Courage, révise encore ! 📚';gradeClass='D';}
+
+  // Save to parcours progress
+  const db = loadDB(), u = db.users[CID];
+  if(!u.parcours) u.parcours={};
+  u.parcours[nodeKey] = {done:true, score, total, stars};
+  const xp = score*8 + (pct===1?15:0);
+  u.xp += xp;
+  u.streak++;
+  db.users[CID]=u; saveDB(db); CU=u; refreshHdr();
+
+  // Detail rows
+  let detailHTML = '';
+  questions.forEach((q,i)=>{
+    const ok = answers[i];
+    detailHTML += `
+      <div class="eval-row">
+        <div class="eval-row-ico">${ok?'✅':'❌'}</div>
+        <div class="eval-row-q">
+          <div class="qtext">${q.q}</div>
+          <div class="atext ${ok?'ok':'ko'}">${ok?'✓ Bonne réponse':'✗ Réponse : '+q.a[q.c]}</div>
+        </div>
+      </div>`;
+  });
+
+  const starsStr = ['⭐','⭐','⭐'].map((_,i)=>i<stars?'⭐':'☆').join('');
+
+  document.getElementById('eval-body').innerHTML = `
+    <div class="eval-results">
+      <div class="eval-grade ${gradeClass}">${grade}</div>
+      <div class="node-stars" style="justify-content:center;font-size:1.5rem;margin:4px 0">${starsStr}</div>
+      <div class="eval-mention">${mention}</div>
+      <div class="eval-score-big">${score} / ${total} correct · +${xp} XP</div>
+      <div class="eval-detail">
+        <h4>📋 Récap des réponses</h4>
+        ${detailHTML}
+      </div>
+      <div class="eval-btns">
+        <button class="btn-retry" onclick="replayEval()">🔁 Rejouer</button>
+        <button class="btn-cont" onclick="backToParcours()">🗺️ Parcours</button>
+      </div>
+    </div>
+  `;
+  document.getElementById('eval-progress').innerHTML='';
+
+  if(pct>=.5) confetti();
+}
+
+function replayEval(){
+  // restart same eval
+  const {sub, chapIdx, stepIdx} = EVAL_STATE;
+  const step = PARCOURS[sub][chapIdx].steps[stepIdx];
+  launchEval(step, sub, chapIdx, stepIdx);
+}
+
+function backToParcours(){
+  renderPath();
+  show('parcours-screen');
+}
+
+/* ════════════════════════
+   HOOK INTO VICTORY to save parcours
+════════════════════════ */
+const _origVictory = victory;
+victory = function(){
+  _origVictory();
+  if(PARC_PENDING){
+    const {sub,ci,si} = PARC_PENDING;
+    const db = loadDB(), u = db.users[CID];
+    if(!u.parcours) u.parcours={};
+    const key = getNodeKey(sub,ci,si);
+    const pct = QS.score/QS.questions.length;
+    const stars = pct>=1?3:pct>=.7?2:pct>=.5?1:0;
+    if(!u.parcours[key]||!u.parcours[key].done){
+      u.parcours[key]={done:true,score:QS.score,total:QS.questions.length,stars};
+    } else {
+      if(stars > (u.parcours[key].stars||0)) u.parcours[key].stars=stars;
+      if(QS.score > (u.parcours[key].score||0)){u.parcours[key].score=QS.score;u.parcours[key].total=QS.questions.length;}
+    }
+    db.users[CID]=u;saveDB(db);CU=u;
+    PARC_PENDING=null;
+    // modify back button on victory screen to go back to parcours
+    const bh = document.querySelector('#victory-screen .btn-home');
+    if(bh){const orig=bh.onclick;bh.innerHTML='🗺️ Retour au parcours';bh.onclick=()=>{renderPath();show('parcours-screen');bh.innerHTML='🏠 Retour à l\'accueil';bh.onclick=orig;};}
+  }
+};
+
+/* ════════════════════════
+   LEADERBOARD
+════════════════════════ */
+function showLeaderboard(){
+  if(!CU){showLogin();return;}
+  renderLeaderboard();show('leaderboard-screen');
+}
+function renderLeaderboard(){
+  const db=loadDB();
+  const users=Object.entries(db.users).map(([id,u])=>({id,...u}));
+  users.sort((a,b)=>b.xp-a.xp);
+  const podium=document.getElementById('lb-podium');
+  const list=document.getElementById('lb-list');
+  podium.innerHTML='';list.innerHTML='';
+  if(users.length===0){list.innerHTML='<div class="lb-empty">Aucun élève encore 😴</div>';return;}
+  // Podium top 3
+  const order=users.length>=3?[users[1],users[0],users[2]]:[users[0],users[1]].filter(Boolean);
+  const pClass=['p2','p1','p3'],pRank=['🥈','🥇','🥉'];
+  const pOrd=[2,1,3];
+  order.forEach((u,i)=>{
+    if(!u)return;
+    const div=document.createElement('div');div.className='podium-item';
+    div.innerHTML=`<div class="podium-av">${u.av}</div><div class="podium-name">${u.name}</div><div class="podium-xp">⭐ ${u.xp} XP</div><div class="podium-block ${pClass[i]}">${pRank[i]}</div>`;
+    podium.appendChild(div);
+  });
+  // Rest of list
+  users.forEach((u,i)=>{
+    if(i<3&&users.length>3)return;
+    const isMe=u.id===CID;
+    const row=document.createElement('div');row.className='lb-row'+(isMe?' me':'');
+    const td=Object.values(u.subStats||{}).reduce((a,s)=>a+(s.done||0),0);
+    row.innerHTML=`<div class="lb-rank">#${i+1}</div><div class="lb-av">${u.av}</div><div class="lb-info"><div class="lb-uname">${u.name}${isMe?' 👈':''}</div><div class="lb-ucls">${u.cls} · ${td} questions</div></div><div class="lb-score"><div class="lb-xp">⭐ ${u.xp}</div><div class="lb-streak">🔥 ${u.streak}</div></div>`;
+    list.appendChild(row);
+  });
+  const myRank=users.findIndex(u=>u.id===CID)+1;
+  if(myRank>3&&users.length>3){const sep=document.createElement('div');sep.style.cssText='text-align:center;font-size:.75rem;color:#aaa;font-weight:700;padding:6px;';sep.textContent=`Tu es classé·e #${myRank} sur ${users.length} élèves`;list.appendChild(sep);}
+}
+
+/* ════════════════════════
+   EXAMEN BLANC
+════════════════════════ */
+let EXAM={questions:[],qi:0,score:0,answers:[],answered:false,timer:null,timeLeft:0};
+function showExam(){
+  if(!CU){showLogin();return;}
+  document.getElementById('exam-inner').innerHTML=`
+    <div class="exam-intro">
+      <div style="font-size:4rem">📝</div>
+      <h2>Examen Blanc</h2>
+      <p>Entraîne-toi dans les mêmes conditions que le vrai brevet !</p>
+      <div class="exam-rules">
+        <h3>📋 Règles</h3>
+        <div class="exam-rule"><span class="er-ico">❓</span>20 questions toutes matières mélangées</div>
+        <div class="exam-rule"><span class="er-ico">⏱️</span>30 minutes chrono</div>
+        <div class="exam-rule"><span class="er-ico">🚫</span>Pas de corrections pendant l'exam</div>
+        <div class="exam-rule"><span class="er-ico">🎯</span>Note sur 20 et bilan à la fin</div>
+      </div>
+      <button class="btn-auth" onclick="startExam()">🚀 Commencer</button>
+      <br><button class="btn-bkp" onclick="goHome()" style="margin-top:10px;width:100%">← Retour</button>
+    </div>`;
+  show('exam-screen');
+}
+function startExam(weakMode){
+  let qs;
+  if(weakMode){
+    qs=weakMode;
+  } else {
+    let pool=[];
+    Object.keys(QDB).forEach(sub=>QDB[sub].forEach(th=>th.questions.forEach(q=>pool.push({...q,sub}))));
+    for(let i=pool.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[pool[i],pool[j]]=[pool[j],pool[i]];}
+    qs=shuffleAnswers(pool.slice(0,20));
+  }
+  EXAM={questions:qs,qi:0,score:0,answers:[],answered:false,timer:null,timeLeft:weakMode?999999:30*60};
+  renderExamQ();
+  if(!weakMode){EXAM.timer=setInterval(()=>{EXAM.timeLeft--;updateExamTimer();if(EXAM.timeLeft<=0){clearInterval(EXAM.timer);showExamResults();}},1000);}
+}
+function updateExamTimer(){
+  const el=document.getElementById('exam-timer-val');if(!el)return;
+  const m=Math.floor(EXAM.timeLeft/60),s=EXAM.timeLeft%60;
+  el.textContent=`${m}:${s<10?'0':''}${s}`;
+  const cls=EXAM.timeLeft>600?'ok':EXAM.timeLeft>180?'warn':'';
+  el.closest('.exam-timer-big').className='exam-timer-big'+(cls?' '+cls:'');
+}
+function renderExamQ(){
+  const {questions,qi}=EXAM,q=questions[qi];
+  EXAM.answered=false;
+  const m=Math.floor(EXAM.timeLeft/60),s=EXAM.timeLeft%60;
+  const timerStr=EXAM.timeLeft<999999?`<div class="exam-timer-big ok" id="etb"><span id="exam-timer-val">${m}:${s<10?'0':''}${s}</span> ⏱</div>`:`<div style="font-family:'Baloo 2',cursive;font-size:1rem;font-weight:800;color:#7B2FBE">🎯 Points faibles</div>`;
+  document.getElementById('exam-inner').innerHTML=`
+    <div class="exam-wrap">
+      <div class="exam-top-bar">${timerStr}<div class="exam-q-counter">Q${qi+1} / ${questions.length}</div></div>
+      <div class="pb-wrap" style="margin-bottom:14px;"><div class="pb-fill" style="width:${qi/questions.length*100}%;background:linear-gradient(90deg,var(--mint),var(--sky))"></div></div>
+      <div class="q-card">
+        <div class="q-tags"><span class="qtag sub">${SMETA[q.sub].icon} ${SMETA[q.sub].name}</span><span class="qtag theme">${EXAM.timeLeft<999999?'Examen Blanc':'Points Faibles'}</span></div>
+        <p class="q-text">${q.q}</p>
+      </div>
+      <div class="ans-grid" id="exam-ans"></div>
+    </div>`;
+  const grid=document.getElementById('exam-ans');
+  ['A','B','C','D'].forEach((l,i)=>{
+    if(i>=q.a.length)return;
+    const b=document.createElement('button');b.className='ans-btn';
+    b.innerHTML=`<span class="ans-letter">${l}</span>${q.a[i]}`;
+    b.onclick=()=>pickExam(i,b);grid.appendChild(b);
+  });
+}
+function pickExam(idx,btn){
+  if(EXAM.answered)return;EXAM.answered=true;
+  const q=EXAM.questions[EXAM.qi];
+  document.querySelectorAll('#exam-ans .ans-btn').forEach(b=>b.disabled=true);
+  const correct=idx===q.c;
+  btn.classList.add(correct?'correct':'wrong');
+  if(!correct)document.querySelectorAll('#exam-ans .ans-btn')[q.c].classList.add('correct');
+  EXAM.answers.push({correct,q});
+  if(correct)EXAM.score++;
+  setTimeout(()=>{EXAM.qi++;if(EXAM.qi>=EXAM.questions.length){clearInterval(EXAM.timer);showExamResults();}else renderExamQ();},900);
+}
+function showExamResults(){
+  clearInterval(EXAM.timer);
+  const {score,questions,answers}=EXAM;
+  const note=Math.round(score/questions.length*20*10)/10;
+  const pct=score/questions.length;
+  let grade,mention;
+  if(note>=16){grade='A';mention='Excellent ! Tu es prêt·e ! 🏆';}
+  else if(note>=12){grade='B';mention='Bien joué ! Continue ! 💪';}
+  else if(note>=8){grade='C';mention='Courage, revois certains points ! 📚';}
+  else{grade='D';mention='Il faut réviser encore — you got this ! 🎯';}
+  // Save weak points
+  const db=loadDB(),u=db.users[CID];
+  if(!u.weakPoints)u.weakPoints=[];
+  answers.forEach(a=>{if(!a.correct)u.weakPoints.push({q:a.q.q,a:a.q.a,c:a.q.c,e:a.q.e,sub:a.q.sub});});
+  if(u.weakPoints.length>60)u.weakPoints=u.weakPoints.slice(-60);
+  const xp=Math.round(score*5);u.xp+=xp;u.streak++;
+  db.users[CID]=u;saveDB(db);CU=u;refreshHdr();
+  // By subject breakdown
+  const bySubj={};
+  answers.forEach(a=>{if(!bySubj[a.q.sub])bySubj[a.q.sub]={ok:0,total:0};bySubj[a.q.sub].total++;if(a.correct)bySubj[a.q.sub].ok++;});
+  let subjHTML='';
+  Object.entries(bySubj).forEach(([sub,s])=>{const p=Math.round(s.ok/s.total*100);subjHTML+=`<div class="sb-row"><div class="sbl">${SMETA[sub].icon} ${SMETA[sub].name.split(' ')[0]}</div><div class="sbt"><div class="sbf" style="width:${p}%;background:${BCOLORS[sub]}"></div></div><div class="sbp">${p}%</div></div>`;});
+  document.getElementById('exam-inner').innerHTML=`
+    <div class="exam-results">
+      <div style="text-align:center;padding-top:10px">
+        <div class="exam-note ${grade}">${note}/20</div>
+        <div style="font-size:2rem;margin:4px 0">${grade==='A'?'🏆':grade==='B'?'🌟':grade==='C'?'😊':'📚'}</div>
+        <div style="font-family:'Baloo 2',cursive;font-size:1.1rem;font-weight:800;color:var(--dark);margin-bottom:4px">${mention}</div>
+        <div style="font-size:.85rem;color:#aaa;font-weight:600;margin-bottom:16px">${score}/${questions.length} bonnes réponses · +${xp} XP</div>
+      </div>
+      <div class="prof-sec"><h3>📊 Par matière</h3><div class="sb-rows">${subjHTML}</div></div>
+      <div style="display:flex;gap:8px;padding:4px 4px 16px">
+        <button class="btn-auth" style="flex:1;background:linear-gradient(135deg,#f39c12,#e67e22)" onclick="showExam()">🔁 Nouvel exam</button>
+        <button class="btn-bkp" style="flex:1" onclick="goHome()">🏠 Accueil</button>
+      </div>
+    </div>`;
+  if(pct>=0.6)confetti();
+}
+
+/* ════════════════════════
+   POINTS FAIBLES
+════════════════════════ */
+function showWeakPoints(){
+  if(!CU){showLogin();return;}
+  const u=CU;
+  const wps=(u.weakPoints||[]).slice().reverse();
+  const bySubj={};
+  wps.forEach(w=>{if(!bySubj[w.sub])bySubj[w.sub]=[];if(!bySubj[w.sub].find(x=>x.q===w.q))bySubj[w.sub].push(w);});
+  let html=`<div class="weak-wrap"><div class="weak-header"><button class="btn-bk" onclick="goHome()">←</button><div><h2>🎯 Mes points faibles</h2><div style="font-size:.78rem;color:#aaa;font-weight:600;margin-top:1px;">${wps.length} erreur${wps.length>1?'s':''} recensée${wps.length>1?'s':''}</div></div></div>`;
+  if(wps.length===0){
+    html+=`<div class="weak-empty">Aucune erreur pour l'instant ! 🎉<br><br>Fais des exercices ou un examen blanc pour voir tes points faibles ici.</div>`;
+  } else {
+    Object.entries(bySubj).forEach(([sub,qs])=>{
+      html+=`<div class="weak-card"><h4>${SMETA[sub].icon} ${SMETA[sub].name} — ${qs.length} point${qs.length>1?'s':''} faible${qs.length>1?'s':''}</h4>`;
+      qs.slice(0,5).forEach(w=>{
+        html+=`<div class="weak-q"><div class="weak-q-ico">❌</div><div class="weak-q-text">${w.q}<div class="weak-q-sub">✅ ${w.a[w.c]}</div></div></div>`;
+      });
+      html+=`</div>`;
+    });
+    html+=`<button class="weak-retry-btn" onclick="retryAllWeak()">🔁 S'entraîner sur mes erreurs</button>`;
+    html+=`<button class="btn-bkp" style="margin-top:10px;width:100%" onclick="clearWeakPoints()">🗑️ Effacer mes erreurs</button>`;
+  }
+  html+=`<div style="height:20px"></div></div>`;
+  document.getElementById('weak-inner').innerHTML=html;
+  show('weak-screen');
+}
+function retryAllWeak(){
+  const wps=(CU.weakPoints||[]).slice().reverse();
+  const bySubj={};wps.forEach(w=>{if(!bySubj[w.sub])bySubj[w.sub]=[];if(!bySubj[w.sub].find(x=>x.q===w.q))bySubj[w.sub].push(w);});
+  let qs=[];Object.entries(bySubj).forEach(([sub,arr])=>arr.forEach(w=>qs.push({...w,sub})));
+  for(let i=qs.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[qs[i],qs[j]]=[qs[j],qs[i]];}
+  startExam(shuffleAnswers(qs.slice(0,20)));
+  show('exam-screen');
+}
+function clearWeakPoints(){
+  if(!confirm('Effacer toutes tes erreurs ?'))return;
+  const db=loadDB();db.users[CID].weakPoints=[];saveDB(db);CU=db.users[CID];showWeakPoints();
+}
+
+/* ════════════════════════
+   QR CODE
+════════════════════════ */
+function showQR(){show('qr-screen');setTimeout(generateQR,150);}
+function generateQR(){
+  const container=document.getElementById('qr-container');if(!container)return;
+  container.innerHTML='';
+  const url=window.location.href.split('?')[0];
+  document.getElementById('qr-url').textContent=url;
+  // Try qrcode.js
+  if(typeof QRCode!=='undefined'){
+    new QRCode(container,{text:url,width:200,height:200,colorDark:'#1a1a4e',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});
+    return;
+  }
+  const script=document.createElement('script');
+  script.src='https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js';
+  script.onload=()=>{new QRCode(container,{text:url,width:200,height:200,colorDark:'#1a1a4e',colorLight:'#ffffff',correctLevel:QRCode.CorrectLevel.H});};
+  script.onerror=()=>{const img=document.createElement('img');img.src=`https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(url)}&color=1a1a4e&bgcolor=ffffff`;img.style.cssText='width:200px;height:200px;border-radius:8px;';container.appendChild(img);};
+  document.head.appendChild(script);
+}
+function downloadQR(){
+  const canvas=document.querySelector('#qr-container canvas');
+  if(canvas){const a=document.createElement('a');a.download='qrcode-brevet-jean-burger.png';a.href=canvas.toDataURL();a.click();return;}
+  const img=document.querySelector('#qr-container img');
+  if(img){window.open(img.src,'_blank');}
+}
+
+refreshCD();showLogin();
+</script>
+</body>
+</html>
